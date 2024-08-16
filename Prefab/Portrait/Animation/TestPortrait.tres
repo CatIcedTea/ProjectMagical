@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dq34xo2pkes4n"]
+
+[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_niojh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_niojh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]

@@ -1,0 +1,116 @@
+{
+	"Dialogue": [
+		{
+			"NameLeft": "Tess",
+			"NameRight": "",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "TestPortrait",
+			"SpriteRight": "None",
+
+			"Text": "Hi! Welcome to the dialogue test! My name is Tess."
+		},
+
+		{
+			"Text": "The .json file contains each line of dialogue inside the square brackets of \"Dialogue\":[]. Inside it contains all information for a single line of dialogue inside each {}, separated by a comma,"
+		},
+
+		{
+			"Text": "And inside each bracket {} is data stored in a \"KEY\": VALUE format separated by commas such as \"SpriteLeft\": \"TestPortrait\". If you choose to omit them, it will use the previous value."
+		},
+		
+		{
+			"NameLeft": "",
+			"NameRight": "Tess",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+			
+			"SpriteLeft": "none",
+			"SpriteRight": "TestPortrait",
+
+			"Text": "Over here, on the right now! If you want to clear out one side of the sprite, just type in 'none' or 'empty' (not case sensitive) for its value."
+		},
+
+		{
+			"SpriteRight": "TestPortrait",
+			"Text": "If you want to repeat the animation to move in like so, just repeat the SpriteRight or SpriteLeft value again!"
+		},
+
+		{
+			"NameLeft": "Tess#1",
+			"NameRight": "Tess#2",
+
+			"SpeakLeft": true,
+			"SpeakRight": true,
+
+			"SpriteLeft": "TestPortrait",
+			"SpriteRight": "TestPortrait",
+
+			"Text": "And of course you can use [font_size=34][i]both sides[/i][/font_size] at once as long as you assign the right key and value!"
+		},
+
+		{
+			"NameRight": "",
+
+			"SpeakRight": false,
+			
+			"Text": "And as you noticed... some of the text was italicized, meaning you can write in something else besides plain text using [wave]BBCode![/wave]."
+		},
+
+		{
+			"NameLeft": "",
+			"NameRight": "Tess#2",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"Text": "For a few more examples, you can [font_size=34][b]bold[/b][/font_size], [u]underline[/u], [s]strikethrough[/s], [outline_color=YELLOW][outline_size=5]outline[/outline_size][/outline_color]..."
+		},
+
+		{
+			"Text": "Change the [color=RED]text color[/color], [font_size=45]font size[/font_size], or add [bgcolor=GREEN]background colors[/bgcolor] and foreground to cover [fgcolor=WHITE]TEXT[/fgcolor], and many more!"
+		},
+
+		{
+			"NameLeft": "Tess",
+			"NameRight": "",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "TestPortrait",
+			"SpriteRight": "empty",
+
+			"Text": "You can also do special effects provided by Godot such as the [wave]wave[/wave] from before, [pulse]pulse[/pulse], [tornado]tornado[/tornado], [shake]shake[/shake], and [rainbow]rainbow![/rainbow] Each of these can also have optional settings."
+		},
+
+		{
+			"Text": "You can see all the effects on the Godot documentation on BBCode [url=https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html]here[/url]..."
+		},
+
+		{
+			"Text": "By the way, please don't go around pressing on suspicious links..."
+		},
+
+		{
+			"SpriteLeft": "TestPortrait",
+
+			"Text": "That is all for now! Some extra features such as talking animation, different emotions, and an idle/blinking animation would be nice to implement!"
+		},
+
+		{
+			"NameLeft": "",
+			"NameRight": "Tess",
+			
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteRight": "TestPortrait",
+
+			"Text": "This dialogue will now repeat for easier repeated testing, to close, press ESC!"
+		}
+	]
+}

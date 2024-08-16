@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://ra2lg8dtdfph"]
+
+[ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Scene/DialogueManager.tscn" id="1_4gfrb"]
+[ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="2_ontbc"]
+[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_7ehdd"]
+[ext_resource type="PackedScene" uid="uid://bmiikc3wb6up1" path="res://Prefab/SpeechBubble.tscn" id="4_ld3bs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nstn"]
+
+[sub_resource type="Sky" id="Sky_3cngx"]
+sky_material = SubResource("ProceduralSkyMaterial_5nstn")
+
+[sub_resource type="Environment" id="Environment_lghfx"]
+background_mode = 2
+sky = SubResource("Sky_3cngx")
+glow_enabled = true
+glow_bloom = 0.05
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yegxd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7ehdd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
+
+[node name="TestRoom" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.903552, 0.307878, -0.298001, -8.49523e-09, 0.695487, 0.718539, 0.428478, -0.649237, 0.628409, 0, 0, 0)
+light_color = Color(1, 0.867862, 0.81436, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lghfx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960958, 6.00627)
+attributes = SubResource("CameraAttributesPractical_yegxd")
+current = true
+
+[node name="UI" type="CanvasLayer" parent="Camera3D"]
+follow_viewport_enabled = true
+
+[node name="DialogueManager" parent="Camera3D/UI" instance=ExtResource("1_4gfrb")]
+position = Vector2(960, 835)
+DialogueFile = ExtResource("2_ontbc")
+
+[node name="TestSpeechBubble" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.327937, 0, 0, 0, 0.327937, 0, 0, 0, 0.327937, 0.743719, 1.57488, 0)
+shaded = true
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_d2nbb")
+
+[node name="SpeechBubble" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73992, 2.1874, 0)
+testText = "Test #1"
+
+[node name="SpeechBubble2" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97067, 0, 0)
+testText = "2nd Test Text"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_14um3")

@@ -1,0 +1,250 @@
+[gd_scene load_steps=11 format=3 uid="uid://x0vbg6101mkd"]
+
+[ext_resource type="Script" path="res://Script/Dialogue/DialogueManager.cs" id="1_e8a37"]
+[ext_resource type="Script" path="res://Script/Dialogue/ScrollingText.cs" id="2_e6126"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ark3w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yosd"]
+
+[sub_resource type="Animation" id="Animation_rvjh0"]
+resource_name = "MoveIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpriteLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(-1200, -138), Vector2(-700, -138)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpriteLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_csc8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpriteLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1200, -138)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpriteLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1w8s"]
+_data = {
+"MoveIn": SubResource("Animation_rvjh0"),
+"RESET": SubResource("Animation_csc8y")
+}
+
+[sub_resource type="Animation" id="Animation_tt4wd"]
+resource_name = "MoveIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpriteRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(1200, -138), Vector2(700, -138)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpriteRight:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gvyha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SpriteRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1200, -138)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpriteRight:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auffr"]
+_data = {
+"MoveIn": SubResource("Animation_tt4wd"),
+"RESET": SubResource("Animation_gvyha")
+}
+
+[node name="DialogueManager" type="Node2D"]
+script = ExtResource("1_e8a37")
+
+[node name="SpriteLeft" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1200, -138)
+sprite_frames = SubResource("SpriteFrames_ark3w")
+
+[node name="SpriteRight" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1200, -138)
+sprite_frames = SubResource("SpriteFrames_7yosd")
+
+[node name="TempBox" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = -128.0
+offset_right = 547.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.0
+offset_top = -143.0
+offset_right = 532.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LeftBox" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -494.0
+offset_top = -174.0
+offset_right = -275.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.164549
+color = Color(0, 0, 0, 1)
+
+[node name="RightBox" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 275.0
+offset_top = -174.0
+offset_right = 494.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.164061
+pivot_offset = Vector2(219, 0)
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -507.0
+offset_top = -91.0
+offset_right = 507.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
+text = "The quick brown fox jumps over the lazy dog"
+script = ExtResource("2_e6126")
+
+[node name="NameLeft" type="RichTextLabel" parent="."]
+offset_left = -480.0
+offset_top = -136.0
+offset_bottom = -96.0
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Name Left"
+
+[node name="NameRight" type="RichTextLabel" parent="."]
+offset_top = -136.0
+offset_right = 480.0
+offset_bottom = -96.0
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Name Right
+"
+text_direction = 2
+
+[node name="AnimationLeft" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationRight")
+libraries = {
+"": SubResource("AnimationLibrary_d1w8s")
+}
+
+[node name="AnimationRight" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_auffr")
+}
+
+[connection signal="meta_clicked" from="Text" to="." method="_on_text_meta_clicked"]
