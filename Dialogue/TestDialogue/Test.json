@@ -22,7 +22,7 @@
 		},
 
 		{
-			"NameLeft": "Exit",
+			"NameLeft": "",
 			"NameRight": "Tess",
 
 			"SpeakLeft": false,
