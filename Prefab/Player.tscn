@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://h2mrdgajw6k3"]
+
+[ext_resource type="Script" path="res://Script/PlayerController.cs" id="1_68dof"]
+[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_k3762"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5xbiv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k3762")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdv84"]
+height = 2.43654
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3tp50"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mohpt"]
+size = Vector2(25, 75)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_68dof")
+
+[node name="PlayerSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 1.48373, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_5xbiv")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2209, 0)
+shape = SubResource("CapsuleShape3D_rdv84")
+
+[node name="InteractRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractRange"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+shape = SubResource("SphereShape3D_3tp50")
+
+[node name="InteractNotification" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30213, 0)
+visible = false
+modulate = Color(1, 0, 0, 1)
+billboard = 2
+texture = SubResource("PlaceholderTexture2D_mohpt")
+
+[connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]

@@ -10,6 +10,7 @@ public partial class ScrollingText : RichTextLabel
 
 	public override void _PhysicsProcess(double delta)
 	{
+		//Scrolls through the text character by character
 		if(VisibleCharacters < Text.Length)
 			VisibleCharacters++;
 	}
@@ -18,5 +19,10 @@ public partial class ScrollingText : RichTextLabel
 	public void setText(string text){
 		VisibleCharacters = 0;
 		Text = text;
+	}
+
+	public void setTextCentered(string text){
+		VisibleCharacters = 0;
+		Text = "[center]" + text + "[/center]";
 	}
 }

@@ -14,15 +14,8 @@ wait_time = 3.0
 autostart = true
 
 [node name="Bubble" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51716, 1.77091, 0)
 texture = SubResource("ViewportTexture_dqe8n")
-
-[node name="Label3D" type="Label3D" parent="Bubble"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0585802)
-visible = false
-modulate = Color(0, 0, 0, 1)
-text = "Test"
-horizontal_alignment = 0
-text_direction = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_top = -374.0
@@ -54,8 +47,9 @@ offset_top = 20.0
 offset_right = 480.0
 offset_bottom = 320.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 37
 bbcode_enabled = true
+scroll_active = false
 script = ExtResource("2_a75ex")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

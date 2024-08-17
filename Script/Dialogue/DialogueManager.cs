@@ -4,7 +4,7 @@ using Godot;
 
 public partial class DialogueManager : Node2D
 {
-	[Export] Json DialogueFile;
+	//Path to access portrait sprites
 	string portraitPath = "res://Prefab/Portrait/Animation/";
 
 	//The entire dictionary of the dialogue file
@@ -14,36 +14,44 @@ public partial class DialogueManager : Node2D
 	//The dialogue itself inside of the array
 	Godot.Collections.Dictionary currentLine;
 
+	//Text elements
 	ScrollingText text;
 	RichTextLabel nameLeft;
 	RichTextLabel nameRight;
+	ColorRect speechLeft;
+	ColorRect speechRight;
 
+	//Portrait sprites and their animations
 	AnimatedSprite2D spriteLeft;
 	AnimatedSprite2D spriteRight;
+	AnimationPlayer animDialogue;
 	AnimationPlayer animLeft;
 	AnimationPlayer animRight;
 
+	//Current line index of the dialogue
 	private int line;
 	private bool inDialogue = false;
 	
 	public override void _Ready()
 	{
-		text = GetNode<ScrollingText>("Text");
-		nameLeft = GetNode<RichTextLabel>("NameLeft");
-		nameRight = GetNode<RichTextLabel>("NameRight");
+		text = GetNode<Node2D>("Box").GetNode<ScrollingText>("Text");
+		nameLeft = GetNode<Node2D>("Box").GetNode<RichTextLabel>("NameLeft");
+		nameRight = GetNode<Node2D>("Box").GetNode<RichTextLabel>("NameRight");
+		speechLeft = GetNode<Node2D>("Box").GetNode<ColorRect>("LeftBox");
+		speechRight = GetNode<Node2D>("Box").GetNode<ColorRect>("RightBox");
 
 		spriteLeft = GetNode<AnimatedSprite2D>("SpriteLeft");
 		spriteRight = GetNode<AnimatedSprite2D>("SpriteRight");
+		animDialogue = GetNode<AnimationPlayer>("AnimationDialogue");
 		animLeft = GetNode<AnimationPlayer>("AnimationLeft");
 		animRight = GetNode<AnimationPlayer>("AnimationRight");
-
-		startDialogue(DialogueFile);
 	}
 
 	
 	public override void _Process(double delta)
 	{
 		if(inDialogue){
+			//Advances the dialogue
 			if(Input.IsActionJustReleased("Confirm")){
 				if(text.VisibleCharacters == text.Text.Length)
 					nextLine();
@@ -56,10 +64,12 @@ public partial class DialogueManager : Node2D
 			GetTree().Quit();
 	}
 
+	//Starts the dialogue with the given file
 	public void startDialogue(Json jsonDialogue){
-		jsonDialogue = DialogueFile;
+		Visible = true;
+		animDialogue.Play("StartDialogue");
 
-		currentDialogue = (Godot.Collections.Dictionary)DialogueFile.Data;
+		currentDialogue = (Godot.Collections.Dictionary)jsonDialogue.Data;
 		dialogueArr = currentDialogue["Dialogue"].AsGodotArray();
 
 		inDialogue = true;
@@ -68,6 +78,7 @@ public partial class DialogueManager : Node2D
 		nextLine();
 	}
 
+	//Process and advance to the next line of the dialogue
 	private void nextLine(){
 		if(line < dialogueArr.Count - 1){
 			line++;
@@ -83,21 +94,24 @@ public partial class DialogueManager : Node2D
 
 			if(currentLine.ContainsKey("SpeakLeft")){
 				if((bool)currentLine["SpeakLeft"])
-					GetNode<ColorRect>("LeftBox").Visible = true;
+					speechLeft.Visible = true;
 				else
-					GetNode<ColorRect>("LeftBox").Visible = false;
+					speechLeft.Visible = false;
 			}
 			if(currentLine.ContainsKey("SpeakRight")){
 				if((bool)currentLine["SpeakRight"])
-					GetNode<ColorRect>("RightBox").Visible = true;
+					speechRight.Visible = true;
 				else
-					GetNode<ColorRect>("RightBox").Visible = false;
+					speechRight.Visible = false;
 			}
 
 			if(currentLine.ContainsKey("SpriteLeft")){
 				if(((string)currentLine["SpriteLeft"]).ToLower() == "none" || ((string)currentLine["SpriteLeft"]).ToLower() == "empty"){
 					spriteLeft.SpriteFrames = null;
 					animLeft.Play("RESET");
+				}
+				else if(((string)currentLine["SpriteLeft"]).ToLower() == "exit" ){
+					animLeft.Play("MoveOut");
 				}
 				else if(ResourceLoader.Exists("res://Prefab/Portrait/Animation/" + currentLine["SpriteLeft"] + ".tres")){
 					spriteLeft.SpriteFrames = ResourceLoader.Load<SpriteFrames>(portraitPath + currentLine["SpriteLeft"] + ".tres");
@@ -111,6 +125,9 @@ public partial class DialogueManager : Node2D
 					spriteRight.SpriteFrames = null;
 					animRight.Play("RESET");
 				}
+				else if(((string)currentLine["SpriteRight"]).ToLower() == "exit" ){
+					animRight.Play("MoveOut");
+				}
 				if(ResourceLoader.Exists("res://Prefab/Portrait/Animation/" + currentLine["SpriteRight"] + ".tres")){
 					spriteRight.SpriteFrames = ResourceLoader.Load<SpriteFrames>(portraitPath + currentLine["SpriteRight"] + ".tres");
 					if(animRight.IsPlaying())
@@ -120,7 +137,16 @@ public partial class DialogueManager : Node2D
 			}
 		}
 		else{
-			startDialogue(DialogueFile);
+			animDialogue.Play("ExitDialogue");
+			animLeft.Play("MoveOut");
+			animRight.Play("MoveOut");
+			PlayerStatus.inDialogue = false;
+		}
+	}
+
+	void _on_animation_dialogue_animation_finished(string name){
+		if(name == "ExitDialogue"){
+			Visible = false;
 		}
 	}
 

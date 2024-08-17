@@ -14,9 +14,10 @@ public partial class SpeechBubble : Node3D
 
 	public override void _Process(double delta)
 	{
+		Rotation = new Vector3(GetTree().CurrentScene.GetNode<Camera3D>("MainCamera").Rotation.X, GetTree().CurrentScene.GetNode<Camera3D>("MainCamera").Rotation.Y, Rotation.Z);
 	}
 
 	void _on_timer_timeout(){
-		text.setText(testText);
+		text.setTextCentered(testText);
 	}
 }

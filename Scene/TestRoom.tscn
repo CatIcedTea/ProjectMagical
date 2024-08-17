@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ra2lg8dtdfph"]
+[gd_scene load_steps=13 format=3 uid="uid://ra2lg8dtdfph"]
 
-[ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Scene/DialogueManager.tscn" id="1_4gfrb"]
-[ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="2_ontbc"]
+[ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="1_8g5e8"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_7ehdd"]
+[ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="3_urwww"]
+[ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_ir12u"]
 [ext_resource type="PackedScene" uid="uid://bmiikc3wb6up1" path="res://Prefab/SpeechBubble.tscn" id="4_ld3bs"]
+[ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="5_88qkn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nstn"]
 
@@ -13,11 +15,12 @@ sky_material = SubResource("ProceduralSkyMaterial_5nstn")
 [sub_resource type="Environment" id="Environment_lghfx"]
 background_mode = 2
 sky = SubResource("Sky_3cngx")
+tonemap_mode = 2
 glow_enabled = true
-glow_bloom = 0.05
+glow_intensity = 0.9
+glow_strength = 1.25
+glow_hdr_threshold = 0.5
 adjustment_enabled = true
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yegxd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -32,42 +35,53 @@ animations = [{
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
+size = Vector3(1.84595, 0.968994, 1.89941)
+
 [node name="TestRoom" type="Node3D"]
+
+[node name="MainCamera" parent="." instance=ExtResource("1_8g5e8")]
+transform = Transform3D(0.816138, 0.333919, -0.471612, 0, 0.816138, 0.577857, 0.577858, -0.471611, 0.666081, -1.14883, 2.45282, 1.59569)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.903552, 0.307878, -0.298001, -8.49523e-09, 0.695487, 0.718539, 0.428478, -0.649237, 0.628409, 0, 0, 0)
 light_color = Color(1, 0.867862, 0.81436, 1)
 shadow_enabled = true
+directional_shadow_split_3 = 0.4
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 125.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lghfx")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960958, 6.00627)
-attributes = SubResource("CameraAttributesPractical_yegxd")
-current = true
-
-[node name="UI" type="CanvasLayer" parent="Camera3D"]
-follow_viewport_enabled = true
-
-[node name="DialogueManager" parent="Camera3D/UI" instance=ExtResource("1_4gfrb")]
-position = Vector2(960, 835)
-DialogueFile = ExtResource("2_ontbc")
-
 [node name="TestSpeechBubble" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.327937, 0, 0, 0, 0.327937, 0, 0, 0, 0.327937, 0.743719, 1.57488, 0)
+transform = Transform3D(0.327937, 0, 0, 0, 0.327937, 0, 0, 0, 0.327937, 0.743719, 1.33697, 0)
+billboard = 2
 shaded = true
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_d2nbb")
 
+[node name="DialogueArea" parent="TestSpeechBubble" instance=ExtResource("3_urwww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584229, -2.80244, -0.0316863)
+DialogueFile = ExtResource("4_ir12u")
+
 [node name="SpeechBubble" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73992, 2.1874, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59266, 1.86381, 0)
 testText = "Test #1"
 
 [node name="SpeechBubble2" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97067, 0, 0)
-testText = "2nd Test Text"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5502, 0, 0.977212)
+testText = "[shake]2nd Test Text[/shake] blah blah blah blah blah"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_14um3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479477, 0)
+shape = SubResource("BoxShape3D_w2m0j")
+
+[node name="Player" parent="." instance=ExtResource("5_88qkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02023, 0, 6.54208)

@@ -20,9 +20,9 @@
 		{
 			"Text": "And inside each bracket {} is data stored in a \"KEY\": VALUE format separated by commas such as \"SpriteLeft\": \"TestPortrait\". If you choose to omit them, it will use the previous value."
 		},
-		
+
 		{
-			"NameLeft": "",
+			"NameLeft": "Exit",
 			"NameRight": "Tess",
 
 			"SpeakLeft": false,
@@ -37,6 +37,11 @@
 		{
 			"SpriteRight": "TestPortrait",
 			"Text": "If you want to repeat the animation to move in like so, just repeat the SpriteRight or SpriteLeft value again!"
+		},
+
+		{
+			"SpriteRight": "exit",
+			"Text": "And if you want me to move out of the way, just type in 'exit' for the sprite value!"
 		},
 
 		{
@@ -82,7 +87,7 @@
 			"SpeakRight": false,
 
 			"SpriteLeft": "TestPortrait",
-			"SpriteRight": "empty",
+			"SpriteRight": "exit",
 
 			"Text": "You can also do special effects provided by Godot such as the [wave]wave[/wave] from before, [pulse]pulse[/pulse], [tornado]tornado[/tornado], [shake]shake[/shake], and [rainbow]rainbow![/rainbow] Each of these can also have optional settings."
 		},
@@ -110,7 +115,7 @@
 
 			"SpriteRight": "TestPortrait",
 
-			"Text": "This dialogue will now repeat for easier repeated testing, to close, press ESC!"
+			"Text": "To quit, simply press ESC or alt-tab and close the program."
 		}
 	]
 }
