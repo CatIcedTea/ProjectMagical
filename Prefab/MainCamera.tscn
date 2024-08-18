@@ -14,7 +14,7 @@ attributes = SubResource("CameraAttributesPractical_yegxd")
 current = true
 fov = 35.0
 script = ExtResource("1_3uv3d")
-heightOffset = 1.0
+heightOffset = 2.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

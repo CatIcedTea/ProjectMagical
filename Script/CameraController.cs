@@ -24,8 +24,9 @@ public partial class CameraController : Camera3D
 	private Vector3 distance;
 	//Length ratio of the Z axis to X axis
 	private float lengthRatio;
-	//Actual length of the X axis offset
-	private float xOffset;
+	//The shorter length of the distance
+	private float distanceOffsetShort;
+	//Mouse wheel scroll speed multiplier
 	private float mouseScrollMultiplier = 2;
 
 	public override void _Ready()
@@ -33,8 +34,8 @@ public partial class CameraController : Camera3D
 		player = GetTree().CurrentScene.GetNode<PlayerController>("Player");
 
 		lengthRatio = Mathf.Tan(Mathf.Abs(Rotation.Y));
-		xOffset = lengthRatio * distanceOffset;
-		distance = new Vector3(-xOffset, distanceOffset + heightOffset, distanceOffset);
+		distanceOffsetShort = lengthRatio * distanceOffset;
+		distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 	}
 
 	public override void _Process(double delta)
@@ -50,28 +51,28 @@ public partial class CameraController : Camera3D
 
 	//Scroll Zoom function
 	private void handleZoom(){
-		//Mousewheel
+		//Mousewheel scroll speed
 		if(Input.IsActionJustPressed("MouseScrollUp") && distanceOffset > 1){
 			distanceOffset -= scrollSpeed * mouseScrollMultiplier;
-			xOffset -= (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
-			distance = new Vector3(-xOffset, distanceOffset + heightOffset, distanceOffset);
+			distanceOffsetShort -= (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
+			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
 		if(Input.IsActionJustPressed("MouseScrollDown")){
 			distanceOffset += scrollSpeed * mouseScrollMultiplier;
-			xOffset += (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
-			distance = new Vector3(-xOffset, distanceOffset + heightOffset, distanceOffset);
+			distanceOffsetShort += (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
+			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
 
-		//Controller
+		//Controller scroll speed
 		if(Input.IsActionPressed("ControllerScrollUp") && distanceOffset > 1){
 			distanceOffset -= scrollSpeed;
-			xOffset -= scrollSpeed * lengthRatio;
-			distance = new Vector3(-xOffset, distanceOffset + heightOffset, distanceOffset);
+			distanceOffsetShort -= scrollSpeed * lengthRatio;
+			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
 		if(Input.IsActionPressed("ControllerScrollDown")){
 			distanceOffset += scrollSpeed;
-			xOffset += scrollSpeed * lengthRatio;
-			distance = new Vector3(-xOffset, distanceOffset + heightOffset, distanceOffset);
+			distanceOffsetShort += scrollSpeed * lengthRatio;
+			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
 	}
 }

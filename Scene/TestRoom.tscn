@@ -41,7 +41,7 @@ size = Vector3(1.84595, 0.968994, 1.89941)
 [node name="TestRoom" type="Node3D"]
 
 [node name="MainCamera" parent="." instance=ExtResource("1_8g5e8")]
-transform = Transform3D(0.816138, 0.333919, -0.471612, 0, 0.816138, 0.577857, 0.577858, -0.471611, 0.666081, -1.14883, 2.45282, 1.59569)
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -2.85975, 4.67621, 3.92053)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.903552, 0.307878, -0.298001, -8.49523e-09, 0.695487, 0.718539, 0.428478, -0.649237, 0.628409, 0, 0, 0)
