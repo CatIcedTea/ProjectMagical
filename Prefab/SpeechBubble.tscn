@@ -9,47 +9,53 @@ viewport_path = NodePath("SubViewportContainer/SubViewport")
 [node name="SpeechBubble" type="Node3D"]
 script = ExtResource("1_xonnv")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Start" type="Timer" parent="."]
+one_shot = true
+
+[node name="Lifetime" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
+one_shot = true
 
 [node name="Bubble" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51716, 1.77091, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.75, 0)
 texture = SubResource("ViewportTexture_dqe8n")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_top = -374.0
-offset_right = 500.0
-offset_bottom = -24.0
+offset_left = 2.0
+offset_top = -133.0
+offset_right = 202.0
+offset_bottom = -8.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(500, 350)
+size = Vector2i(200, 125)
 render_target_update_mode = 4
 
 [node name="Bubble" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_right = 500.0
-offset_bottom = 300.0
+offset_right = 200.0
+offset_bottom = 100.0
 
 [node name="Bubble2" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_left = 340.0
-offset_top = 257.0
-offset_right = 490.0
-offset_bottom = 297.0
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 190.0
+offset_bottom = 100.0
 rotation = 0.26529
 
 [node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport"]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 480.0
-offset_bottom = 320.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 190.0
+offset_bottom = 95.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 37
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
+text = "Test"
 scroll_active = false
 script = ExtResource("2_a75ex")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

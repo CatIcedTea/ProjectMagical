@@ -60,6 +60,7 @@ public partial class DialogueManager : Node2D
 			}
 		}
 
+		//TEMP REMOVE LATER
 		if(Input.IsActionJustReleased("Escape"))
 			GetTree().Quit();
 	}
@@ -137,16 +138,24 @@ public partial class DialogueManager : Node2D
 			}
 		}
 		else{
-			animDialogue.Play("ExitDialogue");
-			animLeft.Play("MoveOut");
-			animRight.Play("MoveOut");
-			PlayerStatus.inDialogue = false;
+			ExitDialogue();
 		}
 	}
 
+	//Quit the dialogue mode helper method
+	private void ExitDialogue(){
+		animDialogue.Play("ExitDialogue");
+		animLeft.Play("MoveOut");
+		animRight.Play("MoveOut");
+		
+	}
+
+	//Set the dialogue visibility off and set dialogue mode off
 	void _on_animation_dialogue_animation_finished(string name){
 		if(name == "ExitDialogue"){
 			Visible = false;
+
+			PlayerStatus.inDialogue = false;
 		}
 	}
 

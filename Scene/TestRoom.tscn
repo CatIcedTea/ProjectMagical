@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="1_8g5e8"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_7ehdd"]
+[ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="3_bx5hr"]
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="3_urwww"]
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_ir12u"]
-[ext_resource type="PackedScene" uid="uid://bmiikc3wb6up1" path="res://Prefab/SpeechBubble.tscn" id="4_ld3bs"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="5_88qkn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nstn"]
@@ -36,7 +36,7 @@ animations = [{
 [sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
-size = Vector3(1.84595, 0.968994, 1.89941)
+size = Vector3(1.99634, 0.968994, 2.01465)
 
 [node name="TestRoom" type="Node3D"]
 
@@ -54,6 +54,17 @@ directional_shadow_max_distance = 125.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lghfx")
 
+[node name="RandomSpeechbubble" parent="." instance=ExtResource("3_urwww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81404, 0.650927, -7.35503)
+DialogueFile = ExtResource("3_bx5hr")
+dialogueType = 1
+
+[node name="ChronologicalSpeechbubble" parent="." instance=ExtResource("3_urwww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183195, 0.4555, -8.18306)
+DialogueFile = ExtResource("3_bx5hr")
+chronologicalDialogue = true
+dialogueType = 1
+
 [node name="TestSpeechBubble" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.327937, 0, 0, 0, 0.327937, 0, 0, 0, 0.327937, 0.743719, 1.33697, 0)
 billboard = 2
@@ -64,14 +75,6 @@ sprite_frames = SubResource("SpriteFrames_d2nbb")
 [node name="DialogueArea" parent="TestSpeechBubble" instance=ExtResource("3_urwww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584229, -2.80244, -0.0316863)
 DialogueFile = ExtResource("4_ir12u")
-
-[node name="SpeechBubble" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59266, 1.86381, 0)
-testText = "Test #1"
-
-[node name="SpeechBubble2" parent="TestSpeechBubble" instance=ExtResource("4_ld3bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5502, 0, 0.977212)
-testText = "[shake]2nd Test Text[/shake] blah blah blah blah blah"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)

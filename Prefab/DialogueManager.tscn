@@ -17,7 +17,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.25, 1),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0.588235), Color(0, 0, 0, 0)]
 }
@@ -366,7 +366,11 @@ offset_right = 507.0
 offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 34
+theme_override_font_sizes/italics_font_size = 34
+theme_override_font_sizes/mono_font_size = 34
 theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/bold_font_size = 34
 bbcode_enabled = true
 text = "The quick brown fox jumps over the lazy dog"
 scroll_active = false

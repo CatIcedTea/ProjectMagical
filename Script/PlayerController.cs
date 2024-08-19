@@ -1,5 +1,6 @@
 using Godot;
-using System;
+using System.Collections;
+using System.Linq;
 
 public partial class PlayerController : CharacterBody3D
 {
@@ -7,7 +8,7 @@ public partial class PlayerController : CharacterBody3D
 	public float JumpVelocity = 4.5f;
 
 	private bool inDialogueRange = false;
-	private Json dialogueHolder;
+	private ArrayList dialogueArrayList = new ArrayList();
 
 	private	Camera3D camera;
 	private DialogueManager dialogueManager;
@@ -33,6 +34,7 @@ public partial class PlayerController : CharacterBody3D
 			velocity += GetGravity() * (float)delta;
 		}
 
+		//If not in dialogue
 		if(!PlayerStatus.inDialogue){
 			//Handle Jump.
 			if (Input.IsActionJustPressed("Jump") && IsOnFloor())
@@ -58,33 +60,69 @@ public partial class PlayerController : CharacterBody3D
 				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 			}
 
+			//Displays interaction notification if there is one nearby
+			if(dialogueArrayList.Count > 0)
+				interactNotification.Visible = true;
+			else
+				interactNotification.Visible = false;
+
+			//Handles dialogue interaction depending on dialogue type
 			if(inDialogueRange){
 				if(Input.IsActionJustReleased("Interact")){
-					PlayerStatus.inDialogue = true;
-					dialogueManager.startDialogue(dialogueHolder);
+					DialogueArea closestDialogue = getClosestDialogue();
+
+					if(closestDialogue.dialogueType == DialogueArea.DialogueType.BoxDialogue){
+						PlayerStatus.inDialogue = true;
+						dialogueManager.startDialogue(closestDialogue.getDialogueFile());
+					}
+
+					if(closestDialogue.dialogueType == DialogueArea.DialogueType.SpeechBubble){
+						if(!closestDialogue.GetNode<SpeechBubble>("SpeechBubble").Visible)
+							closestDialogue.startSpeechBubble();
+					}
 				}
 			}
 		}
+		else{
+			//If in dialogue
 
+			//Disable the interact notification in dialogue
+			interactNotification.Visible = false;
+
+			//Stop the player
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+		}
+
+		//Moves the player
 		Velocity = velocity;
-			MoveAndSlide();
+		MoveAndSlide();
 	}
 
-	void _on_interact_range_area_entered(Area3D area){
-		if(area.Name == "DialogueArea"){
-			interactNotification.Visible = true;
-			inDialogueRange = true;
+	//Helper method to find the closest dialogue
+	private DialogueArea getClosestDialogue(){
+		DialogueArea closest = (DialogueArea)dialogueArrayList[0];
+		foreach(DialogueArea dialogue in dialogueArrayList){
+			if(dialogue.Position.DistanceTo(Position) < closest.Position.DistanceTo(Position))
+				closest = dialogue;
+		}
 
-			dialogueHolder = ((DialogueArea)area).getDialogueFile();
+		return closest;
+	}
+
+	//When in range of an interactable dialogue, add it to the arraylist
+	void _on_interact_range_area_entered(Area3D area){
+		if(area.HasNode("IsDialogue")){
+			inDialogueRange = true;
+			dialogueArrayList.Add((DialogueArea)area);
 		}
 	}
 
+	//Upon exiting an interactable dialogue, remove it from the arraylist
 	void _on_interact_range_area_exited(Area3D area){
-		if(area.Name == "DialogueArea"){
-			interactNotification.Visible = false;
+		if(area.HasNode("IsDialogue")){
 			inDialogueRange = false;
-
-			dialogueHolder = null;
+			dialogueArrayList.Remove(area);
 		}
 	}
 }

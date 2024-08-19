@@ -3,16 +3,13 @@
 [ext_resource type="Script" path="res://Script/CameraController.cs" id="1_3uv3d"]
 [ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Prefab/DialogueManager.tscn" id="2_ibeui"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yegxd"]
-dof_blur_far_enabled = true
-dof_blur_far_distance = 30.0
-dof_blur_amount = 0.05
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5gwd6"]
 
 [node name="MainCamera" type="Camera3D"]
 transform = Transform3D(0.816138, 0.333919, -0.471612, 0, 0.816138, 0.577857, 0.577858, -0.471611, 0.666081, 0, 0, 0)
-attributes = SubResource("CameraAttributesPractical_yegxd")
+attributes = SubResource("CameraAttributesPractical_5gwd6")
 current = true
-fov = 35.0
+fov = 37.8493
 script = ExtResource("1_3uv3d")
 heightOffset = 2.0
 

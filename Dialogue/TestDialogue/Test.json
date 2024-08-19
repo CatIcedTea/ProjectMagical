@@ -54,7 +54,7 @@
 			"SpriteLeft": "TestPortrait",
 			"SpriteRight": "TestPortrait",
 
-			"Text": "And of course you can use [font_size=34][i]both sides[/i][/font_size] at once as long as you assign the right key and value!"
+			"Text": "And of course you can use [i]both sides[/i] at once as long as you assign the right key and value!"
 		},
 
 		{
@@ -72,7 +72,7 @@
 			"SpeakLeft": false,
 			"SpeakRight": true,
 
-			"Text": "For a few more examples, you can [font_size=34][b]bold[/b][/font_size], [u]underline[/u], [s]strikethrough[/s], [outline_color=YELLOW][outline_size=5]outline[/outline_size][/outline_color]..."
+			"Text": "For a few more examples, you can [b]bold[/b], [u]underline[/u], [s]strikethrough[/s], [outline_color=YELLOW][outline_size=5]outline[/outline_size][/outline_color]..."
 		},
 
 		{

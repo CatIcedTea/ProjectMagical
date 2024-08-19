@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh0kl0ppqvchu"]
+[gd_scene load_steps=5 format=3 uid="uid://bh0kl0ppqvchu"]
 
 [ext_resource type="Script" path="res://Script/Dialogue/DialogueArea.cs" id="1_reclr"]
+[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="2_11mau"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p61t3"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_a25sw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytexc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_11mau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="DialogueArea" type="Area3D"]
 script = ExtResource("1_reclr")
 
+[node name="IsDialogue" type="Node" parent="."]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_p61t3")
+shape = SubResource("SphereShape3D_a25sw")
+
+[node name="InteractSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_ytexc")
