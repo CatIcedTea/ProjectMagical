@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmiikc3wb6up1"]
+[gd_scene load_steps=6 format=3 uid="uid://bmiikc3wb6up1"]
 
 [ext_resource type="Script" path="res://Script/Dialogue/SpeechBubble.cs" id="1_xonnv"]
+[ext_resource type="Texture2D" uid="uid://47xn2w0ao8l3" path="res://Asset/2D/Dialogue/SpeechBubble.png" id="2_5e1de"]
 [ext_resource type="Script" path="res://Script/Dialogue/ScrollingText.cs" id="2_a75ex"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dqe8n"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6be5h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5e1de")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SpeechBubble" type="Node3D"]
 script = ExtResource("1_xonnv")
@@ -22,36 +34,29 @@ texture = SubResource("ViewportTexture_dqe8n")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 2.0
-offset_top = -133.0
-offset_right = 202.0
-offset_bottom = -8.0
+offset_top = -261.0
+offset_right = 423.0
+offset_bottom = -12.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(200, 125)
+size = Vector2i(421, 249)
 render_target_update_mode = 4
 
-[node name="Bubble" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_right = 200.0
-offset_bottom = 100.0
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+sprite_frames = SubResource("SpriteFrames_6be5h")
+centered = false
 
-[node name="Bubble2" type="ColorRect" parent="SubViewportContainer/SubViewport"]
-offset_left = 140.0
-offset_top = 80.0
-offset_right = 190.0
-offset_bottom = 100.0
-rotation = 0.26529
-
-[node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport"]
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 190.0
-offset_bottom = 95.0
+[node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/SpeechBubble"]
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 320.0
+offset_bottom = 205.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 19
 bbcode_enabled = true
 text = "Test"
 scroll_active = false

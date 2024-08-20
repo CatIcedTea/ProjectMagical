@@ -17,5 +17,4 @@ heightOffset = 2.0
 follow_viewport_enabled = true
 
 [node name="DialogueManager" parent="UI" instance=ExtResource("2_ibeui")]
-visible = false
-position = Vector2(960, 835)
+position = Vector2(960, 856)

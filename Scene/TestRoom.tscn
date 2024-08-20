@@ -34,6 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
+lightmap_size_hint = Vector2i(12, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
 size = Vector3(1.99634, 0.968994, 2.01465)

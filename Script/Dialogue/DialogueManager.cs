@@ -18,13 +18,16 @@ public partial class DialogueManager : Node2D
 	ScrollingText text;
 	RichTextLabel nameLeft;
 	RichTextLabel nameRight;
-	ColorRect speechLeft;
-	ColorRect speechRight;
 
 	//Portrait sprites and their animations
 	AnimatedSprite2D spriteLeft;
 	AnimatedSprite2D spriteRight;
 	AnimationPlayer animDialogue;
+	Sprite2D namePlateLeft;
+	Sprite2D namePlateRight;
+	
+	AnimationPlayer speechLeft;
+	AnimationPlayer speechRight;
 	AnimationPlayer animLeft;
 	AnimationPlayer animRight;
 
@@ -35,16 +38,21 @@ public partial class DialogueManager : Node2D
 	public override void _Ready()
 	{
 		text = GetNode<Node2D>("Box").GetNode<ScrollingText>("Text");
-		nameLeft = GetNode<Node2D>("Box").GetNode<RichTextLabel>("NameLeft");
-		nameRight = GetNode<Node2D>("Box").GetNode<RichTextLabel>("NameRight");
-		speechLeft = GetNode<Node2D>("Box").GetNode<ColorRect>("LeftBox");
-		speechRight = GetNode<Node2D>("Box").GetNode<ColorRect>("RightBox");
+		namePlateLeft = GetNode<Node2D>("Box").GetNode<Sprite2D>("NamePlateLeft");
+		namePlateRight = GetNode<Node2D>("Box").GetNode<Sprite2D>("NamePlateRight");
+		nameLeft = namePlateLeft.GetNode<RichTextLabel>("NameLeft");
+		nameRight = namePlateRight.GetNode<RichTextLabel>("NameRight");
+		speechLeft = GetNode<AnimationPlayer>("AnimationNamePlateLeft");
+		speechRight = GetNode<AnimationPlayer>("AnimationNamePlateRight");
 
 		spriteLeft = GetNode<AnimatedSprite2D>("SpriteLeft");
 		spriteRight = GetNode<AnimatedSprite2D>("SpriteRight");
 		animDialogue = GetNode<AnimationPlayer>("AnimationDialogue");
 		animLeft = GetNode<AnimationPlayer>("AnimationLeft");
 		animRight = GetNode<AnimationPlayer>("AnimationRight");
+
+		namePlateLeft.Visible = false;
+		namePlateRight.Visible = false;
 	}
 
 	
@@ -89,21 +97,25 @@ public partial class DialogueManager : Node2D
 				text.setText((string)currentLine["Text"]);
 
 			if(currentLine.ContainsKey("NameLeft"))
-				nameLeft.Text = (string)currentLine["NameLeft"];
+				nameLeft.Text = "[center]" + (string)currentLine["NameLeft"] + "[/center]";
 			if(currentLine.ContainsKey("NameRight"))
-				nameRight.Text = (string)currentLine["NameRight"];
+				nameRight.Text = "[center]" + (string)currentLine["NameRight"] + "[/center]";
 
 			if(currentLine.ContainsKey("SpeakLeft")){
-				if((bool)currentLine["SpeakLeft"])
-					speechLeft.Visible = true;
+				if((bool)currentLine["SpeakLeft"]){
+					namePlateLeft.Visible = true;
+					speechLeft.Play("MoveIn");
+				}
 				else
-					speechLeft.Visible = false;
+					speechLeft.Play("MoveOut");
 			}
 			if(currentLine.ContainsKey("SpeakRight")){
-				if((bool)currentLine["SpeakRight"])
-					speechRight.Visible = true;
+				if((bool)currentLine["SpeakRight"]){
+					namePlateRight.Visible = true;
+					speechRight.Play("MoveIn");
+				}
 				else
-					speechRight.Visible = false;
+					speechRight.Play("MoveOut");
 			}
 
 			if(currentLine.ContainsKey("SpriteLeft")){
@@ -147,7 +159,8 @@ public partial class DialogueManager : Node2D
 		animDialogue.Play("ExitDialogue");
 		animLeft.Play("MoveOut");
 		animRight.Play("MoveOut");
-		
+		speechLeft.Play("MoveOut");
+		speechRight.Play("MoveOut");
 	}
 
 	//Set the dialogue visibility off and set dialogue mode off
@@ -162,5 +175,15 @@ public partial class DialogueManager : Node2D
 	//THIS IS FOR A TEST, DELETE LATER
 	void _on_text_meta_clicked(Variant meta){
 		OS.ShellOpen("https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html");
+	}
+
+	//Make the nameplayes disappear when finishing moving out
+	void _on_animation_name_plate_left_animation_finished(string anim){
+		if(anim == "MoveOut")
+			namePlateLeft.Visible = false;
+	}
+	void _on_animation_name_plate_right_animation_finished(string anim){
+		if(anim == "MoveOut")
+			namePlateRight.Visible = false;
 	}
 }

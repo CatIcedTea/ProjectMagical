@@ -13,7 +13,7 @@ public partial class SpeechBubble : Node3D
 
 	public override void _Ready()
 	{
-		text = GetNode<SubViewportContainer>("SubViewportContainer").GetNode<SubViewport>("SubViewport").GetNode<ScrollingText>("Text");
+		text = GetNode<SubViewportContainer>("SubViewportContainer").GetNode<SubViewport>("SubViewport").GetNode<AnimatedSprite2D>("SpeechBubble").GetNode<ScrollingText>("Text");
 		repeatTimer = GetNode<Timer>("Start");
 		lifetimeTimer = GetNode<Timer>("Lifetime");
 
