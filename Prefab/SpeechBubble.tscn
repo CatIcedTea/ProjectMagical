@@ -30,6 +30,7 @@ one_shot = true
 
 [node name="Bubble" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.75, 0)
+shaded = true
 texture = SubResource("ViewportTexture_dqe8n")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]

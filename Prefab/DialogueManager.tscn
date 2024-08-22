@@ -112,21 +112,6 @@ tracks/0/keys = {
 "values": [Vector2(-433, 0), Vector2(-433, -232)]
 }
 
-[sub_resource type="Animation" id="Animation_74oui"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Box/NamePlateLeft:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-433, -232)]
-}
-
 [sub_resource type="Animation" id="Animation_555xr"]
 resource_name = "MoveOut"
 tracks/0/type = "value"
@@ -140,6 +125,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1.2, 1),
 "update": 0,
 "values": [Vector2(-433, -232), Vector2(-433, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_74oui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Box/NamePlateLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-433, -232)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47yf6"]
@@ -164,21 +164,6 @@ tracks/0/keys = {
 "values": [Vector2(433, 0), Vector2(433, -232)]
 }
 
-[sub_resource type="Animation" id="Animation_tbtto"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Box/NamePlateRight:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(433, -232)]
-}
-
 [sub_resource type="Animation" id="Animation_x4y1t"]
 resource_name = "MoveOut"
 tracks/0/type = "value"
@@ -192,6 +177,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1.2, 1),
 "update": 0,
 "values": [Vector2(433, -232), Vector2(433, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tbtto"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Box/NamePlateRight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(433, -232)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_inpsc"]

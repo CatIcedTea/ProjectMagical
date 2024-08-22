@@ -81,8 +81,6 @@ public partial class DialogueManager : Node2D
 		currentDialogue = (Godot.Collections.Dictionary)jsonDialogue.Data;
 		dialogueArr = currentDialogue["Dialogue"].AsGodotArray();
 
-		inDialogue = true;
-
 		line = -1;
 		nextLine();
 	}
@@ -165,9 +163,13 @@ public partial class DialogueManager : Node2D
 
 	//Set the dialogue visibility off and set dialogue mode off
 	void _on_animation_dialogue_animation_finished(string name){
+		if(name == "StartDialogue"){
+			inDialogue = true;
+		}
 		if(name == "ExitDialogue"){
 			Visible = false;
 
+			inDialogue = false;
 			PlayerStatus.inDialogue = false;
 		}
 	}
