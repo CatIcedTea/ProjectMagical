@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://xk48etyf1slr"]
+
+[ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
+[ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
+[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_ksspg"]
+[ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ksspg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
+lightmap_size_hint = Vector2i(12, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
+size = Vector3(1.99634, 0.968994, 2.01465)
+
+[node name="Room" type="Node3D"]
+
+[node name="RandomSpeechbubble" parent="." instance=ExtResource("1_jbvrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81404, 0.650927, -7.35503)
+DialogueFile = ExtResource("2_di7wl")
+dialogueType = 1
+
+[node name="ChronologicalSpeechbubble" parent="." instance=ExtResource("1_jbvrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183195, 0.4555, -8.18306)
+DialogueFile = ExtResource("2_di7wl")
+chronologicalDialogue = true
+dialogueType = 1
+
+[node name="TestSpeechBubble" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.327937, 0, 0, 0, 0.327937, 0, 0, 0, 0.327937, 0.743719, 1.33697, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_d2nbb")
+
+[node name="DialogueArea" parent="TestSpeechBubble" instance=ExtResource("1_jbvrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584229, -2.80244, -0.0316863)
+DialogueFile = ExtResource("4_2yjyv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_14um3")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479477, 0)
+shape = SubResource("BoxShape3D_w2m0j")

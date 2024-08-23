@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Script/Dialogue/DialogueManager.cs" id="1_e8a37"]
 [ext_resource type="Texture2D" uid="uid://cljqsy0ep8cgv" path="res://Asset/2D/Dialogue/NamePlate.png" id="2_aikho"]
 [ext_resource type="Script" path="res://Script/Dialogue/ScrollingText.cs" id="2_e6126"]
-[ext_resource type="Texture2D" uid="uid://1imbc3t7uny5" path="res://Asset/2D/Dialogue/DialogueBox.png" id="2_iemd0"]
+[ext_resource type="Texture2D" uid="uid://1imbc3t7uny5" path="res://Asset/2D/Dialogue/Dialoguebox.png" id="3_urnpa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ark3w"]
 
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.19, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 540)]
+"values": [Vector2(0, 40), Vector2(0, 540)]
 }
 
 [sub_resource type="Animation" id="Animation_n52su"]
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.19, 1),
 "update": 0,
-"values": [Vector2(0, 530), Vector2(0, 0)]
+"values": [Vector2(0, 530), Vector2(0, 40)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f8p8l"]
@@ -109,7 +109,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(-433, 0), Vector2(-433, -232)]
+"values": [Vector2(-218, 0), Vector2(-218, -163)]
 }
 
 [sub_resource type="Animation" id="Animation_555xr"]
@@ -122,9 +122,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.2, 1),
+"transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(-433, -232), Vector2(-433, 0)]
+"values": [Vector2(-218, -163), Vector2(-218, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_74oui"]
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(433, 0), Vector2(433, -232)]
+"values": [Vector2(218, 0), Vector2(218, -163)]
 }
 
 [sub_resource type="Animation" id="Animation_x4y1t"]
@@ -174,9 +174,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1.2, 1),
+"transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(433, -232), Vector2(433, 0)]
+"values": [Vector2(218, -163), Vector2(218, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tbtto"]
@@ -410,13 +410,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -511.5
-offset_top = -77.0
-offset_right = -31.5
-offset_bottom = -19.0
+offset_left = -348.5
+offset_top = -65.0
+offset_right = -24.5
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
 theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
 text = "Name Left"
 scroll_active = false
@@ -431,13 +435,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -511.5
-offset_top = -77.0
-offset_right = -31.5
-offset_bottom = -19.0
+offset_left = -348.5
+offset_top = -65.0
+offset_right = -24.5
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
 theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
 text = "Name Right
 "
@@ -445,7 +453,7 @@ scroll_active = false
 text_direction = 2
 
 [node name="DialogueBox" type="Sprite2D" parent="Box"]
-texture = ExtResource("2_iemd0")
+texture = ExtResource("3_urnpa")
 
 [node name="Text" type="RichTextLabel" parent="Box"]
 anchors_preset = 8
@@ -453,10 +461,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -695.0
-offset_top = -145.0
-offset_right = 695.0
-offset_bottom = 149.0
+offset_left = -391.0
+offset_top = -107.0
+offset_right = 391.0
+offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/table_border = Color(0, 0, 0, 1)
@@ -465,11 +473,11 @@ theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/selection_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/bold_italics_font_size = 38
-theme_override_font_sizes/italics_font_size = 38
-theme_override_font_sizes/mono_font_size = 38
-theme_override_font_sizes/normal_font_size = 38
-theme_override_font_sizes/bold_font_size = 38
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+theme_override_font_sizes/mono_font_size = 28
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
 bbcode_enabled = true
 text = "The quick brown fox jumps over the lazy dog"
 scroll_active = false

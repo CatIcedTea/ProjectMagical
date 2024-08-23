@@ -60,6 +60,11 @@ public partial class PlayerController : CharacterBody3D
 				velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 			}
 
+			//Handle dodge
+			if(Input.IsActionJustPressed("Dodge")){
+				
+			}
+
 			//Displays interaction notification if there is one nearby
 			if(dialogueArrayList.Count > 0)
 				interactNotification.Visible = true;
