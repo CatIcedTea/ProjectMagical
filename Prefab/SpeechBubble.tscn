@@ -47,8 +47,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Bubble" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.75, 0)
-shaded = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53005, 0)
 texture = SubResource("ViewportTexture_dqe8n")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -68,14 +67,14 @@ render_target_update_mode = 4
 [node name="SpeechBubble" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
 sprite_frames = SubResource("SpriteFrames_6be5h")
 autoplay = "default"
-frame_progress = 0.929893
+frame_progress = 0.450931
 centered = false
 
 [node name="Text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/SpeechBubble"]
 offset_left = 15.0
 offset_top = 15.0
 offset_right = 210.0
-offset_bottom = 152.0
+offset_bottom = 150.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true

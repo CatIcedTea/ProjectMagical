@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgnhao05rppes"]
+
+[ext_resource type="Script" path="res://Script/NextRoom.cs" id="1_3ft6j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfppp"]
+
+[node name="NextRoom" type="Area3D"]
+script = ExtResource("1_3ft6j")
+
+[node name="IsNextRoom" type="Node" parent="."]
+
+[node name="IsInteractable" type="Node" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wfppp")

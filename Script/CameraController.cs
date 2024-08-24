@@ -6,7 +6,7 @@ public partial class CameraController : Camera3D
 	[Export] float distanceOffset = 10;
 	//The height offset
 	[Export] float heightOffset = 0f;
-	//Interpolate the camera movement
+	//Rate of interpolate of the camera movement
 	[Export] float interpolationRate = 5f;
 	//Speed to zoom in and out
 	[Export] float scrollSpeed = 0.25f;
@@ -74,5 +74,16 @@ public partial class CameraController : Camera3D
 			distanceOffsetShort += scrollSpeed * lengthRatio;
 			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
+	}
+
+	void _on_transition_animation_animation_finished(string anim){
+		if(anim == "FadeInNextRoom")
+			PlayerStatus.transitioningRoom = true;
+		if(anim == "FadeOutNextRoom")
+			PlayerStatus.inDialogue = false;
+	}
+
+	public void setInterpolationRate(float rate){
+		interpolationRate = rate;
 	}
 }

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://xk48etyf1slr"]
+[gd_scene load_steps=10 format=3 uid="uid://xk48etyf1slr"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_ksspg"]
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
+[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="5_xlmig"]
+[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="6_ty0om"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -22,7 +24,7 @@ lightmap_size_hint = Vector2i(12, 12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
 size = Vector3(1.99634, 0.968994, 2.01465)
 
-[node name="Room" type="Node3D"]
+[node name="TestRoom1" type="Node3D"]
 
 [node name="RandomSpeechbubble" parent="." instance=ExtResource("1_jbvrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81404, 0.650927, -7.35503)
@@ -56,3 +58,13 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479477, 0)
 shape = SubResource("BoxShape3D_w2m0j")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("5_xlmig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98893, 0.156127, 6.56429)
+
+[node name="NextRoom" parent="." instance=ExtResource("6_ty0om")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06203, 0.289634, -0.0180359)
+
+[node name="Sprite3D" type="Sprite3D" parent="NextRoom"]
+billboard = 2
+texture = ExtResource("3_ksspg")

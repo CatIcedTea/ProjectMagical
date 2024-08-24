@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://h2mrdgajw6k3"]
+[gd_scene load_steps=8 format=3 uid="uid://h2mrdgajw6k3"]
 
 [ext_resource type="Script" path="res://Script/PlayerController.cs" id="1_68dof"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_k3762"]
+[ext_resource type="Script" path="res://Script/InteractionHandler.cs" id="3_ed47r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xbiv"]
 animations = [{
@@ -39,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2209, 0)
 shape = SubResource("CapsuleShape3D_rdv84")
 
 [node name="InteractRange" type="Area3D" parent="."]
+script = ExtResource("3_ed47r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -52,4 +54,6 @@ billboard = 2
 texture = SubResource("PlaceholderTexture2D_mohpt")
 
 [connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_entered" from="InteractRange" to="InteractRange" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]
+[connection signal="area_exited" from="InteractRange" to="InteractRange" method="_on_area_exited"]

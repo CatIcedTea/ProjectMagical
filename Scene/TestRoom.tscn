@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ra2lg8dtdfph"]
+[gd_scene load_steps=10 format=3 uid="uid://ra2lg8dtdfph"]
 
 [ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="1_8g5e8"]
-[ext_resource type="PackedScene" uid="uid://xk48etyf1slr" path="res://Scene/TestRoom1.tscn" id="2_6mabg"]
+[ext_resource type="PackedScene" uid="uid://xk48etyf1slr" path="res://Scene/TestRooms/TestRoom1.tscn" id="2_6mabg"]
+[ext_resource type="Script" path="res://Script/RoomGeneration.cs" id="2_41pw7"]
+[ext_resource type="PackedScene" uid="uid://cj3bhi4x7h054" path="res://Scene/TestRooms/TestRoom2.tscn" id="4_t5gg3"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="5_88qkn"]
+[ext_resource type="PackedScene" uid="uid://dyg8gp4cjyqpl" path="res://Scene/TestRooms/TestRoom3.tscn" id="5_e5pfj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nstn"]
 
@@ -35,7 +38,11 @@ directional_shadow_max_distance = 125.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lghfx")
 
-[node name="TestRoom1" parent="." instance=ExtResource("2_6mabg")]
+[node name="Rooms" type="Node3D" parent="."]
+script = ExtResource("2_41pw7")
+RoomList = Array[PackedScene]([ExtResource("2_6mabg"), ExtResource("4_t5gg3"), ExtResource("5_e5pfj")])
+
+[node name="CurrentRoom" parent="Rooms" instance=ExtResource("2_6mabg")]
 
 [node name="Player" parent="." instance=ExtResource("5_88qkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02023, 0, 6.54208)

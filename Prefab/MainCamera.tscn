@@ -1,20 +1,116 @@
-[gd_scene load_steps=4 format=3 uid="uid://d02b4ai4ikjaq"]
+[gd_scene load_steps=10 format=3 uid="uid://d02b4ai4ikjaq"]
 
 [ext_resource type="Script" path="res://Script/CameraController.cs" id="1_3uv3d"]
 [ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Prefab/DialogueManager.tscn" id="2_ibeui"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5gwd6"]
 
+[sub_resource type="Animation" id="Animation_3imvh"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_phyi3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wwjq4"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mloe6"]
+resource_name = "FadeInNextRoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nkwig"]
+resource_name = "FadeOutNextRoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxitx"]
+_data = {
+"FadeIn": SubResource("Animation_3imvh"),
+"FadeInNextRoom": SubResource("Animation_mloe6"),
+"FadeOut": SubResource("Animation_wwjq4"),
+"FadeOutNextRoom": SubResource("Animation_nkwig"),
+"RESET": SubResource("Animation_phyi3")
+}
+
 [node name="MainCamera" type="Camera3D"]
-transform = Transform3D(0.816138, 0.333919, -0.471612, 0, 0.816138, 0.577857, 0.577858, -0.471611, 0.666081, 0, 0, 0)
+transform = Transform3D(0.866026, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 0, 0)
 attributes = SubResource("CameraAttributesPractical_5gwd6")
 current = true
 fov = 37.8493
 script = ExtResource("1_3uv3d")
 heightOffset = 2.0
 
+[node name="TransitionAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hxitx")
+}
+
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="TransitionFade" type="ColorRect" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
 [node name="DialogueManager" parent="UI" instance=ExtResource("2_ibeui")]
 position = Vector2(960, 856)
+
+[connection signal="animation_finished" from="TransitionAnimation" to="." method="_on_transition_animation_animation_finished"]

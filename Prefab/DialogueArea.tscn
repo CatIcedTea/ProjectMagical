@@ -21,6 +21,8 @@ script = ExtResource("1_reclr")
 
 [node name="IsDialogue" type="Node" parent="."]
 
+[node name="IsInteractable" type="Node" parent="."]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_a25sw")
 

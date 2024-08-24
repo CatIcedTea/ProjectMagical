@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsioje82uivtq"]
+
+[ext_resource type="Script" path="res://Script/PlayerSpawn.cs" id="1_ln04p"]
+
+[node name="PlayerSpawn" type="Node3D"]
+script = ExtResource("1_ln04p")
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.12229, 0)
