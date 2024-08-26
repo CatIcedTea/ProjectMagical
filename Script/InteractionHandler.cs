@@ -30,7 +30,7 @@ public partial class InteractionHandler : Area3D
 			PlayerStatus.inInteractionRange = true;
 
 			//When the player interacts with the closest interactable object
-			if(Input.IsActionJustReleased("Interact")){
+			if(Input.IsActionJustReleased("Interact") && !PlayerStatus.inDialogue){
 				closestInteraction = getClosestInteraction();
 
 				//If it is a dialogue, display it depending on type

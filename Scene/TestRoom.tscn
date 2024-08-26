@@ -45,4 +45,4 @@ RoomList = Array[PackedScene]([ExtResource("2_6mabg"), ExtResource("4_t5gg3"), E
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("2_6mabg")]
 
 [node name="Player" parent="." instance=ExtResource("5_88qkn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02023, 0, 6.54208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3114, 0, 4.41133)

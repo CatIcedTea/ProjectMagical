@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://h2mrdgajw6k3"]
+[gd_scene load_steps=11 format=3 uid="uid://h2mrdgajw6k3"]
 
 [ext_resource type="Script" path="res://Script/PlayerController.cs" id="1_68dof"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_k3762"]
 [ext_resource type="Script" path="res://Script/InteractionHandler.cs" id="3_ed47r"]
+[ext_resource type="Texture2D" uid="uid://bexgmdtk137pb" path="res://Asset/2D/Player/Mascot.png" id="4_nmhhi"]
+[ext_resource type="Script" path="res://Script/Mascot.cs" id="5_6yj50"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xbiv"]
 animations = [{
@@ -22,6 +24,17 @@ height = 2.43654
 height = 5.85479
 radius = 2.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ngur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nmhhi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mohpt"]
 size = Vector2(25, 75)
 
@@ -30,7 +43,6 @@ script = ExtResource("1_68dof")
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 1.48373, 0)
-billboard = 2
 shaded = true
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_5xbiv")
@@ -45,6 +57,20 @@ script = ExtResource("3_ed47r")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_bnfic")
+
+[node name="Mascot" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.095, -0.603)
+top_level = true
+billboard = 2
+shaded = true
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_0ngur")
+script = ExtResource("5_6yj50")
+
+[node name="Flip" type="Node3D" parent="."]
+
+[node name="MascotPosition" type="Node3D" parent="Flip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25444, 2.6511, -0.992302)
 
 [node name="InteractNotification" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30213, 0)

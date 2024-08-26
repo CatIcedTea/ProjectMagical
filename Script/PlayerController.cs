@@ -6,20 +6,31 @@ public partial class PlayerController : CharacterBody3D
 	public float Speed = 7.5f;
 	public float JumpVelocity = 4.5f;
 
+	private AnimatedSprite3D playerSprite;
 	private	Camera3D camera;
 	private DialogueManager dialogueManager;
+	private Node3D mascotPosition;
+
+	private enum FacingDir{
+		FacingRight,
+		FacingLeft
+	}
+
+	private FacingDir facingDir = FacingDir.FacingRight;
 
     public override void _Ready()
     {
+		playerSprite = GetNode<AnimatedSprite3D>("PlayerSprite");
     	camera = GetTree().CurrentScene.GetNode<Camera3D>("MainCamera");
 		dialogueManager = camera.GetNode<CanvasLayer>("UI").GetNode<DialogueManager>("DialogueManager");
+		mascotPosition = GetNode<Node3D>("Flip").GetNode<Node3D>("MascotPosition");
+
+		//Set rotation basis to camera for movement direction
+		GlobalBasis = camera.GlobalBasis;
     }
 
     public override void _PhysicsProcess(double delta)
 	{
-		//Set rotation basis to camera for movement direction
-		GlobalBasis = camera.GlobalBasis;
-		
 		Vector3 velocity = Velocity;
 		
 		//Handle gravity
@@ -47,6 +58,18 @@ public partial class PlayerController : CharacterBody3D
 			{
 				velocity.X = direction.X * Speed;
 				velocity.Z = direction.Z * Speed;
+
+				//Handle flipping
+				if(inputDir.X > 0.01f && facingDir == FacingDir.FacingLeft){
+					GetNode<Node3D>("Flip").Scale = new Vector3(1, 1 , 1);
+					playerSprite.FlipH = false;
+					facingDir = FacingDir.FacingRight;
+				}
+				if(inputDir.X < -0.01f && facingDir == FacingDir.FacingRight){
+					GetNode<Node3D>("Flip").Scale = new Vector3(-1, 1 , 1);
+					playerSprite.FlipH = true;
+					facingDir = FacingDir.FacingLeft;
+				}
 			}
 			else
 			{
