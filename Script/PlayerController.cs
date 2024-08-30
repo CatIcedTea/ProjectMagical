@@ -62,12 +62,12 @@ public partial class PlayerController : CharacterBody3D
 				//Handle flipping
 				if(inputDir.X > 0.01f && facingDir == FacingDir.FacingLeft){
 					GetNode<Node3D>("Flip").Scale = new Vector3(1, 1 , 1);
-					playerSprite.FlipH = false;
+					playerSprite.FlipH = true;
 					facingDir = FacingDir.FacingRight;
 				}
 				if(inputDir.X < -0.01f && facingDir == FacingDir.FacingRight){
 					GetNode<Node3D>("Flip").Scale = new Vector3(-1, 1 , 1);
-					playerSprite.FlipH = true;
+					playerSprite.FlipH = false;
 					facingDir = FacingDir.FacingLeft;
 				}
 			}

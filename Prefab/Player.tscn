@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Script/PlayerController.cs" id="1_68dof"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_k3762"]
 [ext_resource type="Script" path="res://Script/InteractionHandler.cs" id="3_ed47r"]
-[ext_resource type="Texture2D" uid="uid://bexgmdtk137pb" path="res://Asset/2D/Player/Mascot.png" id="4_nmhhi"]
+[ext_resource type="Texture2D" uid="uid://bd2rk0ynocfxc" path="res://Asset/2D/Player/Zuei.png" id="4_gd1ta"]
 [ext_resource type="Script" path="res://Script/Mascot.cs" id="5_6yj50"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xbiv"]
@@ -28,7 +28,7 @@ radius = 2.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_nmhhi")
+"texture": ExtResource("4_gd1ta")
 }],
 "loop": true,
 "name": &"default",
@@ -41,8 +41,16 @@ size = Vector2(25, 75)
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_68dof")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.840911, 0)
+light_color = Color(0.973799, 0.778572, 0.412195, 1)
+light_energy = 0.5
+light_size = 1.0
+
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 1.48373, 0)
+flip_h = true
+billboard = 2
 shaded = true
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_5xbiv")
@@ -64,8 +72,15 @@ top_level = true
 billboard = 2
 shaded = true
 alpha_cut = 2
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0ngur")
 script = ExtResource("5_6yj50")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mascot"]
+light_color = Color(0.972549, 0.780392, 0.411765, 1)
+light_size = 0.25
+shadow_enabled = true
+omni_range = 2.5
 
 [node name="Flip" type="Node3D" parent="."]
 

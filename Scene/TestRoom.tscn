@@ -14,12 +14,21 @@ sky_material = SubResource("ProceduralSkyMaterial_5nstn")
 
 [sub_resource type="Environment" id="Environment_lghfx"]
 background_mode = 2
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_3cngx")
 tonemap_mode = 2
 glow_enabled = true
 glow_intensity = 0.9
 glow_strength = 1.25
 glow_hdr_threshold = 0.5
+fog_enabled = true
+fog_light_color = Color(0.677329, 0.691385, 0.767829, 1)
+fog_light_energy = 0.75
+fog_height = 0.25
+fog_height_density = 0.3299
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.959825, 0.935815, 0.989967, 1)
+volumetric_fog_emission_energy = 0.5
 adjustment_enabled = true
 
 [node name="TestRoom" type="Node3D"]
@@ -30,6 +39,7 @@ transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.903552, 0.307878, -0.298001, -8.49523e-09, 0.695487, 0.718539, 0.428478, -0.649237, 0.628409, 0, 0, 0)
 light_color = Color(1, 0.867862, 0.81436, 1)
+light_energy = 0.1
 shadow_enabled = true
 directional_shadow_split_3 = 0.4
 directional_shadow_blend_splits = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xk48etyf1slr"]
+[gd_scene load_steps=14 format=3 uid="uid://xk48etyf1slr"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
@@ -6,6 +6,7 @@
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
 [ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="5_xlmig"]
 [ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="6_ty0om"]
+[ext_resource type="PackedScene" uid="uid://c5r6u1mvgnlif" path="res://Prefab/EnemySpawner.tscn" id="7_q00eh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -18,11 +19,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_pn20g"]
+vertices = PackedVector3Array(-4.5, 0.48502, -4.25, -3.5, 0.48502, -4.5, -3.5, 0.48502, -9.5, -9.5, 0.48502, -2.25, -4.5, 0.48502, -2.25, -9.5, 0.48502, -9.5, -2.75, 0.48502, 4.25, -3.5, 0.48502, 4.5, -3.5, 0.48502, 9.5, 9.5, 0.48502, 9.5, -2.75, 0.48502, -4.25, 9.5, 0.48502, -9.5, -4.5, 0.48502, 4.25, -9.5, 0.48502, 9.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(1, 2, 10), PackedInt32Array(10, 2, 11), PackedInt32Array(10, 11, 6), PackedInt32Array(6, 11, 9), PackedInt32Array(7, 8, 12), PackedInt32Array(12, 8, 13), PackedInt32Array(4, 12, 3), PackedInt32Array(3, 12, 13)]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_14um3"]
 lightmap_size_hint = Vector2i(12, 12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2m0j"]
 size = Vector3(1.99634, 0.968994, 2.01465)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cp15l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wcxe"]
 
 [node name="TestRoom1" type="Node3D"]
 
@@ -48,16 +57,29 @@ sprite_frames = SubResource("SpriteFrames_d2nbb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584229, -2.80244, -0.0316863)
 DialogueFile = ExtResource("4_2yjyv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pn20g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_14um3")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479477, 0)
 shape = SubResource("BoxShape3D_w2m0j")
+
+[node name="Wall" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.550187, 0, 0, 0, 6.52996, 0, 0, 0, 7.65537, -3.54086, 0, 0)
+mesh = SubResource("BoxMesh_cp15l")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall/StaticBody3D"]
+shape = SubResource("BoxShape3D_3wcxe")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_xlmig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98893, 0.156127, 6.56429)
@@ -68,3 +90,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06203, 0.289634, -0.0180359
 [node name="Sprite3D" type="Sprite3D" parent="NextRoom"]
 billboard = 2
 texture = ExtResource("3_ksspg")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_q00eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62901, 0.00502008, 7.37899)

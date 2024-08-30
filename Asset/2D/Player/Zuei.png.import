@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di5324864u5fr"
-path.s3tc="res://.godot/imported/Enemy1.png-158c5966ee6dbd3f15d7a38aaa0f90e3.s3tc.ctex"
+uid="uid://bd2rk0ynocfxc"
+path.s3tc="res://.godot/imported/Zuei.png-3d9479d04d54593e4598efcee32b831b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Asset/2D/Stage1/Enemy/Enemy1.png"
-dest_files=["res://.godot/imported/Enemy1.png-158c5966ee6dbd3f15d7a38aaa0f90e3.s3tc.ctex"]
+source_file="res://Asset/2D/Player/Zuei.png"
+dest_files=["res://.godot/imported/Zuei.png-3d9479d04d54593e4598efcee32b831b.s3tc.ctex"]
 
 [params]
 

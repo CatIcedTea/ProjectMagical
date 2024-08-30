@@ -31,6 +31,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="ProjectMagical"
 
+[global_group]
+
+Enemies=""
+
 [input]
 
 Confirm={
