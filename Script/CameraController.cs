@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices;
 using Godot;
 
 public partial class CameraController : Camera3D
@@ -10,6 +12,7 @@ public partial class CameraController : Camera3D
 	[Export] float interpolationRate = 5f;
 	//Speed to zoom in and out
 	[Export] float scrollSpeed = 0.25f;
+	[Export] float shakeAmount = 0.25f;
 
 	//Different modes of the camera
 	public enum CameraMode{
@@ -28,6 +31,8 @@ public partial class CameraController : Camera3D
 	private float distanceOffsetShort;
 	//Mouse wheel scroll speed multiplier
 	private float mouseScrollMultiplier = 2;
+	//Current offset value for camera shake
+	private float shakeVal = 0;
 
 	public override void _Ready()
 	{
@@ -38,13 +43,23 @@ public partial class CameraController : Camera3D
 		distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{	
 		//Determine camera mode
 		if(cameraMode == CameraMode.FollowPlayer){
 			Position = Position.Lerp(player.Position + distance, interpolationRate * (float)delta);
 		}
 
+		//Shake the camera if value is more than 0
+		if(shakeVal != 0){
+			SetHOffset(shakeVal);
+			shakeVal = Mathf.Lerp(shakeVal, shakeVal*-1, 1f * (float)delta);
+			shakeVal = Mathf.MoveToward(shakeVal, 0, 0.5f * (float)delta);
+
+			shakeVal *= -1;
+		}
+
+		
 		
 		handleZoom();
 	}
@@ -83,7 +98,7 @@ public partial class CameraController : Camera3D
 			PlayerStatus.inDialogue = false;
 	}
 
-	public void setInterpolationRate(float rate){
-		interpolationRate = rate;
+	public void shakeScreen(){
+		shakeVal = shakeAmount;
 	}
 }

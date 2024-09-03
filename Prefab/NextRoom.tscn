@@ -1,8 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgnhao05rppes"]
+[gd_scene load_steps=8 format=3 uid="uid://bgnhao05rppes"]
 
 [ext_resource type="Script" path="res://Script/NextRoom.cs" id="1_3ft6j"]
+[ext_resource type="Texture2D" uid="uid://c4yr7hlehy2ux" path="res://Asset/2D/Portal.png" id="2_bu8q8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wfppp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg65d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bu8q8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_2bp1r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hpc1j"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.5, 1.2, 0.25),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4gwgi"]
+_data = {
+"RESET": SubResource("Animation_2bp1r"),
+"default": SubResource("Animation_hpc1j")
+}
 
 [node name="NextRoom" type="Area3D"]
 script = ExtResource("1_3ft6j")
@@ -13,3 +63,14 @@ script = ExtResource("1_3ft6j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_wfppp")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29392, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_pg65d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4gwgi")
+}
+autoplay = "default"

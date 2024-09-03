@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5r6u1mvgnlif"]
-
-[ext_resource type="Script" path="res://Script/EnemySpawner.cs" id="1_fu576"]
-[ext_resource type="PackedScene" uid="uid://eljkpuxcn5fi" path="res://Prefab/Enemy/Enemy.tscn" id="2_m4nte"]
-
-[node name="EnemySpawner" type="Node3D"]
-script = ExtResource("1_fu576")
-EnemyList = Array[PackedScene]([ExtResource("2_m4nte")])

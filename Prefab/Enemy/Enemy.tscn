@@ -1,30 +1,200 @@
-[gd_scene load_steps=5 format=3 uid="uid://eljkpuxcn5fi"]
+[gd_scene load_steps=17 format=3 uid="uid://eljkpuxcn5fi"]
 
 [ext_resource type="Script" path="res://Script/Enemy.cs" id="1_p5ej5"]
-[ext_resource type="Texture2D" uid="uid://di5324864u5fr" path="res://Asset/2D/Stage1/Enemy/Enemy1.png" id="1_ricvr"]
+[ext_resource type="Shader" path="res://Script/Shader/flashWhite.gdshader" id="2_fu54b"]
+[ext_resource type="Texture2D" uid="uid://0h2ee4oj12xj" path="res://Asset/2D/Stage1/Enemy/enemy_1.png" id="3_07jlb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kynmm"]
+[sub_resource type="Animation" id="Animation_qqdij"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1.75, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y0lkf"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:shaded")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xvbb2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:shaded")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v0ycn"]
+resource_name = "TakeDamage"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1.75, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:shaded")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkn73"]
+_data = {
+"Death": SubResource("Animation_qqdij"),
+"Idle": SubResource("Animation_y0lkf"),
+"RESET": SubResource("Animation_xvbb2"),
+"TakeDamage": SubResource("Animation_v0ycn")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_stpq4"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irs3l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psfx1"]
+resource_local_to_scene = true
+shader = ExtResource("2_fu54b")
+shader_parameter/white = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uw2d"]
+atlas = ExtResource("3_07jlb")
+region = Rect2(0, 0, 212, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ued"]
+atlas = ExtResource("3_07jlb")
+region = Rect2(212, 0, 212, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl2ki"]
+atlas = ExtResource("3_07jlb")
+region = Rect2(424, 0, 212, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dxti"]
+atlas = ExtResource("3_07jlb")
+region = Rect2(636, 0, 212, 208)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kw00i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ricvr")
+"texture": SubResource("AtlasTexture_8uw2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ued")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl2ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dxti")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irs3l"]
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemies"]]
 script = ExtResource("1_p5ej5")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05068, 0)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fkn73")
+}
+autoplay = "Idle"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04495, 0)
 billboard = 2
 shaded = true
 alpha_cut = 2
-sprite_frames = SubResource("SpriteFrames_kynmm")
+texture_filter = 0
+texture = SubResource("ViewportTexture_stpq4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00596, 0)
@@ -32,3 +202,25 @@ shape = SubResource("CapsuleShape3D_irs3l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.1
+avoidance_enabled = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_top = -221.0
+offset_right = 212.0
+offset_bottom = -13.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(212, 208)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_psfx1")
+position = Vector2(106, 104)
+sprite_frames = SubResource("SpriteFrames_kw00i")
+autoplay = "default"
+frame_progress = 0.078436
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

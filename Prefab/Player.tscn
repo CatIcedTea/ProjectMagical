@@ -1,10 +1,64 @@
-[gd_scene load_steps=11 format=3 uid="uid://h2mrdgajw6k3"]
+[gd_scene load_steps=19 format=3 uid="uid://h2mrdgajw6k3"]
 
 [ext_resource type="Script" path="res://Script/PlayerController.cs" id="1_68dof"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="1_k3762"]
 [ext_resource type="Script" path="res://Script/InteractionHandler.cs" id="3_ed47r"]
 [ext_resource type="Texture2D" uid="uid://bd2rk0ynocfxc" path="res://Asset/2D/Player/Zuei.png" id="4_gd1ta"]
 [ext_resource type="Script" path="res://Script/Mascot.cs" id="5_6yj50"]
+
+[sub_resource type="Animation" id="Animation_1cipk"]
+resource_name = "LightAttack"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_tnxa2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i0hxa"]
+resource_name = "Dodge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7y03"]
+_data = {
+"Dodge": SubResource("Animation_i0hxa"),
+"LightAttack": SubResource("Animation_1cipk"),
+"RESET": SubResource("Animation_tnxa2")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xbiv"]
 animations = [{
@@ -35,17 +89,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_2oauq"]
+resource_name = "MascotFloat"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.5, 1.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h0xp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0gg4"]
+_data = {
+"MascotFloat": SubResource("Animation_2oauq"),
+"RESET": SubResource("Animation_h0xp3")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tc7ci"]
+size = Vector3(1.81445, 1.41772, 3.12671)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mohpt"]
 size = Vector2(25, 75)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_68dof")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b7y03")
+}
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.840911, 0)
 light_color = Color(0.973799, 0.778572, 0.412195, 1)
 light_energy = 0.5
 light_size = 1.0
+omni_attenuation = 0.0
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 1.48373, 0)
@@ -76,6 +177,12 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0ngur")
 script = ExtResource("5_6yj50")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mascot"]
+libraries = {
+"": SubResource("AnimationLibrary_k0gg4")
+}
+autoplay = "MascotFloat"
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Mascot"]
 light_color = Color(0.972549, 0.780392, 0.411765, 1)
 light_size = 0.25
@@ -83,6 +190,15 @@ shadow_enabled = true
 omni_range = 2.5
 
 [node name="Flip" type="Node3D" parent="."]
+
+[node name="AttackBox" type="Area3D" parent="Flip"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flip/AttackBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65771, 0.987726, 0)
+shape = SubResource("BoxShape3D_tc7ci")
+disabled = true
 
 [node name="MascotPosition" type="Node3D" parent="Flip"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25444, 2.6511, -0.992302)
@@ -94,7 +210,17 @@ modulate = Color(1, 0, 0, 1)
 billboard = 2
 texture = SubResource("PlaceholderTexture2D_mohpt")
 
+[node name="DodgeCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Hitstop" type="Timer" parent="."]
+wait_time = 0.02
+one_shot = true
+
 [connection signal="area_entered" from="InteractRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_entered" from="InteractRange" to="InteractRange" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractRange" to="." method="_on_interact_range_area_exited"]
 [connection signal="area_exited" from="InteractRange" to="InteractRange" method="_on_area_exited"]
+[connection signal="body_entered" from="Flip/AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="timeout" from="Hitstop" to="." method="_on_hitstop_timeout"]

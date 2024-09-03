@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyg8gp4cjyqpl"]
+[gd_scene load_steps=7 format=3 uid="uid://dyg8gp4cjyqpl"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_tfuuq"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_3hqeq"]
 [ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="3_l1fi6"]
 [ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="4_fdt5n"]
-[ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="5_3t2ht"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4meet"]
 lightmap_size_hint = Vector2i(12, 12)
@@ -50,7 +49,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25473, 0.231545, 0.0853915
 
 [node name="NextRoom" parent="." instance=ExtResource("4_fdt5n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3003, 0.00502008, 6.46267)
-
-[node name="Sprite3D" type="Sprite3D" parent="NextRoom"]
-billboard = 2
-texture = ExtResource("5_3t2ht")

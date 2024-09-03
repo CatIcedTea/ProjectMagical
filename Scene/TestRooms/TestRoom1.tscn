@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xk48etyf1slr"]
+[gd_scene load_steps=17 format=3 uid="uid://xk48etyf1slr"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
@@ -6,7 +6,10 @@
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
 [ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="5_xlmig"]
 [ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="6_ty0om"]
-[ext_resource type="PackedScene" uid="uid://c5r6u1mvgnlif" path="res://Prefab/EnemySpawner.tscn" id="7_q00eh"]
+[ext_resource type="PackedScene" uid="uid://c5r6u1mvgnlif" path="res://Prefab/Enemy/EnemySpawner.tscn" id="7_q00eh"]
+[ext_resource type="PackedScene" uid="uid://dpqx10ttk4vt3" path="res://Prefab/Breakables/Stage1Breakable1.tscn" id="8_dplsl"]
+[ext_resource type="PackedScene" uid="uid://cejrxtxh46xkt" path="res://Prefab/Breakables/Stage1Breakable2.tscn" id="9_tukcw"]
+[ext_resource type="PackedScene" uid="uid://gmjnbueh55tg" path="res://Prefab/Breakables/Stage1Breakable3.tscn" id="10_7k4i4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -87,9 +90,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98893, 0.156127, 6.56429)
 [node name="NextRoom" parent="." instance=ExtResource("6_ty0om")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06203, 0.289634, -0.0180359)
 
-[node name="Sprite3D" type="Sprite3D" parent="NextRoom"]
-billboard = 2
-texture = ExtResource("3_ksspg")
-
 [node name="EnemySpawner" parent="." instance=ExtResource("7_q00eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62901, 0.00502008, 7.37899)
+
+[node name="Stage1Breakable1" parent="." instance=ExtResource("8_dplsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.238, 0, -2.693)
+
+[node name="Stage1Breakable2" parent="." instance=ExtResource("9_tukcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.929, 0, -2.805)
+
+[node name="Stage1Breakable3" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.159, 0, 1.809)
+
+[node name="Stage1Breakable4" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.417, 0, 2.659)
+
+[node name="Stage1Breakable5" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.777, 0, 3.458)
+
+[node name="Stage1Breakable6" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.259, 0, 1.664)
+
+[node name="Stage1Breakable7" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.568, 0, 2.624)
+
+[node name="Stage1Breakable8" parent="." instance=ExtResource("10_7k4i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.991, 0, 3.481)
+
+[node name="Stage1Breakable9" parent="." instance=ExtResource("9_tukcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327, 0, 2.442)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d02b4ai4ikjaq"]
+[gd_scene load_steps=12 format=3 uid="uid://d02b4ai4ikjaq"]
 
 [ext_resource type="Script" path="res://Script/CameraController.cs" id="1_3uv3d"]
 [ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Prefab/DialogueManager.tscn" id="2_ibeui"]
+[ext_resource type="Shader" path="res://Script/Shader/CameraShader.gdshader" id="2_ke0mw"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5gwd6"]
 
@@ -89,6 +90,16 @@ _data = {
 "RESET": SubResource("Animation_phyi3")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp7y2"]
+shader = ExtResource("2_ke0mw")
+shader_parameter/r_displacement = Vector2(7, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-7, 0)
+shader_parameter/height = 0.5
+shader_parameter/width = 0.6
+shader_parameter/fade = 1.0
+shader_parameter/blurAmount = 0.5
+
 [node name="MainCamera" type="Camera3D"]
 transform = Transform3D(0.866026, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 0, 0)
 attributes = SubResource("CameraAttributesPractical_5gwd6")
@@ -104,6 +115,11 @@ libraries = {
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="CameraShader" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_yp7y2")
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="TransitionFade" type="ColorRect" parent="UI"]
 offset_right = 1920.0

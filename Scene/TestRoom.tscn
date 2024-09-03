@@ -35,6 +35,7 @@ adjustment_enabled = true
 
 [node name="MainCamera" parent="." instance=ExtResource("1_8g5e8")]
 transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -2.85786, 4.68814, 3.91334)
+shakeAmount = 0.05
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.903552, 0.307878, -0.298001, -8.49523e-09, 0.695487, 0.718539, 0.428478, -0.649237, 0.628409, 0, 0, 0)
@@ -53,6 +54,9 @@ script = ExtResource("2_41pw7")
 RoomList = Array[PackedScene]([ExtResource("2_6mabg"), ExtResource("4_t5gg3"), ExtResource("5_e5pfj")])
 
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("2_6mabg")]
+
+[node name="Enemies" type="Node3D" parent="."]
+top_level = true
 
 [node name="Player" parent="." instance=ExtResource("5_88qkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3114, 0, 4.41133)

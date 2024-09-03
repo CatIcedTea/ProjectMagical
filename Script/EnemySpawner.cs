@@ -7,11 +7,18 @@ public partial class EnemySpawner : Node3D
 
     public override void _Ready()
     {
-        Random rand = new Random();
+        spawnEnemy();
+    }
 
-		int enemyNum = rand.Next(EnemyList.Length);
+    public override void _Process(double delta)
+    {
+        if(GetTree().GetNodeCountInGroup("Enemies") == 0){
+            //spawnEnemy();
+        }
+    }
 
-        var enemy = EnemyList[enemyNum].Instantiate();
+    private void spawnEnemy(){
+        var enemy = EnemyList[new Random().Next(EnemyList.Length)].Instantiate();
 	    AddChild(enemy);
     }
 }
