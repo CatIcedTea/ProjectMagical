@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgnejn35rw1c"]
+
+[ext_resource type="Texture2D" uid="uid://6sbt82qhenqh" path="res://Asset/2D/Stage1/Environment/envirmoment_12.png" id="1_bnd02"]
+
+[node name="Light1" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.566, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 2
+texture = ExtResource("1_bnd02")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88807, 0)
+light_color = Color(0.972549, 0.780392, 0.411765, 1)
+light_energy = 0.75
+shadow_enabled = true
+omni_attenuation = -2.0

@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices;
 using Godot;
 
 public partial class CameraController : Camera3D
@@ -12,7 +10,7 @@ public partial class CameraController : Camera3D
 	[Export] float interpolationRate = 5f;
 	//Speed to zoom in and out
 	[Export] float scrollSpeed = 0.25f;
-	[Export] float shakeAmount = 0.25f;
+	[Export] float shakeAmount = 0.1f;
 
 	//Different modes of the camera
 	public enum CameraMode{
@@ -34,9 +32,14 @@ public partial class CameraController : Camera3D
 	//Current offset value for camera shake
 	private float shakeVal = 0;
 
+	private float maxZoomOut = 20f;
+	private float maxZoomIn = 2f;
+
 	public override void _Ready()
 	{
 		player = GetTree().CurrentScene.GetNode<PlayerController>("Player");
+
+		Position = player.Position;
 
 		lengthRatio = Mathf.Tan(Mathf.Abs(Rotation.Y));
 		distanceOffsetShort = lengthRatio * distanceOffset;
@@ -45,6 +48,9 @@ public partial class CameraController : Camera3D
 
 	public override void _PhysicsProcess(double delta)
 	{	
+		if(GameState.isAtHome)
+			GetNode<CanvasLayer>("UI").GetNode<TextureProgressBar>("HealthBar").Visible = false;
+
 		//Determine camera mode
 		if(cameraMode == CameraMode.FollowPlayer){
 			Position = Position.Lerp(player.Position + distance, interpolationRate * (float)delta);
@@ -67,24 +73,24 @@ public partial class CameraController : Camera3D
 	//Scroll Zoom function
 	private void handleZoom(){
 		//Mousewheel scroll speed
-		if(Input.IsActionJustPressed("MouseScrollUp") && distanceOffset > 1){
+		if(Input.IsActionJustPressed("MouseScrollUp") && distanceOffset > maxZoomIn){
 			distanceOffset -= scrollSpeed * mouseScrollMultiplier;
 			distanceOffsetShort -= (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
 			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
-		if(Input.IsActionJustPressed("MouseScrollDown")){
+		if(Input.IsActionJustPressed("MouseScrollDown") && distanceOffset < maxZoomOut){
 			distanceOffset += scrollSpeed * mouseScrollMultiplier;
 			distanceOffsetShort += (scrollSpeed * lengthRatio) * mouseScrollMultiplier;
 			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
 
 		//Controller scroll speed
-		if(Input.IsActionPressed("ControllerScrollUp") && distanceOffset > 1){
+		if(Input.IsActionPressed("ControllerScrollUp") && distanceOffset > maxZoomIn){
 			distanceOffset -= scrollSpeed;
 			distanceOffsetShort -= scrollSpeed * lengthRatio;
 			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
 		}
-		if(Input.IsActionPressed("ControllerScrollDown")){
+		if(Input.IsActionPressed("ControllerScrollDown") && distanceOffset < maxZoomOut){
 			distanceOffset += scrollSpeed;
 			distanceOffsetShort += scrollSpeed * lengthRatio;
 			distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
@@ -96,6 +102,8 @@ public partial class CameraController : Camera3D
 			PlayerStatus.transitioningRoom = true;
 		if(anim == "FadeOutNextRoom")
 			PlayerStatus.inDialogue = false;
+		if(anim == "FadeInNextScene")
+			GetTree().ChangeSceneToFile(GameState.nextScene);
 	}
 
 	public void shakeScreen(){

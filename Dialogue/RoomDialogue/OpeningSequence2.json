@@ -1,0 +1,21 @@
+{
+	"Dialogue": [
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "nervous",
+			"Text": "That's strange, what was that?",
+			"Audio": "OpeningSequence/OS_9"
+		},
+		{
+			"Text": "What?! There is a [b]mirror[/b]! In my bedroom! I'm not supposed to have mirrors…",
+			"Audio": "OpeningSequence/OS_10"
+		},
+		{
+			"EmotionLeft": "amused",
+			"Text": "But… I wonder… what I look like…",
+			"Audio": "OpeningSequence/OS_11"
+		}
+	]
+}

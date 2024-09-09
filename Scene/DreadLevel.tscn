@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://6kh21ask3uya"]
+
+[ext_resource type="Script" path="res://Script/DreadLevel.cs" id="1_pqicm"]
+[ext_resource type="PackedScene" uid="uid://bl5kmsqw3aqwl" path="res://Scene/DreadRooms/DreadStarterRoom.tscn" id="1_sljsb"]
+[ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="2_4p27c"]
+[ext_resource type="Script" path="res://Script/RoomGeneration.cs" id="2_ag7rr"]
+[ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="3_8fvr3"]
+[ext_resource type="PackedScene" uid="uid://do0hjkfjbfeb" path="res://Scene/DreadRooms/DreadRoom1.tscn" id="3_n6tdv"]
+
+[sub_resource type="Environment" id="Environment_erq4o"]
+background_mode = 2
+background_energy_multiplier = 0.05
+ambient_light_source = 2
+glow_enabled = true
+glow_intensity = 0.9
+glow_strength = 1.25
+glow_bloom = 0.05
+glow_hdr_threshold = 0.5
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.677329, 0.691385, 0.767829, 1)
+fog_light_energy = 0.25
+fog_density = 1.0
+fog_height = 0.5
+fog_height_density = 0.3
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.959825, 0.935815, 0.989967, 1)
+volumetric_fog_emission_energy = 0.5
+adjustment_enabled = true
+adjustment_contrast = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13rfc"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_daa3j"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_13rfc")
+
+[node name="DreadLevel" type="Node3D"]
+script = ExtResource("1_pqicm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_erq4o")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.211309, -0.453154, 0, 0.906308, 0.422618, 0.5, -0.365998, 0.784886, 0, 0, 0)
+light_color = Color(1, 0.867862, 0.81436, 1)
+light_energy = 0.5
+shadow_enabled = true
+directional_shadow_split_3 = 0.4
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 125.0
+
+[node name="MainCamera" parent="." instance=ExtResource("2_4p27c")]
+transform = Transform3D(0.866026, 0.25, -0.433012, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -1.08694, 1.98927, 2.77038)
+
+[node name="Rooms" type="Node3D" parent="."]
+script = ExtResource("2_ag7rr")
+RoomList = Array[PackedScene]([ExtResource("3_n6tdv"), ExtResource("3_n6tdv")])
+
+[node name="CurrentRoom" parent="Rooms" instance=ExtResource("1_sljsb")]
+
+[node name="Player" parent="." instance=ExtResource("3_8fvr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103195, 9.53674e-07, -1.19253)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4.20907, 0)
+mesh = SubResource("PlaneMesh_daa3j")
+skeleton = NodePath("")

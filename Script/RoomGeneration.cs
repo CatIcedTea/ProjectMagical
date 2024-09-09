@@ -7,7 +7,7 @@ public partial class RoomGeneration : Node3D
 	AnimationPlayer transitionAnimation;
 
 	int roomListSize;
-	int currentIndex = 0;
+	int currentIndex = -1;
 
 	public override void _Ready()
 	{

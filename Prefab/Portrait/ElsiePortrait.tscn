@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhrw3rdvu3dtp"]
+
+[ext_resource type="SpriteFrames" uid="uid://cj80lx2r6us7f" path="res://Prefab/Portrait/Animation/Elsie.tres" id="1_levmr"]
+
+[node name="ElsiePortrait" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_levmr")
+animation = &"happy"
+autoplay = "default"

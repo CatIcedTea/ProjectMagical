@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cj80lx2r6us7f"]
+
+[ext_resource type="Texture2D" uid="uid://tob4udjshhwr" path="res://Asset/2D/Portrait/Elsie/Skeptic_SpriteP.png" id="1_w011k"]
+[ext_resource type="Texture2D" uid="uid://5bexlxil0erw" path="res://Asset/2D/Portrait/Elsie/Enraged_SpriteP.png" id="2_gcegc"]
+[ext_resource type="Texture2D" uid="uid://dque3s2r4xvda" path="res://Asset/2D/Portrait/Elsie/Thoughtful_SpriteP.png" id="3_nrifi"]
+[ext_resource type="Texture2D" uid="uid://db6uxe1uvw6o3" path="res://Asset/2D/Portrait/Elsie/Happy_SpriteP.png" id="4_gu2u3"]
+[ext_resource type="Texture2D" uid="uid://dgtma0xh7n4ni" path="res://Asset/2D/Portrait/Elsie/Nervous_SpriteP.png" id="5_bmgik"]
+[ext_resource type="Texture2D" uid="uid://bsbpfo3uc7n33" path="res://Asset/2D/Portrait/Elsie/Suprised_SpriteP.png" id="6_fxvwg"]
+[ext_resource type="Texture2D" uid="uid://dq15haw8hrrsc" path="res://Asset/2D/Portrait/Elsie/Upset_SpriteP.png" id="7_2ykvf"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w011k")
+}],
+"loop": true,
+"name": &"amused",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gcegc")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nrifi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gu2u3")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bmgik")
+}],
+"loop": true,
+"name": &"nervous",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fxvwg")
+}],
+"loop": true,
+"name": &"surprised",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2ykvf")
+}],
+"loop": true,
+"name": &"upset",
+"speed": 5.0
+}]

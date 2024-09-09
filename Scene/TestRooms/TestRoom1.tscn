@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xk48etyf1slr"]
+[gd_scene load_steps=16 format=3 uid="uid://xk48etyf1slr"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
@@ -6,10 +6,9 @@
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
 [ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="5_xlmig"]
 [ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="6_ty0om"]
-[ext_resource type="PackedScene" uid="uid://c5r6u1mvgnlif" path="res://Prefab/Enemy/EnemySpawner.tscn" id="7_q00eh"]
-[ext_resource type="PackedScene" uid="uid://dpqx10ttk4vt3" path="res://Prefab/Breakables/Stage1Breakable1.tscn" id="8_dplsl"]
-[ext_resource type="PackedScene" uid="uid://cejrxtxh46xkt" path="res://Prefab/Breakables/Stage1Breakable2.tscn" id="9_tukcw"]
-[ext_resource type="PackedScene" uid="uid://gmjnbueh55tg" path="res://Prefab/Breakables/Stage1Breakable3.tscn" id="10_7k4i4"]
+[ext_resource type="PackedScene" uid="uid://dpqx10ttk4vt3" path="res://Prefab/Environment/Breakables/Stage1Breakable1.tscn" id="8_dplsl"]
+[ext_resource type="PackedScene" uid="uid://cejrxtxh46xkt" path="res://Prefab/Environment/Breakables/Stage1Breakable2.tscn" id="9_tukcw"]
+[ext_resource type="PackedScene" uid="uid://gmjnbueh55tg" path="res://Prefab/Environment/Breakables/Stage1Breakable3.tscn" id="10_7k4i4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -65,6 +64,7 @@ navigation_mesh = SubResource("NavigationMesh_pn20g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+layers = 3
 mesh = SubResource("PlaneMesh_14um3")
 skeleton = NodePath("../../..")
 
@@ -76,6 +76,7 @@ shape = SubResource("BoxShape3D_w2m0j")
 
 [node name="Wall" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.550187, 0, 0, 0, 6.52996, 0, 0, 0, 7.65537, -3.54086, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_cp15l")
 skeleton = NodePath("../..")
 
@@ -89,9 +90,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98893, 0.156127, 6.56429)
 
 [node name="NextRoom" parent="." instance=ExtResource("6_ty0om")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06203, 0.289634, -0.0180359)
-
-[node name="EnemySpawner" parent="." instance=ExtResource("7_q00eh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62901, 0.00502008, 7.37899)
 
 [node name="Stage1Breakable1" parent="." instance=ExtResource("8_dplsl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.238, 0, -2.693)

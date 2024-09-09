@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ra2lg8dtdfph"]
+[gd_scene load_steps=11 format=3 uid="uid://ra2lg8dtdfph"]
 
 [ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="1_8g5e8"]
 [ext_resource type="PackedScene" uid="uid://xk48etyf1slr" path="res://Scene/TestRooms/TestRoom1.tscn" id="2_6mabg"]
@@ -6,16 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://cj3bhi4x7h054" path="res://Scene/TestRooms/TestRoom2.tscn" id="4_t5gg3"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="5_88qkn"]
 [ext_resource type="PackedScene" uid="uid://dyg8gp4cjyqpl" path="res://Scene/TestRooms/TestRoom3.tscn" id="5_e5pfj"]
+[ext_resource type="PackedScene" uid="uid://ccy5g878g87cp" path="res://Prefab/Enemy/Spider.tscn" id="7_hxfhc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nstn"]
 
-[sub_resource type="Sky" id="Sky_3cngx"]
+[sub_resource type="Sky" id="Sky_4m15n"]
 sky_material = SubResource("ProceduralSkyMaterial_5nstn")
 
 [sub_resource type="Environment" id="Environment_lghfx"]
 background_mode = 2
 background_energy_multiplier = 0.05
-sky = SubResource("Sky_3cngx")
+sky = SubResource("Sky_4m15n")
 tonemap_mode = 2
 glow_enabled = true
 glow_intensity = 0.9
@@ -55,8 +56,8 @@ RoomList = Array[PackedScene]([ExtResource("2_6mabg"), ExtResource("4_t5gg3"), E
 
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("2_6mabg")]
 
-[node name="Enemies" type="Node3D" parent="."]
-top_level = true
+[node name="Spider" parent="." instance=ExtResource("7_hxfhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 7)
 
 [node name="Player" parent="." instance=ExtResource("5_88qkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3114, 0, 4.41133)

@@ -1,0 +1,61 @@
+{
+	"Dialogue": [
+		{
+			"NameRight": "Mary",
+			"SpeakRight": true,
+
+			"Text": "Elsie? Elsie!",
+			"Audio": "OpeningSequence/OS_1"
+		},
+		{
+			"Text": "[shake]Elsie! Are Coming for dinner?[/shake]",
+
+			"Audio": "OpeningSequence/OS_2"
+		},
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+
+			"Text": "Coming mother.",
+			"Audio": "OpeningSequence/OS_3"
+		},
+		{
+			"NameRight": "Mary",
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"Text": "Don't forget to wash up!",
+			"Audio": "OpeningSequence/OS_4"
+		},
+		{
+			"Text": "I'd better wash my hands for dinner.",
+			"Audio": "OpeningSequence/OS_5"
+		},
+		{
+			"NameRight": "Mary",
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"Text": "Don't forget to use soap!",
+			"Audio": "OpeningSequence/OS_6"
+		},
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"Text": "Yes mother!",
+			"Audio": "OpeningSequence/OS_7"
+		},
+		{
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "happy",
+
+			"Text": "Ok lets get to dinner.",
+			"Audio": "OpeningSequence/OS_8"
+		}
+	]
+}

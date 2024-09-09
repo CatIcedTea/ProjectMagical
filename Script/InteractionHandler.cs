@@ -63,7 +63,6 @@ public partial class InteractionHandler : Area3D
 	//Handles the closest dialogue
 	private void handleDialogue(DialogueArea closestDialogue){
 		if(closestDialogue.dialogueType == DialogueArea.DialogueType.BoxDialogue){
-				PlayerStatus.inDialogue = true;
 				dialogueManager.startDialogue(closestDialogue.getDialogueFile());
 			}
 
@@ -71,6 +70,22 @@ public partial class InteractionHandler : Area3D
 				if(!closestDialogue.GetNode<SpeechBubble>("SpeechBubble").Visible)
 					closestDialogue.startSpeechBubble();
 		}
+	}
+
+	//Check for forced dialogue area and start it if true
+	private bool checkAreaDialogue(Area3D area){
+		if(area.HasNode("IsDialogue")){
+			DialogueArea dialogue = (DialogueArea)area;
+
+			if(dialogue.dialogueType == DialogueArea.DialogueType.AreaDialogue){
+				dialogueManager.startDialogue(dialogue.getDialogueFile());
+				area.QueueFree();
+				return true;
+			}
+			else return false;
+		}
+		else
+			return false;
 	}
 
 	//Handles next room interaction
@@ -83,6 +98,9 @@ public partial class InteractionHandler : Area3D
 	//Add to interactable list of there is an interactable object in range
 	void _on_area_entered(Area3D area){
 		if(area.HasNode("IsInteractable")){
+			if(checkAreaDialogue(area)){
+				return;
+			}
 			interactionArrayList.Add(area);
 		}
 	}

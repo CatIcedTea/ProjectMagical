@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bdwmhb48je4di"]
+
+[ext_resource type="FontFile" uid="uid://do080fonns2d3" path="res://Asset/Font/JMH_Cthulhumbus.ttf" id="1_nan44"]
+
+[resource]
+default_font = ExtResource("1_nan44")
+/fonts/Font = ExtResource("1_nan44")

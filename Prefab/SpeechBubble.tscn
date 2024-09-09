@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmiikc3wb6up1"]
+[gd_scene load_steps=10 format=3 uid="uid://bmiikc3wb6up1"]
 
 [ext_resource type="Script" path="res://Script/Dialogue/SpeechBubble.cs" id="1_xonnv"]
 [ext_resource type="Texture2D" uid="uid://47xn2w0ao8l3" path="res://Asset/2D/Dialogue/SpeechBubble.png" id="2_5e1de"]
 [ext_resource type="Script" path="res://Script/Dialogue/ScrollingText.cs" id="2_a75ex"]
+[ext_resource type="Theme" uid="uid://bdwmhb48je4di" path="res://Theme/DefaultText.tres" id="3_8sbva"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dqe8n"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -75,6 +76,7 @@ offset_left = 15.0
 offset_top = 15.0
 offset_right = 210.0
 offset_bottom = 150.0
+theme = ExtResource("3_8sbva")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true

@@ -1,0 +1,275 @@
+{
+	"Dialogue": [
+		{
+			"NameRight": "Zuei",
+			"SpeakRight": true,
+
+			"SpriteRight": "Zuei",
+			"EmotionRight": "default",
+
+			"Text": "Elsie!",
+			"Audio": "DreadLevel/DL_1"
+		},
+		{
+			"Text": "Oh youre alright!",
+			"Audio": "DreadLevel/DL_2"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"Emotion": "nervous",
+
+			"Text": "I… I think so…",
+			"Audio": "DreadLevel/DL_3"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteLeft": "Exit",
+			"EmotionRight": "happy",
+
+			"Text": "I'm Zuei! Pleased to meet you Elsie! I'm so happy to finally meet you!",
+			"Audio": "DreadLevel/DL_4"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"Emotion": "nervous",
+			"SpriteRight": "Exit",
+
+			"Text": "Finally meet me? Do we know each other?",
+			"Audio": "DreadLevel/DL_5"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteRight": "Zuei",
+			"EmotionRight": "happy",
+
+			"Text": "Well… you don't know me, but I know you. You're the [wave]light bringer![/wave]",
+			"Audio": "DreadLevel/DL_6"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"Text": "Where are we? Where's my bedroom? I… I don't understand. I was in my bedroom, getting ready for dinner, how did I end up here?",
+			"Audio": "DreadLevel/DL_7"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"EmotionRight": "default",
+
+			"Text": "You came here through a mirror portal Light bringer. You're in the shadow world.",
+			"Audio": "DreadLevel/DL_8"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"EmotionLeft": "default",
+
+			"Text": "Shadow World?",
+			"Audio": "DreadLevel/DL_9"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"Text": "It's the world where all evil is banished to so that the light world can live in peace.",
+			"Audio": "DreadLevel/DL_10"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "angry",
+
+			"Text": "That… that sounds scary, [shake]send me home![/shake]",
+			"Audio": "DreadLevel/DL_11"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteRight": true,
+			"EmotionRight": "sad",
+
+			"Text": "I'm sorry, I can't. When you went through the portal it closed behind you.",
+			"Audio": "DreadLevel/DL_12"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "surprised",
+
+			"Text": "[shake]So I'm trapped here?[/shake]",
+			"Audio": "DreadLevel/DL_13"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteRight": true,
+			"EmotionRight": "default",
+
+			"Text": "I think there might be another way out.",
+			"Audio": "DreadLevel/DL_14"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "nervous",
+
+			"Text": "Where?",
+			"Audio": "DreadLevel/DL_15"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"EmotionRight": "default",
+
+			"Text": "There hasn't been any mirror portals open in a long time, a very long, long time. But the last time when you go through a portal, another always appears somewhere else.",
+			"Audio": "DreadLevel/DL_16"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"EmotionLeft": "default",
+
+			"Text": "And that will take me home?",
+			"Audio": "DreadLevel/DL_17"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteRight": "Zuei",
+			"EmotionRight": "happy",
+
+			"Text": "Yeah! We just have to find it!",
+			"Audio": "DreadLevel/DL_18"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"EmotionLeft": "amused",
+
+			"Text": "Ok… how do we do that?",
+			"Audio": "DreadLevel/DL_19"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"EmotionRight": "default",
+
+			"Text": "The shadow world is always changing, always moving. We have to keep looking and we will find one, I'm sure.",
+			"Audio": "DreadLevel/DL_20"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "happy",
+
+			"SpriteRight": "Exit",
+
+			"Text": "Ok, I'm ready. Lets go.",
+			"Audio": "DreadLevel/DL_21"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"SpriteLeft": "Exit",
+
+			"SpriteRight": "Zuei",
+			"EmotionRight": "happy",
+
+			"Text": "Wait, now you're here… I can give you something…",
+			"Audio": "DreadLevel/DL_22"
+		},
+		{
+			"NameLeft": "Elsie",
+
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "surprised",
+
+			"Text": "Wow, what was that?",
+			"Audio": "DreadLevel/DL_23"
+		},
+		{
+			"NameRight": "Zuei",
+
+			"SpeakLeft": false,
+			"SpeakRight": true,
+
+			"EmotionLeft": "happy",
+			"EmotionRight": "default",
+
+			"Text": "Your power, light bearer. It will all come back to you in time.",
+			"Audio": "DreadLevel/DL_24"
+		}
+	]
+}

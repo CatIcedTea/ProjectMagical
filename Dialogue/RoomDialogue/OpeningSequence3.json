@@ -1,0 +1,37 @@
+{
+	"Dialogue": [
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "default",
+			"Text": "Oh…. No…. No…. that's not me…",
+			"Audio": "OpeningSequence/OS_12"
+		},
+		{
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "amused",
+			"Text": "Just once… can't hurt…",
+			"Audio": "OpeningSequence/OS_14"
+		},
+		{
+			"SpriteLeft": "Exit",
+			"NameRight": "???",
+			"SpeakLeft": false,
+			"SpeakRight": true,
+			"Text": "\n[center][tornado]Touch. Reach out. Free us. She can hear us.[/tornado][/center]"
+		},
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpeakRight": false,
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "surprised",
+			"Text": "No... [shake]Wait! No! Stop! NO![/shake]",
+			"Audio": "OpeningSequence/OS_15"
+		},
+		{
+			"ChangeScene": "res://Scene/DreadLevel"
+		}
+	]
+}

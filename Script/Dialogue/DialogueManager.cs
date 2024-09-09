@@ -1,11 +1,11 @@
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using Godot;
 
 public partial class DialogueManager : Node2D
 {
 	//Path to access portrait sprites
 	string portraitPath = "res://Prefab/Portrait/Animation/";
+	string audioPath = "res://Asset/Audio/Dialogue/";
+	string nextScene;
 
 	//The entire dictionary of the dialogue file
 	Godot.Collections.Dictionary currentDialogue;
@@ -20,11 +20,13 @@ public partial class DialogueManager : Node2D
 	RichTextLabel nameRight;
 
 	//Portrait sprites and their animations
+	AnimationPlayer transitionAnim;
 	AnimatedSprite2D spriteLeft;
 	AnimatedSprite2D spriteRight;
 	AnimationPlayer animDialogue;
 	Sprite2D namePlateLeft;
 	Sprite2D namePlateRight;
+	AudioStreamPlayer audioPlayer;
 	
 	AnimationPlayer speechLeft;
 	AnimationPlayer speechRight;
@@ -44,7 +46,9 @@ public partial class DialogueManager : Node2D
 		nameRight = namePlateRight.GetNode<RichTextLabel>("NameRight");
 		speechLeft = GetNode<AnimationPlayer>("AnimationNamePlateLeft");
 		speechRight = GetNode<AnimationPlayer>("AnimationNamePlateRight");
+		audioPlayer = GetNode<AudioStreamPlayer>("AudioPlayer");
 
+		transitionAnim = GetParent().GetParent().GetNode<AnimationPlayer>("TransitionAnimation");
 		spriteLeft = GetNode<AnimatedSprite2D>("SpriteLeft");
 		spriteRight = GetNode<AnimatedSprite2D>("SpriteRight");
 		animDialogue = GetNode<AnimationPlayer>("AnimationDialogue");
@@ -68,6 +72,10 @@ public partial class DialogueManager : Node2D
 			}
 		}
 
+		if(transitionAnim.CurrentAnimation == "FadeInNextScene" && !transitionAnim.IsPlaying()){
+			GetTree().ChangeSceneToFile(nextScene);
+		}
+
 		//TEMP REMOVE LATER
 		if(Input.IsActionJustReleased("Escape"))
 			GetTree().Quit();
@@ -75,6 +83,7 @@ public partial class DialogueManager : Node2D
 
 	//Starts the dialogue with the given file
 	public void startDialogue(Json jsonDialogue){
+		PlayerStatus.inDialogue = true;
 		Visible = true;
 		animDialogue.Play("StartDialogue");
 
@@ -146,6 +155,24 @@ public partial class DialogueManager : Node2D
 					animRight.Play("MoveIn");
 				}
 			}
+
+			if(currentLine.ContainsKey("EmotionLeft")){
+				spriteLeft.Play((string)currentLine["EmotionLeft"]);
+			}
+			if(currentLine.ContainsKey("EmotionRight")){
+				spriteRight.Play((string)currentLine["EmotionRight"]);
+			}
+
+			if(currentLine.ContainsKey("Audio")){
+				audioPlayer.Stream = ResourceLoader.Load<AudioStreamMP3>(audioPath + currentLine["Audio"] + ".mp3");
+				audioPlayer.Play();
+			}
+
+			if(currentLine.ContainsKey("ChangeScene")){
+				GameState.nextScene = currentLine["ChangeScene"] + ".tscn";
+				ExitDialogue();
+				transitionAnim.Play("FadeInNextScene");
+			}
 		}
 		else{
 			ExitDialogue();
@@ -159,6 +186,8 @@ public partial class DialogueManager : Node2D
 		animRight.Play("MoveOut");
 		speechLeft.Play("MoveOut");
 		speechRight.Play("MoveOut");
+		
+		audioPlayer.Stop();
 	}
 
 	//Set the dialogue visibility off and set dialogue mode off
@@ -179,7 +208,7 @@ public partial class DialogueManager : Node2D
 		OS.ShellOpen("https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html");
 	}
 
-	//Make the nameplayes disappear when finishing moving out
+	//Make the nameplates disappear when finishing moving out
 	void _on_animation_name_plate_left_animation_finished(string anim){
 		if(anim == "MoveOut")
 			namePlateLeft.Visible = false;
@@ -187,5 +216,15 @@ public partial class DialogueManager : Node2D
 	void _on_animation_name_plate_right_animation_finished(string anim){
 		if(anim == "MoveOut")
 			namePlateRight.Visible = false;
+	}
+
+	void _on_animation_left_animation_finished(string anim){
+		if(anim == "MoveOut")
+			spriteLeft.SpriteFrames = null;
+	}
+
+	void _on_animation_right_animation_finished(string anim){
+		if(anim == "MoveOut")
+			spriteRight.SpriteFrames = null;
 	}
 }

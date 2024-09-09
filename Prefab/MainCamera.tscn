@@ -1,10 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://d02b4ai4ikjaq"]
+[gd_scene load_steps=16 format=3 uid="uid://d02b4ai4ikjaq"]
 
 [ext_resource type="Script" path="res://Script/CameraController.cs" id="1_3uv3d"]
 [ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Prefab/DialogueManager.tscn" id="2_ibeui"]
 [ext_resource type="Shader" path="res://Script/Shader/CameraShader.gdshader" id="2_ke0mw"]
+[ext_resource type="Texture2D" uid="uid://d2vwoscowdfgi" path="res://Asset/2D/UI/healthbar_empty.png" id="4_tkf3q"]
+[ext_resource type="Texture2D" uid="uid://dggvo31k2rexu" path="res://Asset/2D/UI/healthbar_fill.png" id="5_8smdq"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5gwd6"]
+
+[sub_resource type="Animation" id="Animation_8s6lp"]
+resource_name = "BlackScreen"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3imvh"]
 resource_name = "FadeIn"
@@ -32,6 +50,22 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tdp1e"]
+resource_name = "FadeInNextScene"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/TransitionFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
@@ -83,8 +117,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxitx"]
 _data = {
+"BlackScreen": SubResource("Animation_8s6lp"),
 "FadeIn": SubResource("Animation_3imvh"),
 "FadeInNextRoom": SubResource("Animation_mloe6"),
+"FadeInNextScene": SubResource("Animation_tdp1e"),
 "FadeOut": SubResource("Animation_wwjq4"),
 "FadeOutNextRoom": SubResource("Animation_nkwig"),
 "RESET": SubResource("Animation_phyi3")
@@ -95,9 +131,9 @@ shader = ExtResource("2_ke0mw")
 shader_parameter/r_displacement = Vector2(7, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-7, 0)
-shader_parameter/height = 0.5
-shader_parameter/width = 0.6
-shader_parameter/fade = 1.0
+shader_parameter/height = 0.4
+shader_parameter/width = 0.5
+shader_parameter/fade = 1.25
 shader_parameter/blurAmount = 0.5
 
 [node name="MainCamera" type="Camera3D"]
@@ -112,21 +148,32 @@ heightOffset = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_hxitx")
 }
+autoplay = "FadeOut"
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+offset_top = 968.0
+offset_right = 312.0
+offset_bottom = 1008.0
+scale = Vector2(2, 2)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("4_tkf3q")
+texture_progress = ExtResource("5_8smdq")
 
 [node name="CameraShader" type="ColorRect" parent="UI"]
 material = SubResource("ShaderMaterial_yp7y2")
 offset_right = 1920.0
 offset_bottom = 1080.0
 
+[node name="DialogueManager" parent="UI" instance=ExtResource("2_ibeui")]
+position = Vector2(960, 856)
+
 [node name="TransitionFade" type="ColorRect" parent="UI"]
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
-
-[node name="DialogueManager" parent="UI" instance=ExtResource("2_ibeui")]
-position = Vector2(960, 856)
 
 [connection signal="animation_finished" from="TransitionAnimation" to="." method="_on_transition_animation_animation_finished"]

@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://danj6eoid3u8h"]
+
+[ext_resource type="Script" path="res://Script/MainMenu.cs" id="1_kmvdj"]
+[ext_resource type="Texture2D" uid="uid://cc5yn4dt4j1io" path="res://Asset/2D/UI/button_unpressed.png" id="1_ofrhr"]
+[ext_resource type="Texture2D" uid="uid://dp35m204oysn0" path="res://Asset/2D/UI/button_pressed.png" id="2_xfgfo"]
+[ext_resource type="Texture2D" uid="uid://ca0rr1jx4jmkh" path="res://Asset/2D/UI/button_hover.png" id="3_wbecw"]
+[ext_resource type="Theme" uid="uid://bdwmhb48je4di" path="res://Theme/DefaultText.tres" id="3_y5dpc"]
+[ext_resource type="Texture2D" uid="uid://bhcdc8slvlhj5" path="res://Asset/2D/UI/button_unpressed_2.png" id="5_fi2oy"]
+[ext_resource type="Texture2D" uid="uid://dxn04fr801r8f" path="res://Asset/2D/UI/button_pressed_2.png" id="6_8ds7q"]
+[ext_resource type="Texture2D" uid="uid://d0avtxn43gn2i" path="res://Asset/2D/UI/button_hover_2.png" id="7_8gn2o"]
+
+[sub_resource type="Animation" id="Animation_eafje"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ctbnw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ouu1m"]
+resource_name = "default"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hru48"]
+_data = {
+"FadeIn": SubResource("Animation_eafje"),
+"RESET": SubResource("Animation_ctbnw"),
+"default": SubResource("Animation_ouu1m")
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_kmvdj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hru48")
+}
+autoplay = "default"
+
+[node name="EmptyButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+focus_neighbor_top = NodePath("../Menu/Quit")
+focus_neighbor_bottom = NodePath("../Menu/Start")
+focus_next = NodePath("../Menu/Start")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+offset_left = 68.0
+offset_top = 512.0
+offset_right = 758.0
+offset_bottom = 1026.0
+
+[node name="Start" type="TextureButton" parent="Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+texture_normal = ExtResource("1_ofrhr")
+texture_pressed = ExtResource("2_xfgfo")
+texture_hover = ExtResource("3_wbecw")
+
+[node name="Label" type="Label" parent="Menu/Start"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = 5.0
+offset_right = 57.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y5dpc")
+theme_override_font_sizes/font_size = 37
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+texture_normal = ExtResource("5_fi2oy")
+texture_pressed = ExtResource("6_8ds7q")
+texture_hover = ExtResource("7_8gn2o")
+
+[node name="Label" type="Label" parent="Menu/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y5dpc")
+theme_override_font_sizes/font_size = 37
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+texture_normal = ExtResource("5_fi2oy")
+texture_pressed = ExtResource("6_8ds7q")
+texture_hover = ExtResource("7_8gn2o")
+
+[node name="Label" type="Label" parent="Menu/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y5dpc")
+theme_override_font_sizes/font_size = 37
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://x0vbg6101mkd"]
+[gd_scene load_steps=28 format=3 uid="uid://x0vbg6101mkd"]
 
 [ext_resource type="Script" path="res://Script/Dialogue/DialogueManager.cs" id="1_e8a37"]
 [ext_resource type="Texture2D" uid="uid://cljqsy0ep8cgv" path="res://Asset/2D/Dialogue/NamePlate.png" id="2_aikho"]
 [ext_resource type="Script" path="res://Script/Dialogue/ScrollingText.cs" id="2_e6126"]
 [ext_resource type="Texture2D" uid="uid://1imbc3t7uny5" path="res://Asset/2D/Dialogue/Dialoguebox.png" id="3_urnpa"]
+[ext_resource type="Theme" uid="uid://bdwmhb48je4di" path="res://Theme/DefaultText.tres" id="3_w7x70"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ark3w"]
 
@@ -139,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-433, -232)]
+"values": [Vector2(-201, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47yf6"]
@@ -191,7 +192,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(433, -232)]
+"values": [Vector2(201, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_inpsc"]
@@ -213,7 +214,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(-1400, -138), Vector2(-700, -138)]
+"values": [Vector2(-1400, -98), Vector2(-700, -98)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -240,7 +241,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(-700, -138), Vector2(-1400, -138)]
+"values": [Vector2(-700, -98), Vector2(-1400, -98)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -301,7 +302,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(1400, -138), Vector2(700, -138)]
+"values": [Vector2(1400, -98), Vector2(700, -98)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -328,7 +329,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(0.2, 1),
 "update": 0,
-"values": [Vector2(700, -138), Vector2(1400, -138)]
+"values": [Vector2(700, -98), Vector2(1400, -98)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -401,7 +402,7 @@ sprite_frames = SubResource("SpriteFrames_7yosd")
 position = Vector2(0, 530)
 
 [node name="NamePlateLeft" type="Sprite2D" parent="Box"]
-position = Vector2(-433, -232)
+position = Vector2(-201, 0)
 texture = ExtResource("2_aikho")
 
 [node name="NameLeft" type="RichTextLabel" parent="Box/NamePlateLeft"]
@@ -416,6 +417,7 @@ offset_right = -24.5
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_w7x70")
 theme_override_font_sizes/bold_italics_font_size = 35
 theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/mono_font_size = 35
@@ -426,7 +428,7 @@ text = "Name Left"
 scroll_active = false
 
 [node name="NamePlateRight" type="Sprite2D" parent="Box"]
-position = Vector2(433, -232)
+position = Vector2(201, 0)
 texture = ExtResource("2_aikho")
 
 [node name="NameRight" type="RichTextLabel" parent="Box/NamePlateRight"]
@@ -441,6 +443,7 @@ offset_right = -24.5
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_w7x70")
 theme_override_font_sizes/bold_italics_font_size = 35
 theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/mono_font_size = 35
@@ -467,6 +470,7 @@ offset_right = 391.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_w7x70")
 theme_override_colors/table_border = Color(0, 0, 0, 1)
 theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
 theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
@@ -512,7 +516,12 @@ libraries = {
 "": SubResource("AnimationLibrary_auffr")
 }
 
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Voice"
+
 [connection signal="meta_clicked" from="Box/Text" to="." method="_on_text_meta_clicked"]
 [connection signal="animation_finished" from="AnimationDialogue" to="." method="_on_animation_dialogue_animation_finished"]
 [connection signal="animation_finished" from="AnimationNamePlateLeft" to="." method="_on_animation_name_plate_left_animation_finished"]
 [connection signal="animation_finished" from="AnimationNamePlateRight" to="." method="_on_animation_name_plate_right_animation_finished"]
+[connection signal="animation_finished" from="AnimationLeft" to="." method="_on_animation_left_animation_finished"]
+[connection signal="animation_finished" from="AnimationRight" to="." method="_on_animation_right_animation_finished"]

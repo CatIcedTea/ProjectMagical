@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2jlljbtf0416"]
+
+[ext_resource type="SpriteFrames" uid="uid://ccsailcyuwnke" path="res://Prefab/Portrait/Animation/Zuei.tres" id="1_koob7"]
+
+[node name="ZueiPortrait" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_koob7")

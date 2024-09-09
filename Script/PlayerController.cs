@@ -1,14 +1,15 @@
 using Godot;
-using System.Collections;
 
 public partial class PlayerController : CharacterBody3D
 {
+	public float health = 10;
 	public float Speed = 7.5f;
 	public float JumpVelocity = 4.5f;
 
 	private AnimatedSprite3D playerSprite;
 	private AnimationPlayer animPlayer;
 	private	CameraController camera;
+	private TextureProgressBar healthBar;
 	private DialogueManager dialogueManager;
 	private Node3D mascotPosition;
 	private Timer dodgeCooldown;
@@ -30,6 +31,7 @@ public partial class PlayerController : CharacterBody3D
 		playerSprite = GetNode<AnimatedSprite3D>("PlayerSprite");
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     	camera = GetTree().CurrentScene.GetNode<CameraController>("MainCamera");
+		healthBar = camera.GetNode<CanvasLayer>("UI").GetNode<TextureProgressBar>("HealthBar");
 		dialogueManager = camera.GetNode<CanvasLayer>("UI").GetNode<DialogueManager>("DialogueManager");
 		mascotPosition = GetNode<Node3D>("Flip").GetNode<Node3D>("MascotPosition");
 		dodgeCooldown = GetNode<Timer>("DodgeCooldown");
@@ -42,6 +44,8 @@ public partial class PlayerController : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
 	{
+		healthBar.Value = health;
+		
 		Vector3 velocity = Velocity;
 		
 		//Handle gravity
@@ -67,6 +71,7 @@ public partial class PlayerController : CharacterBody3D
 
 			if(animPlayer.CurrentAnimation != "Dodge")
 				direction = (camera.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+
 			if (direction != Vector3.Zero&& animPlayer.CurrentAnimation != "Dodge")
 			{
 				velocity.X = direction.X * Speed;
@@ -75,7 +80,7 @@ public partial class PlayerController : CharacterBody3D
 				lastVelocity = velocity;
 
 				//Handle flipping
-				if( animPlayer.CurrentAnimation != "LightAttack" ){
+				if( animPlayer.CurrentAnimation != "LightAttack"){
 				if(inputDir.X > 0.01f && facingDir == FacingDir.FacingLeft){
 					GetNode<Node3D>("Flip").Scale = new Vector3(1, 1 , 1);
 					playerSprite.FlipH = true;
@@ -95,12 +100,12 @@ public partial class PlayerController : CharacterBody3D
 			}
 
 			//Handle attacks
-			if(Input.IsActionJustPressed("LightAttack") && animPlayer.CurrentAnimation != "LightAttack"){
+			if(Input.IsActionJustPressed("LightAttack") && animPlayer.CurrentAnimation != "LightAttack" && !GameState.isAtHome){
 				animPlayer.Play("LightAttack");
 			}
 
 			//Handle dodge
-			if(Input.IsActionJustPressed("Dodge") && animPlayer.CurrentAnimation != "Dodge" && dodgeCooldown.IsStopped()){
+			if(Input.IsActionJustPressed("Dodge") && animPlayer.CurrentAnimation != "Dodge" && dodgeCooldown.IsStopped() && !GameState.isAtHome){
 				animPlayer.Play("Dodge");
 				dodgeCooldown.Start();
 			}
@@ -114,6 +119,7 @@ public partial class PlayerController : CharacterBody3D
 					velocity = (lastVelocity).Normalized() * 15;
 			}
 
+			//Attack lunges
 			if(!attackBox.Disabled){
 				if(direction != Vector3.Zero){
 					velocity.X = direction.X * 4;
@@ -136,6 +142,10 @@ public partial class PlayerController : CharacterBody3D
 		//Moves the player
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	public void takeDamage(float damage){
+		health -= damage;
 	}
 
 	//Handle attack hit detection

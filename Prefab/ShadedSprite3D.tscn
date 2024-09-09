@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq2qr0pvfwwty"]
+
+[ext_resource type="Texture2D" uid="uid://d0cmyjlkvwe80" path="res://Asset/2D/Stage1/Environment/envirmoment_9.png" id="1_b5xo1"]
+
+[node name="Sprite3D" type="Sprite3D"]
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 2
+texture = ExtResource("1_b5xo1")

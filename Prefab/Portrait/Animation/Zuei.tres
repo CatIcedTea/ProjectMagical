@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ccsailcyuwnke"]
+
+[ext_resource type="Texture2D" uid="uid://jt3ck6ef6y03" path="res://Asset/2D/Portrait/Zuei/Idle_SpriteM.png" id="1_emova"]
+[ext_resource type="Texture2D" uid="uid://cr1lp56vw4s0h" path="res://Asset/2D/Portrait/Zuei/Happy_SpriteM.png" id="2_i7tak"]
+[ext_resource type="Texture2D" uid="uid://cagwkotr0hjg2" path="res://Asset/2D/Portrait/Zuei/Sad_SpriteM.png" id="3_2xr2p"]
+[ext_resource type="Texture2D" uid="uid://djc5u048xd0gn" path="res://Asset/2D/Portrait/Zuei/Upset_SpriteM.png" id="4_qaelq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emova")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i7tak")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2xr2p")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qaelq")
+}],
+"loop": true,
+"name": &"upset",
+"speed": 5.0
+}]
