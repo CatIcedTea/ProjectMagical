@@ -1,104 +1,106 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgnhao05rppes"]
+[gd_scene load_steps=38 format=3 uid="uid://bgnhao05rppes"]
 
-[ext_resource type="Script" path="res://Script/NextRoom.cs" id="1_3ft6j"]
-[ext_resource type="Texture2D" uid="uid://c4yr7hlehy2ux" path="res://Asset/2D/Portal.png" id="2_bu8q8"]
+[ext_resource type="Script" path="res://Script/NextRoom.cs" id="1_sesbs"]
+[ext_resource type="Texture2D" uid="uid://c4yr7hlehy2ux" path="res://Asset/2D/Portal.png" id="2_j1e7n"]
+[ext_resource type="AudioStream" uid="uid://l1furfc0b3cc" path="res://Asset/Audio/SFX/Portal Sound.wav" id="3_b54bx"]
+[ext_resource type="AudioStream" uid="uid://b3bg11djmknl1" path="res://Asset/Audio/SFX/Portal Enter.wav" id="4_jbftr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wfppp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl2ec"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(0, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_545ls"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(251, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krehk"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(502, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrsjw"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(753, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14gp1"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(1004, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7m76"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(1255, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8j0b"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(1506, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74qyr"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(1757, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7awd8"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(2008, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvee7"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(2259, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnxeq"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(2510, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yihvw"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(2761, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxty4"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(3012, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cou8i"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(3263, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuodu"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(3514, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rc38"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(3765, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0pjc"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(4016, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wtgd8"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(4267, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0iatl"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(4518, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mv358"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(4769, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6wp3"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(5020, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbeeq"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(5271, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ten8v"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(5522, 0, 251, 280)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn31p"]
-atlas = ExtResource("2_bu8q8")
+atlas = ExtResource("2_j1e7n")
 region = Rect2(5773, 0, 251, 280)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pg65d"]
@@ -219,8 +221,63 @@ _data = {
 "default": SubResource("Animation_hpc1j")
 }
 
+[sub_resource type="Animation" id="Animation_rffov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2en7i"]
+resource_name = "disable"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.470588), Color(0.58, 0.58, 0.58, 0.0745098), Color(1, 1, 1, 0.470588)]
+}
+
+[sub_resource type="Animation" id="Animation_vfnka"]
+resource_name = "enable"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d63wk"]
+_data = {
+"RESET": SubResource("Animation_rffov"),
+"disable": SubResource("Animation_2en7i"),
+"enable": SubResource("Animation_vfnka")
+}
+
 [node name="NextRoom" type="Area3D"]
-script = ExtResource("1_3ft6j")
+script = ExtResource("1_sesbs")
 
 [node name="IsNextRoom" type="Node" parent="."]
 
@@ -241,3 +298,18 @@ libraries = {
 "": SubResource("AnimationLibrary_4gwgi")
 }
 autoplay = "default"
+
+[node name="Disable" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d63wk")
+}
+autoplay = "disable"
+
+[node name="IdleSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_b54bx")
+autoplay = true
+
+[node name="EnterSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_jbftr")
+
+[connection signal="finished" from="IdleSound" to="." method="_on_idle_sound_finished"]

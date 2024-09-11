@@ -34,8 +34,8 @@ material = SubResource("StandardMaterial3D_57hg6")
 size = Vector3(0.05, 0.05, 0.05)
 
 [node name="Stage1Breakable3" type="StaticBody3D" groups=["Breakables"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_j2d2i")
 health = 2.0
 

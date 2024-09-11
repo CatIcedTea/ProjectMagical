@@ -1,9 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://ccy5g878g87cp"]
+[gd_scene load_steps=75 format=3 uid="uid://ccy5g878g87cp"]
 
 [ext_resource type="Script" path="res://Script/Enemy.cs" id="1_cr4ob"]
 [ext_resource type="Shader" path="res://Script/Shader/flashWhite.gdshader" id="2_k42od"]
 [ext_resource type="Texture2D" uid="uid://bbv1jh0fal3sl" path="res://Asset/2D/Stage1/Enemy/Spider/Spider_Idle.png" id="3_bw4ul"]
 [ext_resource type="Texture2D" uid="uid://duo05dr5btxv0" path="res://Asset/2D/Stage1/Enemy/Spider/Spider_Attack.png" id="3_h7fmw"]
+[ext_resource type="AudioStream" uid="uid://cw5cxlha8iig3" path="res://Asset/Audio/SFX/Enemy Idle.wav" id="5_odp5q"]
+[ext_resource type="AudioStream" uid="uid://jt5vbw3egp2x" path="res://Asset/Audio/SFX/Enemy Damage.wav" id="6_nadx7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxjkj"]
 atlas = ExtResource("3_h7fmw")
@@ -405,6 +407,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_auctf"]
 resource_name = "AttackStartup"
@@ -444,6 +458,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_qqdij"]
@@ -507,6 +533,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_y0lkf"]
@@ -572,6 +610,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xvbb2"]
@@ -660,6 +710,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Flip/AttackBox/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_v0ycn"]
 resource_name = "TakeDamage"
@@ -724,6 +786,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Damage:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fkn73"]
 _data = {
@@ -735,25 +809,127 @@ _data = {
 "TakeDamage": SubResource("Animation_v0ycn")
 }
 
+[sub_resource type="Animation" id="Animation_4qenk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Sprite3D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7usii"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Sprite3D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_emk8w"]
+_data = {
+"RESET": SubResource("Animation_4qenk"),
+"default": SubResource("Animation_7usii")
+}
+
+[sub_resource type="Animation" id="Animation_gc7s6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flip/Sprite3D:shaded")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mvg2f"]
+resource_name = "flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/SubViewport/AnimatedSprite2D:material:shader_parameter/white")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1.75, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flip/Sprite3D:shaded")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bcexk"]
+_data = {
+"RESET": SubResource("Animation_gc7s6"),
+"flash": SubResource("Animation_mvg2f")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irs3l"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_pp2cc"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_omtfy"]
 radius = 0.667823
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irs3l"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_psfx1"]
-resource_local_to_scene = true
-shader = ExtResource("2_k42od")
-shader_parameter/white = 0.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rwdx8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7h2ad"]
 radius = 3.97794
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psfx1"]
+resource_local_to_scene = true
+shader = ExtResource("2_k42od")
+shader_parameter/white = 1.0
+
 [node name="Spider" type="CharacterBody3D" groups=["Enemies"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 2
+floor_constant_speed = true
 script = ExtResource("1_cr4ob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -762,12 +938,26 @@ libraries = {
 }
 autoplay = "Idle"
 
+[node name="Float" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_emk8w")
+}
+autoplay = "default"
+
+[node name="FlashWhite" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bcexk")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00596, 0)
+shape = SubResource("CapsuleShape3D_irs3l")
+
 [node name="Flip" type="Node3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="Flip"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17283, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34121, 0)
 billboard = 2
-shaded = true
 alpha_cut = 2
 texture_filter = 0
 texture = SubResource("ViewportTexture_pp2cc")
@@ -777,14 +967,24 @@ texture = SubResource("ViewportTexture_pp2cc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flip/AttackBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996886, 0)
 shape = SubResource("CylinderShape3D_omtfy")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00596, 0)
-shape = SubResource("CapsuleShape3D_irs3l")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.1
 avoidance_enabled = true
+
+[node name="DetectionRange" type="Area3D" parent="."]
+transform = Transform3D(1.0841, 0, 0, 0, 1, 0, 0, 0, 1.14656, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+transform = Transform3D(21.3523, 0, 0, 0, 1, 0, 0, 0, 21.3523, 0, 1.04963, 0)
+shape = SubResource("CylinderShape3D_rwdx8")
+
+[node name="AttackRange" type="Area3D" parent="."]
+transform = Transform3D(0.947558, 0, 0, 0, 1, 0, 0, 0, 0.926013, 0, 0.868402, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("CylinderShape3D_7h2ad")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_top = -277.0
@@ -805,20 +1005,26 @@ sprite_frames = SubResource("SpriteFrames_t7kkb")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="AttackRange" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.868402, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
-shape = SubResource("CylinderShape3D_7h2ad")
-
 [node name="HitStun" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Idle" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("5_odp5q")
+autoplay = true
+bus = &"SFX"
+
+[node name="Damage" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("6_nadx7")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Flip/AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

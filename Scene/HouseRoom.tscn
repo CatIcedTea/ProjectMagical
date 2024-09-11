@@ -5,17 +5,17 @@
 [ext_resource type="MeshLibrary" uid="uid://bkjhrp8yjqg4s" path="res://Prefab/Tileset/HouseTileset.tres" id="3_4w3j0"]
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="4_f71dw"]
 [ext_resource type="JSON" path="res://Dialogue/RoomDialogue/MiscInterable/InteractShelf.json" id="5_f2ft6"]
-[ext_resource type="PackedScene" uid="uid://bq2qr0pvfwwty" path="res://Prefab/ShadedSprite3D.tscn" id="6_3q4tt"]
+[ext_resource type="PackedScene" uid="uid://bq2qr0pvfwwty" path="res://Prefab/Environment/ShadedSprite3D.tscn" id="6_3q4tt"]
 [ext_resource type="Texture2D" uid="uid://u35kmukav55u" path="res://Asset/2D/Room/Plant.png" id="7_bonb8"]
 [ext_resource type="Texture2D" uid="uid://cknsxa0wjyame" path="res://Asset/2D/Room/photos.png" id="8_18ck0"]
 [ext_resource type="Texture2D" uid="uid://dmgpep7ecgwcw" path="res://Asset/2D/Room/Main door.png" id="9_5jevy"]
 [ext_resource type="Texture2D" uid="uid://ch5qkkekqq2cq" path="res://Asset/2D/Room/window.png" id="9_fe4qg"]
-[ext_resource type="Texture2D" uid="uid://cpwpj8fuyrnyi" path="res://Asset/3D/Tileset/Level_Tiles_pillow.png" id="10_5a7db"]
-[ext_resource type="Texture2D" uid="uid://bdcfmvi52qbdv" path="res://Asset/3D/Tileset/Level_Tiles_Blanket.png" id="11_mjpf7"]
-[ext_resource type="Texture2D" uid="uid://dovjgqvfcljou" path="res://Asset/3D/Tileset/Level_Tiles_top blanket.png" id="12_2hepw"]
-[ext_resource type="Texture2D" uid="uid://1uo0i1e4561s" path="res://Asset/3D/Tileset/Level_Tiles_WoodTX.png" id="13_vifae"]
-[ext_resource type="Texture2D" uid="uid://d0ubreph523sq" path="res://Asset/3D/Tileset/Level_Tiles_Black.png" id="14_xmfic"]
-[ext_resource type="Texture2D" uid="uid://jdccby84hebe" path="res://Asset/3D/Tileset/Level_Tiles_books.png" id="15_i0ltm"]
+[ext_resource type="Texture2D" uid="uid://darx6ee5ix4po" path="res://Asset/3D/Tileset/Level_Tiles_pillow.png" id="10_5a7db"]
+[ext_resource type="Texture2D" uid="uid://hyw3gx6fnbr7" path="res://Asset/3D/Tileset/Level_Tiles_Blanket.png" id="11_mjpf7"]
+[ext_resource type="Texture2D" uid="uid://cs2r0rma0okfq" path="res://Asset/3D/Tileset/Level_Tiles_top blanket.png" id="12_2hepw"]
+[ext_resource type="Texture2D" uid="uid://drgg80cd2qp5s" path="res://Asset/3D/Tileset/Level_Tiles_WoodTX.png" id="13_vifae"]
+[ext_resource type="Texture2D" uid="uid://b5kenroxqclb8" path="res://Asset/3D/Tileset/Level_Tiles_Black.png" id="14_xmfic"]
+[ext_resource type="Texture2D" uid="uid://b5prrwjp7ojsl" path="res://Asset/3D/Tileset/Level_Tiles_books.png" id="15_i0ltm"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="16_axnf5"]
 [ext_resource type="JSON" path="res://Dialogue/RoomDialogue/OpeningSequence2.json" id="17_qdj7g"]
 [ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="18_5mpsi"]
@@ -903,8 +903,8 @@ autoplay = "default"
 
 [node name="Audio" type="Node3D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("18_5mpsi")
-autoplay = true
+volume_db = -10.0
 
 [connection signal="area_entered" from="DoorDialogue" to="." method="_on_door_dialogue_area_entered"]

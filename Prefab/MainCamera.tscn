@@ -1,10 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://d02b4ai4ikjaq"]
+[gd_scene load_steps=24 format=3 uid="uid://d02b4ai4ikjaq"]
 
 [ext_resource type="Script" path="res://Script/CameraController.cs" id="1_3uv3d"]
 [ext_resource type="PackedScene" uid="uid://x0vbg6101mkd" path="res://Prefab/DialogueManager.tscn" id="2_ibeui"]
 [ext_resource type="Shader" path="res://Script/Shader/CameraShader.gdshader" id="2_ke0mw"]
 [ext_resource type="Texture2D" uid="uid://d2vwoscowdfgi" path="res://Asset/2D/UI/healthbar_empty.png" id="4_tkf3q"]
 [ext_resource type="Texture2D" uid="uid://dggvo31k2rexu" path="res://Asset/2D/UI/healthbar_fill.png" id="5_8smdq"]
+[ext_resource type="Texture2D" uid="uid://cc5yn4dt4j1io" path="res://Asset/2D/UI/button_unpressed.png" id="6_54pyi"]
+[ext_resource type="Texture2D" uid="uid://dp35m204oysn0" path="res://Asset/2D/UI/button_pressed.png" id="7_xge6p"]
+[ext_resource type="Texture2D" uid="uid://ca0rr1jx4jmkh" path="res://Asset/2D/UI/button_hover.png" id="8_qvk1w"]
+[ext_resource type="Theme" uid="uid://bdwmhb48je4di" path="res://Theme/DefaultText.tres" id="9_7kr3j"]
+[ext_resource type="Texture2D" uid="uid://bhcdc8slvlhj5" path="res://Asset/2D/UI/button_unpressed_2.png" id="10_b1nsp"]
+[ext_resource type="Texture2D" uid="uid://dxn04fr801r8f" path="res://Asset/2D/UI/button_pressed_2.png" id="11_3jcwg"]
+[ext_resource type="Texture2D" uid="uid://d0avtxn43gn2i" path="res://Asset/2D/UI/button_hover_2.png" id="12_q1hx4"]
+[ext_resource type="Script" path="res://Script/VolumeSlider.cs" id="13_c4bl6"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5gwd6"]
 
@@ -72,6 +80,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wwjq4"]
 resource_name = "FadeOut"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,7 +88,7 @@ tracks/0/path = NodePath("UI/TransitionFade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 1),
+"times": PackedFloat32Array(0.4, 1.5),
 "transitions": PackedFloat32Array(1.5, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -154,12 +163,12 @@ autoplay = "FadeOut"
 follow_viewport_enabled = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI"]
-offset_top = 968.0
+offset_top = 995.0
 offset_right = 312.0
-offset_bottom = 1008.0
+offset_bottom = 1035.0
 scale = Vector2(2, 2)
-max_value = 10.0
-value = 10.0
+max_value = 20.0
+value = 20.0
 texture_under = ExtResource("4_tkf3q")
 texture_progress = ExtResource("5_8smdq")
 
@@ -176,4 +185,233 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
 
+[node name="Menu" type="Node2D" parent="UI"]
+visible = false
+position = Vector2(-468, -305)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Menu"]
+offset_left = 367.0
+offset_top = 238.0
+offset_right = 2509.0
+offset_bottom = 1483.0
+color = Color(0, 0, 0, 0.54902)
+
+[node name="MenuBackground" type="Node2D" parent="UI/Menu"]
+position = Vector2(-58, -32)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/Menu/MenuBackground"]
+offset_left = 1091.0
+offset_top = 481.0
+offset_right = 1881.0
+offset_bottom = 1097.0
+color = Color(1, 0.883333, 0.75, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Menu/MenuBackground"]
+offset_left = 1102.0
+offset_top = 493.0
+offset_right = 1870.0
+offset_bottom = 1085.0
+color = Color(0.364706, 0.172549, 0.0156863, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Menu/MenuBackground"]
+offset_left = 1116.0
+offset_top = 511.0
+offset_right = 1856.0
+offset_bottom = 1067.0
+color = Color(1, 0.883333, 0.75, 1)
+
+[node name="Menu" type="VBoxContainer" parent="UI/Menu"]
+offset_left = 1083.0
+offset_top = 490.0
+offset_right = 1773.0
+offset_bottom = 1004.0
+
+[node name="Resume" type="TextureButton" parent="UI/Menu/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+texture_normal = ExtResource("6_54pyi")
+texture_pressed = ExtResource("7_xge6p")
+texture_hover = ExtResource("8_qvk1w")
+
+[node name="Label" type="Label" parent="UI/Menu/Menu/Resume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = 5.0
+offset_right = 57.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_7kr3j")
+theme_override_font_sizes/font_size = 37
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="UI/Menu/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+texture_normal = ExtResource("10_b1nsp")
+texture_pressed = ExtResource("11_3jcwg")
+texture_hover = ExtResource("12_q1hx4")
+
+[node name="Label" type="Label" parent="UI/Menu/Menu/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_7kr3j")
+theme_override_font_sizes/font_size = 37
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="UI/Menu/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Resume")
+focus_next = NodePath("../Resume")
+texture_normal = ExtResource("10_b1nsp")
+texture_pressed = ExtResource("11_3jcwg")
+texture_hover = ExtResource("12_q1hx4")
+
+[node name="Label" type="Label" parent="UI/Menu/Menu/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_7kr3j")
+theme_override_font_sizes/font_size = 37
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="VBoxContainer" parent="UI/Menu"]
+visible = false
+offset_left = 1083.0
+offset_top = 491.0
+offset_right = 1773.0
+offset_bottom = 1043.0
+theme_override_constants/separation = 15
+
+[node name="MasterText" type="Label" parent="UI/Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("9_7kr3j")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Master Volume:"
+horizontal_alignment = 1
+
+[node name="Master" type="HSlider" parent="UI/Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("13_c4bl6")
+sliderName = "Master"
+
+[node name="MusicText" type="Label" parent="UI/Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("9_7kr3j")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Music: "
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="UI/Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("13_c4bl6")
+sliderName = "Music"
+
+[node name="SFXText" type="Label" parent="UI/Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("9_7kr3j")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Sound Effects: "
+horizontal_alignment = 1
+
+[node name="SFX" type="HSlider" parent="UI/Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("13_c4bl6")
+sliderName = "SFX"
+
+[node name="VoiceText" type="Label" parent="UI/Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("9_7kr3j")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Voice: "
+horizontal_alignment = 1
+
+[node name="Voice" type="HSlider" parent="UI/Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("13_c4bl6")
+sliderName = "Voice"
+
+[node name="Return" type="TextureButton" parent="UI/Menu/Settings"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+texture_normal = ExtResource("10_b1nsp")
+texture_pressed = ExtResource("11_3jcwg")
+texture_hover = ExtResource("12_q1hx4")
+
+[node name="Label" type="Label" parent="UI/Menu/Settings/Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_7kr3j")
+theme_override_font_sizes/font_size = 37
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="animation_finished" from="TransitionAnimation" to="." method="_on_transition_animation_animation_finished"]
+[connection signal="pressed" from="UI/Menu/Menu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Menu/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="UI/Menu/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="UI/Menu/Settings/Master" to="UI/Menu/Settings/Master" method="_on_value_changed"]
+[connection signal="value_changed" from="UI/Menu/Settings/Music" to="UI/Menu/Settings/Music" method="_on_value_changed"]
+[connection signal="value_changed" from="UI/Menu/Settings/SFX" to="UI/Menu/Settings/SFX" method="_on_value_changed"]
+[connection signal="value_changed" from="UI/Menu/Settings/Voice" to="UI/Menu/Settings/Voice" method="_on_value_changed"]
+[connection signal="pressed" from="UI/Menu/Settings/Return" to="." method="_on_return_pressed"]

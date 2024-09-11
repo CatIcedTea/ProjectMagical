@@ -35,11 +35,16 @@ public partial class CameraController : Camera3D
 	private float maxZoomOut = 20f;
 	private float maxZoomIn = 2f;
 
+	private Node2D menu;
+	private bool inMenu = false;
+
 	public override void _Ready()
 	{
 		player = GetTree().CurrentScene.GetNode<PlayerController>("Player");
 
 		Position = player.Position;
+
+		menu = GetNode<CanvasLayer>("UI").GetNode<Node2D>("Menu");
 
 		lengthRatio = Mathf.Tan(Mathf.Abs(Rotation.Y));
 		distanceOffsetShort = lengthRatio * distanceOffset;
@@ -65,7 +70,23 @@ public partial class CameraController : Camera3D
 			shakeVal *= -1;
 		}
 
-		
+		if(Input.IsActionJustPressed("Escape")){
+			if(!inMenu){
+				inMenu = true;
+			}
+			else{
+				inMenu = false;
+				Engine.TimeScale = 1;
+			}
+		}
+
+		if(inMenu){
+			menu.Visible = true;
+			Engine.TimeScale = 0;
+		}
+		else{
+			menu.Visible = false;
+		}
 		
 		handleZoom();
 	}
@@ -108,5 +129,24 @@ public partial class CameraController : Camera3D
 
 	public void shakeScreen(){
 		shakeVal = shakeAmount;
+	}
+
+	void _on_resume_pressed(){
+		inMenu = false;
+	}
+
+	void _on_settings_pressed(){
+		menu.GetNode<VBoxContainer>("Menu").Visible = false;
+		menu.GetNode<VBoxContainer>("Settings").Visible = true;
+	}
+
+	void _on_quit_pressed(){
+		Engine.TimeScale = 1;
+		GetTree().ChangeSceneToFile("res://Scene/MainMenu.tscn");
+	}
+
+	void _on_return_pressed(){
+		menu.GetNode<VBoxContainer>("Menu").Visible = true;
+		menu.GetNode<VBoxContainer>("Settings").Visible = false;
 	}
 }

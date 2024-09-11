@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cciqmr10gfxhb"]
+
+[ext_resource type="Texture2D" uid="uid://c4mp6qryprla6" path="res://Asset/2D/Stage1/Environment/grass_2.png" id="1_fay74"]
+
+[node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0774941, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 2
+texture = ExtResource("1_fay74")

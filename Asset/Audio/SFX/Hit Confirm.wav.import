@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dabndgeka0ruw"
+path="res://.godot/imported/Hit Confirm.wav-345d59310eb8199734071954dc252108.sample"
+
+[deps]
+
+source_file="res://Asset/Audio/SFX/Hit Confirm.wav"
+dest_files=["res://.godot/imported/Hit Confirm.wav-345d59310eb8199734071954dc252108.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

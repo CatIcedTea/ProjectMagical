@@ -75,10 +75,6 @@ public partial class DialogueManager : Node2D
 		if(transitionAnim.CurrentAnimation == "FadeInNextScene" && !transitionAnim.IsPlaying()){
 			GetTree().ChangeSceneToFile(nextScene);
 		}
-
-		//TEMP REMOVE LATER
-		if(Input.IsActionJustReleased("Escape"))
-			GetTree().Quit();
 	}
 
 	//Starts the dialogue with the given file

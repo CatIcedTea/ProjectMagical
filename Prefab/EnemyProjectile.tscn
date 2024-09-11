@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck3eeamrhslb"]
+
+[ext_resource type="Script" path="res://Script/EnemyProjectile.cs" id="1_ud4db"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t0knm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga3os"]
+albedo_color = Color(0.971185, 0.359134, 0.194528, 1)
+roughness = 0.73
+emission_enabled = true
+emission = Color(0.600786, 0.209084, 0.0483647, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_31nmk"]
+material = SubResource("StandardMaterial3D_ga3os")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddxkb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.169069, 0.0242186, 0.00294488, 1)
+metallic = 0.2
+emission_enabled = true
+emission = Color(0.0383972, 0.0383972, 0.0383972, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_uilwh"]
+material = SubResource("StandardMaterial3D_ddxkb")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Gradient" id="Gradient_54180"]
+offsets = PackedFloat32Array(0.625806, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="EnemyProjectile" type="Node3D"]
+top_level = true
+script = ExtResource("1_ud4db")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_t0knm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_31nmk")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="MeshInstance3D"]
+amount = 20
+mesh = SubResource("SphereMesh_uilwh")
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 5, 0)
+gravity = Vector3(0, 0.5, 0)
+color_ramp = SubResource("Gradient_54180")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

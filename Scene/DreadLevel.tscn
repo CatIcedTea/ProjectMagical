@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6kh21ask3uya"]
+[gd_scene load_steps=15 format=3 uid="uid://6kh21ask3uya"]
 
 [ext_resource type="Script" path="res://Script/DreadLevel.cs" id="1_pqicm"]
 [ext_resource type="PackedScene" uid="uid://bl5kmsqw3aqwl" path="res://Scene/DreadRooms/DreadStarterRoom.tscn" id="1_sljsb"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://Script/RoomGeneration.cs" id="2_ag7rr"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="3_8fvr3"]
 [ext_resource type="PackedScene" uid="uid://do0hjkfjbfeb" path="res://Scene/DreadRooms/DreadRoom1.tscn" id="3_n6tdv"]
+[ext_resource type="PackedScene" uid="uid://k4bnviraupff" path="res://Scene/DreadRooms/DreadRoom2.tscn" id="5_fe0w3"]
+[ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="7_1abvn"]
+[ext_resource type="Script" path="res://Script/Floor.cs" id="8_1e2vv"]
+[ext_resource type="Script" path="res://Script/LoopSound.cs" id="8_nls3d"]
 
 [sub_resource type="Environment" id="Environment_erq4o"]
 background_mode = 2
@@ -36,6 +40,8 @@ albedo_color = Color(0, 0, 0, 1)
 lightmap_size_hint = Vector2i(12, 12)
 material = SubResource("StandardMaterial3D_13rfc")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3kjt"]
+
 [node name="DreadLevel" type="Node3D"]
 script = ExtResource("1_pqicm")
 
@@ -56,7 +62,7 @@ transform = Transform3D(0.866026, 0.25, -0.433012, 0, 0.866025, 0.5, 0.5, -0.433
 
 [node name="Rooms" type="Node3D" parent="."]
 script = ExtResource("2_ag7rr")
-RoomList = Array[PackedScene]([ExtResource("3_n6tdv"), ExtResource("3_n6tdv")])
+RoomList = Array[PackedScene]([ExtResource("3_n6tdv"), ExtResource("5_fe0w3")])
 
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("1_sljsb")]
 
@@ -64,6 +70,22 @@ RoomList = Array[PackedScene]([ExtResource("3_n6tdv"), ExtResource("3_n6tdv")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103195, 9.53674e-07, -1.19253)
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4.20907, 0)
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -1.72223, 0)
 mesh = SubResource("PlaneMesh_daa3j")
 skeleton = NodePath("")
+script = ExtResource("8_1e2vv")
+
+[node name="Area3D" type="Area3D" parent="Floor"]
+transform = Transform3D(0.00333333, 0, 0, 0, 1, 0, 0, 0, 0.00333333, 0, 1.72223, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Area3D"]
+transform = Transform3D(557.669, 0, 0, 0, 1, 0, 0, 0, 557.669, 0, -4.22141, 0)
+shape = SubResource("BoxShape3D_x3kjt")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1abvn")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("8_nls3d")
+
+[connection signal="body_entered" from="Floor/Area3D" to="Floor" method="_on_area_3d_body_entered"]

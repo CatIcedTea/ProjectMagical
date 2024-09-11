@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5r6u1mvgnlif"]
 
-[ext_resource type="Script" path="res://Script/EnemySpawner.cs" id="1_lf3yw"]
-[ext_resource type="PackedScene" uid="uid://eljkpuxcn5fi" path="res://Prefab/Enemy/Enemy.tscn" id="2_5cemt"]
+[ext_resource type="Script" path="res://Script/EnemySpawner.cs" id="1_2eorc"]
+[ext_resource type="PackedScene" uid="uid://ccy5g878g87cp" path="res://Prefab/Enemy/Spider.tscn" id="2_f4suj"]
 
 [node name="EnemySpawner" type="Node3D"]
-script = ExtResource("1_lf3yw")
-EnemyList = Array[PackedScene]([ExtResource("2_5cemt")])
+script = ExtResource("1_2eorc")
+EnemyList = Array[PackedScene]([ExtResource("2_f4suj")])

@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://xk48etyf1slr"]
+[gd_scene load_steps=18 format=3 uid="uid://xk48etyf1slr"]
 
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="1_jbvrj"]
 [ext_resource type="JSON" path="res://Dialogue/SpeechBubbleDialogue/TestSpeechBubble.json" id="2_di7wl"]
 [ext_resource type="Texture2D" uid="uid://h47iq44qeg0r" path="res://Asset/2D/Portrait/TestPortrait.png" id="3_ksspg"]
 [ext_resource type="JSON" path="res://Dialogue/TestDialogue/Test.json" id="4_2yjyv"]
-[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="5_xlmig"]
-[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="6_ty0om"]
+[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/Environment/PlayerSpawn.tscn" id="5_xlmig"]
+[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/Environment/NextRoom.tscn" id="6_ty0om"]
 [ext_resource type="PackedScene" uid="uid://dpqx10ttk4vt3" path="res://Prefab/Environment/Breakables/Stage1Breakable1.tscn" id="8_dplsl"]
 [ext_resource type="PackedScene" uid="uid://cejrxtxh46xkt" path="res://Prefab/Environment/Breakables/Stage1Breakable2.tscn" id="9_tukcw"]
 [ext_resource type="PackedScene" uid="uid://gmjnbueh55tg" path="res://Prefab/Environment/Breakables/Stage1Breakable3.tscn" id="10_7k4i4"]
+[ext_resource type="PackedScene" uid="uid://ccy5g878g87cp" path="res://Prefab/Enemy/Spider.tscn" id="10_feosq"]
+[ext_resource type="PackedScene" uid="uid://dw6b8hlu7i222" path="res://Prefab/Enemy/GeyserCrab.tscn" id="11_vl7fq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2nbb"]
 animations = [{
@@ -69,6 +71,8 @@ mesh = SubResource("PlaneMesh_14um3")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.479477, 0)
@@ -81,6 +85,8 @@ mesh = SubResource("BoxMesh_cp15l")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Wall"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall/StaticBody3D"]
 shape = SubResource("BoxShape3D_3wcxe")
@@ -117,3 +123,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.991, 0, 3.481)
 
 [node name="Stage1Breakable9" parent="." instance=ExtResource("9_tukcw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327, 0, 2.442)
+
+[node name="Spider" parent="." instance=ExtResource("10_feosq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91867, 0.160416, 6.43109)
+
+[node name="GeyserCrab" parent="." instance=ExtResource("11_vl7fq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)

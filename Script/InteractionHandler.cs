@@ -91,6 +91,7 @@ public partial class InteractionHandler : Area3D
 	//Handles next room interaction
 	private void handleNextRoom(NextRoom closestRoom){
 		PlayerStatus.inDialogue = true;
+		closestRoom.GetNode<AudioStreamPlayer3D>("EnterSound").Play();
 		interactionArrayList.Clear();
 		closestRoom.transitionNextRoom();
 	}

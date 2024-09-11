@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhp3he1a6kly6"]
+
+[ext_resource type="Texture2D" uid="uid://bo7vf82mnk7gg" path="res://Asset/2D/Stage1/Environment/envirmoment_8.png" id="1_af0wi"]
+
+[node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24105, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 2
+texture = ExtResource("1_af0wi")

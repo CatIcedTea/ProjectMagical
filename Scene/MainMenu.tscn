@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://danj6eoid3u8h"]
+[gd_scene load_steps=20 format=3 uid="uid://danj6eoid3u8h"]
 
 [ext_resource type="Script" path="res://Script/MainMenu.cs" id="1_kmvdj"]
 [ext_resource type="Texture2D" uid="uid://cc5yn4dt4j1io" path="res://Asset/2D/UI/button_unpressed.png" id="1_ofrhr"]
+[ext_resource type="Texture2D" uid="uid://d01s4bpffaqud" path="res://Asset/2D/Title_Screen.png" id="2_bvihl"]
 [ext_resource type="Texture2D" uid="uid://dp35m204oysn0" path="res://Asset/2D/UI/button_pressed.png" id="2_xfgfo"]
+[ext_resource type="Texture2D" uid="uid://bk51gi6fim5ay" path="res://Asset/2D/logo.png" id="3_gu6dh"]
 [ext_resource type="Texture2D" uid="uid://ca0rr1jx4jmkh" path="res://Asset/2D/UI/button_hover.png" id="3_wbecw"]
 [ext_resource type="Theme" uid="uid://bdwmhb48je4di" path="res://Theme/DefaultText.tres" id="3_y5dpc"]
+[ext_resource type="Script" path="res://Script/VolumeSlider.cs" id="4_0gl7v"]
 [ext_resource type="Texture2D" uid="uid://bhcdc8slvlhj5" path="res://Asset/2D/UI/button_unpressed_2.png" id="5_fi2oy"]
 [ext_resource type="Texture2D" uid="uid://dxn04fr801r8f" path="res://Asset/2D/UI/button_pressed_2.png" id="6_8ds7q"]
 [ext_resource type="Texture2D" uid="uid://d0avtxn43gn2i" path="res://Asset/2D/UI/button_hover_2.png" id="7_8gn2o"]
+[ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="12_iygrx"]
 
 [sub_resource type="Animation" id="Animation_eafje"]
 resource_name = "FadeIn"
@@ -62,6 +66,44 @@ _data = {
 "default": SubResource("Animation_ouu1m")
 }
 
+[sub_resource type="Animation" id="Animation_jj217"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ysumm"]
+resource_name = "default"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(0.5, 1.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_giwit"]
+_data = {
+"RESET": SubResource("Animation_jj217"),
+"default": SubResource("Animation_ysumm")
+}
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kmvdj")
 
@@ -71,20 +113,62 @@ libraries = {
 }
 autoplay = "default"
 
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_giwit")
+}
+autoplay = "default"
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(962, 571)
+scale = Vector2(1.02417, 1.02417)
+texture = ExtResource("2_bvihl")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(1433, 273)
+scale = Vector2(0.430187, 0.39882)
+texture = ExtResource("3_gu6dh")
+
 [node name="EmptyButton" type="TextureButton" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-focus_neighbor_top = NodePath("../Menu/Quit")
-focus_neighbor_bottom = NodePath("../Menu/Start")
-focus_next = NodePath("../Menu/Start")
+focus_neighbor_top = NodePath("../Menu/Menu/Quit")
+focus_neighbor_bottom = NodePath("../Menu/Menu/Start")
+focus_next = NodePath("../Menu/Menu/Start")
 
-[node name="Menu" type="VBoxContainer" parent="."]
-offset_left = 68.0
-offset_top = 512.0
-offset_right = 758.0
-offset_bottom = 1026.0
+[node name="Menu" type="Node2D" parent="."]
 
-[node name="Start" type="TextureButton" parent="Menu"]
+[node name="MenuBackground" type="Node2D" parent="Menu"]
+position = Vector2(-58, -32)
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/MenuBackground"]
+offset_left = 1091.0
+offset_top = 481.0
+offset_right = 1881.0
+offset_bottom = 1097.0
+color = Color(1, 0.883333, 0.75, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/MenuBackground"]
+offset_left = 1102.0
+offset_top = 493.0
+offset_right = 1870.0
+offset_bottom = 1085.0
+color = Color(0.364706, 0.172549, 0.0156863, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Menu/MenuBackground"]
+offset_left = 1116.0
+offset_top = 511.0
+offset_right = 1856.0
+offset_bottom = 1067.0
+color = Color(1, 0.883333, 0.75, 1)
+
+[node name="Menu" type="VBoxContainer" parent="Menu"]
+offset_left = 1083.0
+offset_top = 490.0
+offset_right = 1773.0
+offset_bottom = 1004.0
+
+[node name="Start" type="TextureButton" parent="Menu/Menu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Settings")
@@ -93,7 +177,7 @@ texture_normal = ExtResource("1_ofrhr")
 texture_pressed = ExtResource("2_xfgfo")
 texture_hover = ExtResource("3_wbecw")
 
-[node name="Label" type="Label" parent="Menu/Start"]
+[node name="Label" type="Label" parent="Menu/Menu/Start"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,7 +196,7 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="TextureButton" parent="Menu"]
+[node name="Settings" type="TextureButton" parent="Menu/Menu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
@@ -121,7 +205,7 @@ texture_normal = ExtResource("5_fi2oy")
 texture_pressed = ExtResource("6_8ds7q")
 texture_hover = ExtResource("7_8gn2o")
 
-[node name="Label" type="Label" parent="Menu/Settings"]
+[node name="Label" type="Label" parent="Menu/Menu/Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,7 +224,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="Menu"]
+[node name="Quit" type="TextureButton" parent="Menu/Menu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../Start")
@@ -149,7 +233,7 @@ texture_normal = ExtResource("5_fi2oy")
 texture_pressed = ExtResource("6_8ds7q")
 texture_hover = ExtResource("7_8gn2o")
 
-[node name="Label" type="Label" parent="Menu/Quit"]
+[node name="Label" type="Label" parent="Menu/Menu/Quit"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,12 +252,119 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" type="VBoxContainer" parent="Menu"]
+visible = false
+offset_left = 1083.0
+offset_top = 491.0
+offset_right = 1773.0
+offset_bottom = 1043.0
+theme_override_constants/separation = 15
+
+[node name="MasterText" type="Label" parent="Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("3_y5dpc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Master Volume:"
+horizontal_alignment = 1
+
+[node name="Master" type="HSlider" parent="Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_0gl7v")
+sliderName = "Master"
+
+[node name="MusicText" type="Label" parent="Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("3_y5dpc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Music: "
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_0gl7v")
+sliderName = "Music"
+
+[node name="SFXText" type="Label" parent="Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("3_y5dpc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Sound Effects: "
+horizontal_alignment = 1
+
+[node name="SFX" type="HSlider" parent="Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_0gl7v")
+sliderName = "SFX"
+
+[node name="VoiceText" type="Label" parent="Menu/Settings"]
+layout_mode = 2
+theme = ExtResource("3_y5dpc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 37
+text = "Voice: "
+horizontal_alignment = 1
+
+[node name="Voice" type="HSlider" parent="Menu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_0gl7v")
+sliderName = "Voice"
+
+[node name="Return" type="TextureButton" parent="Menu/Settings"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+texture_normal = ExtResource("5_fi2oy")
+texture_pressed = ExtResource("6_8ds7q")
+texture_hover = ExtResource("7_8gn2o")
+
+[node name="Label" type="Label" parent="Menu/Settings/Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -17.0
+offset_right = 77.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y5dpc")
+theme_override_font_sizes/font_size = 37
+text = "Return"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BlackScreen" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_iygrx")
+autoplay = true
+bus = &"Music"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="Menu/Settings/Master" to="Menu/Settings/Master" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/Settings/Music" to="Menu/Settings/Music" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/Settings/SFX" to="Menu/Settings/SFX" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/Settings/Voice" to="Menu/Settings/Voice" method="_on_value_changed"]
+[connection signal="pressed" from="Menu/Settings/Return" to="." method="_on_return_pressed"]

@@ -1,19 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://bl5kmsqw3aqwl"]
+[gd_scene load_steps=24 format=3 uid="uid://bl5kmsqw3aqwl"]
 
 [ext_resource type="MeshLibrary" uid="uid://lx5sxnss0sbd" path="res://Prefab/Tileset/DreadTileset.tres" id="1_a0ai1"]
-[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/NextRoom.tscn" id="2_qmuog"]
-[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/PlayerSpawn.tscn" id="3_d5eg8"]
+[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/Environment/NextRoom.tscn" id="2_qmuog"]
+[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/Environment/PlayerSpawn.tscn" id="3_d5eg8"]
 [ext_resource type="PackedScene" uid="uid://dpqx10ttk4vt3" path="res://Prefab/Environment/Breakables/Stage1Breakable1.tscn" id="4_15vc3"]
 [ext_resource type="PackedScene" uid="uid://clgnejn35rw1c" path="res://Prefab/Environment/Lights/Light1.tscn" id="5_0ybjy"]
-[ext_resource type="PackedScene" uid="uid://bq2qr0pvfwwty" path="res://Prefab/ShadedSprite3D.tscn" id="5_7tynd"]
+[ext_resource type="PackedScene" uid="uid://bq2qr0pvfwwty" path="res://Prefab/Environment/ShadedSprite3D.tscn" id="5_7tynd"]
 [ext_resource type="PackedScene" uid="uid://cejrxtxh46xkt" path="res://Prefab/Environment/Breakables/Stage1Breakable2.tscn" id="5_sgw1w"]
 [ext_resource type="Texture2D" uid="uid://cg2gtc6jsyb3v" path="res://Asset/2D/Stage1/Environment/envirmoment_11.png" id="6_8ncmk"]
 [ext_resource type="PackedScene" uid="uid://gmjnbueh55tg" path="res://Prefab/Environment/Breakables/Stage1Breakable3.tscn" id="6_nb7rj"]
-[ext_resource type="Texture2D" uid="uid://5yygxqa8nyr3" path="res://Asset/2D/Stage1/Environment/background_4.png" id="7_q10gx"]
-[ext_resource type="Texture2D" uid="uid://cahmjcoefgo44" path="res://Asset/2D/Stage1/Environment/background_3.png" id="8_hxxwp"]
-[ext_resource type="Texture2D" uid="uid://cp4x6280sl0gx" path="res://Asset/2D/Stage1/Environment/background_1.png" id="9_adauo"]
 [ext_resource type="Texture2D" uid="uid://c4mp6qryprla6" path="res://Asset/2D/Stage1/Environment/grass_2.png" id="10_do1wc"]
-[ext_resource type="Texture2D" uid="uid://bchp5ipv24rau" path="res://Asset/2D/Stage1/Environment/background_2.png" id="10_w66o5"]
 [ext_resource type="Texture2D" uid="uid://c23w85fttm3ox" path="res://Asset/2D/Stage1/Environment/grass_1.png" id="11_fxssg"]
 [ext_resource type="Texture2D" uid="uid://tp50eohje5l2" path="res://Asset/2D/Stage1/Environment/grass_4.png" id="12_fxxi1"]
 [ext_resource type="Texture2D" uid="uid://b6mj21m0algex" path="res://Asset/2D/Stage1/Environment/envirmoment_14.png" id="13_negq3"]
@@ -22,15 +18,28 @@
 [ext_resource type="PackedScene" uid="uid://db4q8tq47bb5i" path="res://Prefab/Environment/Lights/Light5.tscn" id="15_eha4h"]
 [ext_resource type="Texture2D" uid="uid://cxok6s2uaplxr" path="res://Asset/2D/Stage1/Environment/envirmoment_4.png" id="15_rwr46"]
 [ext_resource type="Texture2D" uid="uid://3vlw4m4pjnkn" path="res://Asset/2D/Stage1/Environment/envirmoment_7.png" id="16_hfr1v"]
+[ext_resource type="PackedScene" uid="uid://coimuhi0m8o3v" path="res://Prefab/Environment/Background/Background3.tscn" id="20_yfxs7"]
+[ext_resource type="PackedScene" uid="uid://dtugr5p5o10x7" path="res://Prefab/Environment/Background/Background1.tscn" id="21_50cgk"]
+[ext_resource type="PackedScene" uid="uid://bx8nlmo1v5557" path="res://Prefab/Environment/Background/Background4.tscn" id="22_0er1q"]
+[ext_resource type="PackedScene" uid="uid://co4n8vmlxv7s" path="res://Prefab/Environment/Background/Background2.tscn" id="23_gqhg2"]
+[ext_resource type="PackedScene" uid="uid://gsud6tno12gb" path="res://Prefab/Environment/Breakables/Stage1Breakable4.tscn" id="23_lymw1"]
 
 [node name="DreadLevelStarterRoom" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_a0ai1")
 data = {
-"cells": PackedInt32Array(-1, 65535, 655362, -65536, 65535, 655360, -65536, 0, 655361, -1, 0, 655360, -65535, 65535, 655360, -65535, 0, 655360, -1, 65534, 655360, -65536, 65534, 655361, -65535, 65534, 655360, -2, 0, 655361, -2, 65535, 655360, -2, 65534, 655361, -65535, 1, 655362, -2, 1, 655362, -65536, 1, 655360, -1, 1, 655360, -1, 65533, 655360, -65536, 65533, 655360, -65535, 65533, 655362, -2, 65533, 655361, -65534, 65534, 655360, -65534, 0, 655360, -65534, 65535, 655360, -3, 65534, 655361, -3, 0, 655362, -3, 65535, 655360, -3, 65533, 655361, -65534, 65533, 655360, -3, 1, 655362, -65534, 1, 655360, -65535, 2, 655360, -2, 2, 655360, -1, 2, 655361, -65536, 2, 655361, -65533, 65534, 1048579, -65533, 65535, 655360, -65533, 0, 655361, -65535, 65532, 655361, -65536, 65532, 655361, -1, 65532, 655361, -2, 65532, 655361, -4, 65534, 655360, -4, 65535, 655360, -4, 0, 655360, -2, 3, 655360, -1, 3, 655360, -65535, 3, 655360, -2, 65531, 655360, -1, 65531, 655361, -65536, 65531, 655360, -65535, 65531, 655361, -3, 65532, 655360, -65534, 65532, 655360, -3, 2, 3, -65534, 2, 655360, -4, 1, 655360, -65533, 1, 655360, -4, 65533, 655360, -65533, 65533, 655360, -5, 65534, 1048577, -5, 65535, 655362, -5, 0, 1048577, -5, 1, 655361, -4, 2, 1048577, -3, 3, 655361, -2, 4, 655361, -1, 4, 655360, -65536, 4, 655360, -65535, 4, 655360, -65534, 3, 655360, -65533, 2, 655360, -65532, 1, 655361, -65532, 0, 1048577, -65532, 65535, 1441798, -65532, 65534, 655360, -65531, 65535, 1441797, -65530, 65535, 1441797, -65529, 65535, 1441797, -65528, 65535, 1441797, -65527, 65535, 1441797, -65526, 65535, 1441797, -65525, 65535, 1441797, -65524, 65535, 1441797, -65523, 65535, 1441797, -65522, 65535, 1048581, -65532, 65533, 1048577, -65533, 65532, 1048578, -65534, 65531, 1048578, -65535, 65530, 1048578, -65536, 65530, 1048578, -1, 65530, 1048578, -2, 65530, 1048578, -3, 65531, 1048578, -4, 65532, 1048578, -5, 65533, 1048578, -65521, 65535, 1048581, -65520, 65535, 1048582, -65520, 65534, 655360, -65521, 65534, 655360, -65521, 0, 655360, -65520, 0, 655360, -65519, 65534, 655360, -65519, 65535, 655360, -65519, 0, 655360, -65521, 65533, 655360, -65520, 65533, 655363, -65519, 65533, 655360, -65518, 65533, 655360, -65518, 65534, 655360, -65518, 65535, 655360, -65518, 0, 655360, -65518, 1, 655360, -65519, 1, 655360, -65520, 1, 655360, -65521, 1, 655360, -65521, 65532, 655360, -65520, 65532, 655360, -65519, 65532, 655360, -65518, 65532, 655360, -65517, 65532, 655360, -65516, 65532, 655360, -65516, 65533, 655360, -65517, 65533, 655360, -65517, 65534, 655360, -65517, 65535, 655360, -65517, 0, 655360, -65517, 1, 655360, -65516, 1, 655360, -65516, 0, 655360, -65516, 65535, 655360, -65516, 65534, 655360, -65515, 65533, 655360, -65515, 65532, 655360, -65515, 65534, 655360, -65515, 65535, 655360, -65515, 0, 655360, -65515, 1, 655360, -65520, 2, 655360, -65519, 2, 655360, -65518, 2, 655360, -65517, 2, 655360, -65516, 2, 655360, -65520, 65531, 655360, -65519, 65531, 655360, -65518, 65531, 655360, -65517, 65531, 655360, -65516, 65531, 655360, -65514, 65533, 655360, -65514, 65534, 655360, -65514, 65535, 655360, -65514, 0, 655360, -65522, 65534, 655360, -65531, 65534, 655360, -65530, 65534, 655360, -65529, 65534, 655360, -65528, 65534, 655360, -65527, 65534, 655360, -65526, 65534, 655360, -65525, 65534, 655360, -65524, 65534, 655360, -65523, 65534, 655360, -65531, 0, 655360, -65530, 0, 655360, -65529, 0, 655360, -65528, 0, 655360, -65527, 0, 655360, -65526, 0, 655360, -65525, 0, 655360, -65524, 0, 655360, -65523, 0, 655360, -65522, 0, 655360, -65521, 2, 655360, -65520, 3, 655360, -65519, 3, 655360, -65518, 3, 655360, -65517, 3, 655360, -65516, 3, 655360, -65515, 2, 655360, -65514, 1, 655360, 16, 65534, 1441799, 16, 0, 1441801, 16, 65535, 1441800, 17, 65534, 655360, 17, 65535, 655360, 17, 0, 655362, 18, 0, 655360, 18, 65535, 655362, 18, 65534, 655360, 19, 65534, 655360, 19, 65535, 655360, 19, 0, 655360, 18, 65533, 655362, 19, 65533, 655360, 18, 1, 655360, 19, 1, 655360, 20, 0, 655360, 20, 65535, 655361, 20, 65534, 655360, 21, 65534, 655360, 21, 65535, 655360, 21, 0, 655360, 20, 1, 655362, 20, 65533, 655360, -3, 4, 655360, -4, 3, 655360, -5, 2, 655360, -65536, 3, 655360, -4, 65531, 655360, -3, 65530, 655360, -5, 65532, 655360, -65531, 65533, 655360, -65531, 1, 655360, -65532, 65532, 655360, -65532, 2, 655360, -65533, 65531, 655360, -65533, 3, 655360, -65534, 4, 655360, -65534, 65530, 655360, -65522, 1, 655360, -65522, 65533, 655360)
+"cells": PackedInt32Array(-1, 65535, 655362, -65536, 65535, 655360, -65536, 0, 655361, -1, 0, 655360, -65535, 65535, 655360, -65535, 0, 655360, -1, 65534, 655360, -65536, 65534, 655361, -65535, 65534, 655360, -2, 0, 655361, -2, 65535, 655360, -2, 65534, 655361, -65535, 1, 655362, -2, 1, 655362, -65536, 1, 655360, -1, 1, 655360, -1, 65533, 655360, -65536, 65533, 655360, -65535, 65533, 655362, -2, 65533, 655361, -65534, 65534, 655360, -65534, 0, 655360, -65534, 65535, 655360, -3, 65534, 655361, -3, 0, 655362, -3, 65535, 655360, -3, 65533, 655361, -65534, 65533, 655360, -3, 1, 655362, -65534, 1, 655360, -65535, 2, 655360, -2, 2, 655360, -1, 2, 655361, -65536, 2, 655361, -65533, 65534, 1048579, -65533, 65535, 655360, -65533, 0, 655361, -65535, 65532, 655361, -65536, 65532, 655361, -1, 65532, 655361, -2, 65532, 655361, -4, 65534, 655360, -4, 65535, 655360, -4, 0, 655360, -2, 3, 655360, -1, 3, 655360, -65535, 3, 655360, -2, 65531, 655360, -1, 65531, 655361, -65536, 65531, 655360, -65535, 65531, 655361, -3, 65532, 655360, -65534, 65532, 655360, -3, 2, 3, -65534, 2, 655360, -4, 1, 655360, -65533, 1, 655360, -4, 65533, 655360, -65533, 65533, 655360, -5, 65534, 1048577, -5, 65535, 655362, -5, 0, 1048577, -5, 1, 655361, -4, 2, 1048577, -3, 3, 655361, -2, 4, 655361, -1, 4, 655360, -65536, 4, 655360, -65535, 4, 655360, -65534, 3, 655360, -65533, 2, 655360, -65532, 1, 655361, -65532, 0, 1048577, -65532, 65535, 1441798, -65532, 65534, 655360, -65531, 65535, 1441797, -65530, 65535, 1441797, -65529, 65535, 1441797, -65528, 65535, 1441797, -65527, 65535, 1441797, -65526, 65535, 1441797, -65525, 65535, 1441797, -65524, 65535, 1441797, -65523, 65535, 1441797, -65522, 65535, 1048581, -65532, 65533, 1048577, -65533, 65532, 1048578, -65534, 65531, 1048578, -65535, 65530, 1048578, -65536, 65530, 1048578, -1, 65530, 1048578, -2, 65530, 1048578, -3, 65531, 1048578, -4, 65532, 1048578, -5, 65533, 1048578, -65521, 65535, 1048581, -65520, 65535, 1048582, -65520, 65534, 655360, -65521, 65534, 655360, -65521, 0, 655360, -65520, 0, 655360, -65519, 65534, 655360, -65519, 65535, 655360, -65519, 0, 655360, -65521, 65533, 655360, -65520, 65533, 655363, -65519, 65533, 655360, -65518, 65533, 655360, -65518, 65534, 655360, -65518, 65535, 655360, -65518, 0, 655360, -65518, 1, 655360, -65519, 1, 655360, -65520, 1, 655360, -65521, 1, 655360, -65521, 65532, 655360, -65520, 65532, 655360, -65519, 65532, 655360, -65518, 65532, 655360, -65517, 65532, 655360, -65516, 65532, 655360, -65516, 65533, 655360, -65517, 65533, 655360, -65517, 65534, 655360, -65517, 65535, 655360, -65517, 0, 655360, -65517, 1, 655360, -65516, 1, 655360, -65516, 0, 655360, -65516, 65535, 655360, -65516, 65534, 655360, -65515, 65533, 655360, -65515, 65532, 655360, -65515, 65534, 655360, -65515, 65535, 655360, -65515, 0, 655360, -65515, 1, 655360, -65520, 2, 655360, -65519, 2, 655360, -65518, 2, 655360, -65517, 2, 655360, -65516, 2, 655360, -65520, 65531, 655360, -65519, 65531, 655360, -65518, 65531, 655360, -65517, 65531, 655360, -65516, 65531, 655360, -65514, 65533, 655360, -65514, 65534, 655360, -65514, 65535, 655360, -65514, 0, 655360, -65522, 65534, 655360, -65531, 65534, 655360, -65530, 65534, 655360, -65529, 65534, 655360, -65528, 65534, 655360, -65527, 65534, 655360, -65526, 65534, 655360, -65525, 65534, 655360, -65524, 65534, 655360, -65523, 65534, 655360, -65531, 0, 655360, -65530, 0, 655360, -65529, 0, 655360, -65528, 0, 655360, -65527, 0, 655360, -65526, 0, 655360, -65525, 0, 655360, -65524, 0, 655360, -65523, 0, 655360, -65522, 0, 655360, -65521, 2, 655360, -65520, 3, 655360, -65519, 3, 655360, -65518, 3, 655360, -65517, 3, 655360, -65516, 3, 655360, -65515, 2, 655360, -65514, 1, 655360, 16, 65534, 1441799, 16, 0, 1441801, 16, 65535, 1441800, 17, 65534, 655360, 17, 65535, 655360, 17, 0, 655362, 18, 0, 655360, 18, 65535, 655362, 18, 65534, 655360, 19, 65534, 655360, 19, 65535, 655360, 19, 0, 655360, 18, 65533, 655362, 19, 65533, 655360, 18, 1, 655360, 19, 1, 655360, 20, 0, 655360, 20, 65535, 655361, 20, 65534, 655360, 21, 65534, 655360, 21, 65535, 655360, 21, 0, 655360, 20, 1, 655362, 20, 65533, 655360, -3, 4, 655360, -4, 3, 655360, -5, 2, 655360, -65536, 3, 655360, -4, 65531, 655360, -3, 65530, 655360, -5, 65532, 655360, -65531, 65533, 655360, -65531, 1, 655360, -65532, 65532, 655360, -65532, 2, 655360, -65533, 65531, 655360, -65533, 3, 655360, -65534, 4, 655360, -65534, 65530, 655360, -65522, 1, 655360, -65522, 65533, 655360, -65532, 3, 0, -65533, 65530, 0, -65532, 65531, 0, -65533, 4, 0, -65532, 4, 0, -65532, 65530, 0, -65521, 3, 0, -65521, 65531, 0, -65515, 65531, 0, -65515, 3, 0, -65514, 2, 0, -65514, 65532, 0)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="InvisibleWall" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("1_a0ai1")
+data = {
+"cells": PackedInt32Array(65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 4, 0, 5, 3, 0, 5, 2, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 2, 0, 15, 4, 0, 16, 4, 0, 17, 4, 0, 18, 4, 0, 19, 4, 0, 20, 4, 0, 21, 4, 0, 22, 3, 0, 23, 2, 0, 23, 1, 0, 23, 0, 0, 23, 65532, 0, 23, 65533, 0, 23, 65534, 0, 23, 65535, 0, 22, 65531, 0, 21, 65530, 0, 20, 65530, 0, 19, 65530, 0, 18, 65530, 0, 17, 65530, 0, 16, 65530, 0, 15, 65530, 0, 14, 65531, 0, 14, 65532, 0, 13, 65533, 0, 12, 65533, 0, 11, 65533, 0, 10, 65533, 0, 9, 65533, 0, 8, 65533, 0, 7, 65533, 0, 6, 65533, 0, 5, 65532, 0, 5, 65531, 0, 5, 65530, 0, 4, 65529, 0, 3, 65529, 0, 2, 65529, 0, 1, 65529, 0, 0, 65529, 0, 65535, 65529, 0, 65534, 65529, 0, 65533, 65529, 0, 65532, 65530, 0, 65531, 65531, 0, 65531, 3, 0, 65532, 4, 0, 65530, 65532, 0, 65530, 65533, 0, 65530, 65534, 0, 65530, 65535, 0, 65530, 0, 0, 65530, 1, 0, 65530, 2, 0, 65559, 65532, 0, 65559, 65533, 0, 65559, 65534, 0, 65559, 65535, 0, 65559, 0, 0, 65559, 1, 0, 65559, 2, 0, 65558, 3, 0, 65557, 4, 0, 65556, 4, 0, 65555, 4, 0, 65554, 4, 0, 65553, 4, 0, 65552, 4, 0, 65551, 4, 0, 14, 3, 0, 65550, 2, 0, 65550, 3, 0, 65549, 1, 0, 65550, 65532, 0, 65550, 65531, 0, 65551, 65530, 0, 65552, 65530, 0, 65553, 65530, 0, 65554, 65530, 0, 65555, 65530, 0, 65556, 65530, 0, 65557, 65530, 0, 65558, 65531, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Breakeables" type="Node3D" parent="."]
 
@@ -106,6 +115,93 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8563, 0, -3.30469)
 [node name="Stage1Breakable24" parent="Breakeables" instance=ExtResource("6_nb7rj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5556, 0, 1.03772)
 
+[node name="Stage1Breakable25" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15197, 0.460189, 6.80141)
+
+[node name="Stage1Breakable26" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.51795, 0.46019, -6.64022)
+
+[node name="Stage1Breakable27" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.87787, 0.46019, 4.69674)
+
+[node name="Stage1Breakable28" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90092, 0.460192, 5.67059)
+
+[node name="Stage1Breakable29" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94787, 0.46019, 7.0284)
+
+[node name="Stage1Breakable30" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77209, 0.46019, -6.6823)
+
+[node name="Stage1Breakable31" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14415, 0.46019, -8.19271)
+
+[node name="Stage1Breakable32" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5055, 0.46019, -7.21436)
+
+[node name="Stage1Breakable33" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23406, 0.46019, 7.43848)
+
+[node name="Stage1Breakable34" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00022, 0.46019, 9.17797)
+
+[node name="Stage1Breakable36" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21736, 0.46019, 7.7794)
+
+[node name="Stage1Breakable38" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9683, 0.46019, 6.15761)
+
+[node name="Stage1Breakable39" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2788, 0.46019, 6.51671)
+
+[node name="Stage1Breakable40" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6319, 0.46019, 3.9814)
+
+[node name="Stage1Breakable41" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8594, 0.460192, 4.59589)
+
+[node name="Stage1Breakable42" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1804, 0.46019, 6.64661)
+
+[node name="Stage1Breakable43" parent="Breakeables" instance=ExtResource("4_15vc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4082, 0, 6.57269)
+
+[node name="Stage1Breakable44" parent="Breakeables" instance=ExtResource("5_sgw1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3567, 0, 6.83946)
+
+[node name="Stage1Breakable45" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3932, 0.46019, -8.80797)
+
+[node name="Stage1Breakable46" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7491, 0.46019, -7.45951)
+
+[node name="Stage1Breakable47" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2511, 0.46019, -8.98406)
+
+[node name="Stage1Breakable48" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6233, 0.46019, -7.8934)
+
+[node name="Stage1Breakable49" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5149, 0.460189, -7.42827)
+
+[node name="Stage1Breakable50" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0001, 2.46019, 3.12971)
+
+[node name="Stage1Breakable51" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4447, 2.46019, 1.15872)
+
+[node name="Stage1Breakable52" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.258, 2.46019, 3.18713)
+
+[node name="Stage1Breakable53" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5102, 2.46019, -1.86598)
+
+[node name="Stage1Breakable54" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1637, 2.46019, -2.566)
+
+[node name="Stage1Breakable55" parent="Breakeables" instance=ExtResource("23_lymw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.1665, 2.46019, -3.8874)
+
 [node name="Lights" type="Node3D" parent="."]
 
 [node name="Light5" parent="Lights" instance=ExtResource("14_vkfyi")]
@@ -155,24 +251,6 @@ texture = ExtResource("6_8ncmk")
 [node name="Sprite3D4" parent="Decorations" instance=ExtResource("5_7tynd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4994, 3.85793, 2.99435)
 texture = ExtResource("6_8ncmk")
-
-[node name="Sprite3D5" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42878, 0.792401, 8.54587)
-
-[node name="Sprite3D6" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6554, 0.792401, 8.54587)
-
-[node name="Sprite3D7" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20104, 0.792401, 5.71314)
-
-[node name="Sprite3D8" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20104, 0.792401, -6.48022)
-
-[node name="Sprite3D9" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59818, 0.792401, -8.8678)
-
-[node name="Sprite3D10" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23373, 0.792401, -8.8678)
 
 [node name="Sprite3D11" parent="Decorations" instance=ExtResource("5_7tynd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23373, 0.0877817, -4.67481)
@@ -290,66 +368,32 @@ texture = ExtResource("15_rwr46")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.31041, 0.370176, 1.53986)
 texture = ExtResource("16_hfr1v")
 
+[node name="Light1" parent="Decorations" instance=ExtResource("5_0ybjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37221, 2.566, 4.77186)
+
+[node name="Light4" parent="Decorations" instance=ExtResource("15_eha4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6717, 0.532174, -7.49712)
+
 [node name="Background" type="Node3D" parent="."]
-
-[node name="Sprite3D" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.5926, 1.48961, -9.13854)
-texture = ExtResource("7_q10gx")
-
-[node name="Sprite3D7" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.980297, 1.48961, -17.2544)
-texture = ExtResource("9_adauo")
-
-[node name="Sprite3D9" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.0956, 1.48961, -11.1923)
-texture = ExtResource("9_adauo")
-
-[node name="Sprite3D8" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -9.0307, 1.48961, -15.3017)
-texture = ExtResource("8_hxxwp")
-
-[node name="Sprite3D2" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 21.658, -0.510394, -9.13854)
-texture = ExtResource("8_hxxwp")
-
-[node name="Sprite3D10" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.88618, -0.510394, -17.9277)
-texture = ExtResource("8_hxxwp")
-
-[node name="Sprite3D3" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.0463, 1.48961, -13.1302)
-texture = ExtResource("9_adauo")
-
-[node name="Sprite3D4" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.969, 1.48961, -12.5824)
-texture = ExtResource("10_w66o5")
-
-[node name="Sprite3D13" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 52.9264, 1.48961, 2.82615)
-texture = ExtResource("10_w66o5")
-
-[node name="Sprite3D11" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 52.5822, 1.48961, -7.18302)
-texture = ExtResource("10_w66o5")
-
-[node name="Sprite3D5" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.5634, 2.60294, -12.2474)
-texture = ExtResource("7_q10gx")
-
-[node name="Sprite3D14" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -14.1737, 2.60294, -10.532)
-texture = ExtResource("7_q10gx")
-
-[node name="Sprite3D6" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 48.2845, 2.60294, -11.4033)
-texture = ExtResource("9_adauo")
-
-[node name="Sprite3D12" parent="Background" instance=ExtResource("5_7tynd")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 54.6613, 2.60294, -1.1343)
-texture = ExtResource("9_adauo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53827, 2.6455)
 
 [node name="NextRoom" parent="." instance=ExtResource("2_qmuog")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3161, 3.22539, -0.24546)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_d5eg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00343597, 9.53674e-07, -1.21872)
+
+[node name="Sprite3D" parent="." instance=ExtResource("21_50cgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71848, 4.80743, -12.414)
+
+[node name="Sprite3D2" parent="." instance=ExtResource("20_yfxs7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3215, 2.94443, -5.14068)
+
+[node name="Sprite3D3" parent="." instance=ExtResource("22_0er1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7192, 3.432, -10.364)
+
+[node name="Sprite3D4" parent="." instance=ExtResource("23_gqhg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9851, 0.555999, -5.09261)
+
+[node name="Sprite3D5" parent="." instance=ExtResource("21_50cgk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.1889, 4.97954, 0.107205)

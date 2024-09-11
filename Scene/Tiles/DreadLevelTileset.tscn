@@ -1,38 +1,35 @@
 [gd_scene load_steps=59 format=4 uid="uid://dcr041dpj26wa"]
 
-[ext_resource type="Texture2D" uid="uid://dg0esnv7non2x" path="res://Asset/3D/Tileset/Level_Tiles_floor_1.png" id="1_fqc6v"]
-[ext_resource type="Texture2D" uid="uid://dtv0h720wlkh1" path="res://Asset/3D/Tileset/Level_Tiles_floor_5.png" id="2_sfgf1"]
-[ext_resource type="Texture2D" uid="uid://d0ubreph523sq" path="res://Asset/3D/Tileset/Level_Tiles_Black.png" id="3_odokj"]
-[ext_resource type="Texture2D" uid="uid://l0awggnakyej" path="res://Asset/3D/Tileset/Level_Tiles_floor_2.png" id="4_ka5ew"]
-[ext_resource type="Texture2D" uid="uid://hje8fn6y24t0" path="res://Asset/3D/Tileset/Level_Tiles_floor_3.png" id="5_k1be7"]
-[ext_resource type="Texture2D" uid="uid://bw3xmxg7vxmbl" path="res://Asset/3D/Tileset/Level_Tiles_floor_4.png" id="6_ik7sb"]
-[ext_resource type="Texture2D" uid="uid://b7vwy08f1enbk" path="res://Asset/3D/Tileset/Level_Tiles_dread_path_Corner.png" id="7_2p277"]
-[ext_resource type="Texture2D" uid="uid://doy0ihhoih81o" path="res://Asset/3D/Tileset/Level_Tiles_dread_path.png" id="8_askm3"]
-[ext_resource type="Texture2D" uid="uid://c7cyb54vw64xv" path="res://Asset/3D/Tileset/Level_Tiles_dread_path_end.png" id="9_0tii1"]
-[ext_resource type="Texture2D" uid="uid://bmn4t0ms1f5sj" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_1.png" id="10_yhhi5"]
-[ext_resource type="Texture2D" uid="uid://0kopdlmgsr2i" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_4.png" id="11_lj2pt"]
-[ext_resource type="Texture2D" uid="uid://dlm16wgjodcik" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_3.png" id="12_xhhkb"]
-[ext_resource type="Texture2D" uid="uid://bui50vqi63nu" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_2.png" id="13_55rgd"]
+[ext_resource type="Texture2D" uid="uid://bt8lac7tgq4h" path="res://Asset/3D/Tileset/Level_Tiles_floor_1.png" id="1_fqc6v"]
+[ext_resource type="Texture2D" uid="uid://c70dfefcfo3ml" path="res://Asset/3D/Tileset/Level_Tiles_floor_5.png" id="2_sfgf1"]
+[ext_resource type="Texture2D" uid="uid://b5kenroxqclb8" path="res://Asset/3D/Tileset/Level_Tiles_Black.png" id="3_odokj"]
+[ext_resource type="Texture2D" uid="uid://bu0uwijlfyeyc" path="res://Asset/3D/Tileset/Level_Tiles_floor_2.png" id="4_ka5ew"]
+[ext_resource type="Texture2D" uid="uid://bdl840j036gva" path="res://Asset/3D/Tileset/Level_Tiles_floor_3.png" id="5_k1be7"]
+[ext_resource type="Texture2D" uid="uid://cfuwb7rt6o02d" path="res://Asset/3D/Tileset/Level_Tiles_floor_4.png" id="6_ik7sb"]
+[ext_resource type="Texture2D" uid="uid://dtmotwwlu1ha3" path="res://Asset/3D/Tileset/Level_Tiles_dread_path_Corner.png" id="7_2p277"]
+[ext_resource type="Texture2D" uid="uid://dsvg6jjptx717" path="res://Asset/3D/Tileset/Level_Tiles_dread_path.png" id="8_askm3"]
+[ext_resource type="Texture2D" uid="uid://b1iicsfpsfraf" path="res://Asset/3D/Tileset/Level_Tiles_dread_path_end.png" id="9_0tii1"]
+[ext_resource type="Texture2D" uid="uid://bj53cup8i03tc" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_1.png" id="10_yhhi5"]
+[ext_resource type="Texture2D" uid="uid://bvcpoeekgpk2x" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_4.png" id="11_lj2pt"]
+[ext_resource type="Texture2D" uid="uid://47nj5o7jamjw" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_3.png" id="12_xhhkb"]
+[ext_resource type="Texture2D" uid="uid://by8cb6uksmfmu" path="res://Asset/3D/Tileset/Level_Tiles_dread_dirt_2.png" id="13_55rgd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4v1r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m8q2"]
 resource_name = "top"
 cull_mode = 2
 albedo_texture = ExtResource("1_fqc6v")
-roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w6au"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oowd"]
 resource_name = "sides"
 cull_mode = 2
 albedo_texture = ExtResource("2_sfgf1")
-roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oac1v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l36ug"]
 resource_name = "Bottom"
 cull_mode = 2
 albedo_texture = ExtResource("3_odokj")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7nqeb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ih3yi"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -66,7 +63,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d7qow"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_i7k0j"]
 resource_name = "Level_Tiles_Cube"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -74,7 +71,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_o4v1r"),
+"material": SubResource("StandardMaterial3D_4m8q2"),
 "name": "top",
 "primitive": 3,
 "uv_scale": Vector4(2.31588, 2.08286, 0, 0),
@@ -86,7 +83,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_0w6au"),
+"material": SubResource("StandardMaterial3D_8oowd"),
 "name": "sides",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -98,7 +95,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -106,18 +103,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_7nqeb")
+shadow_mesh = SubResource("ArrayMesh_ih3yi")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ieyg7"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6w4q"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muoxn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13lhk"]
 resource_name = "top_2"
 cull_mode = 2
 albedo_texture = ExtResource("4_ka5ew")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8f5k6"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yi05q"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -151,7 +147,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8v4d1"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ihytg"]
 resource_name = "Level_Tiles_Cube_003"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -159,7 +155,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_muoxn"),
+"material": SubResource("StandardMaterial3D_13lhk"),
 "name": "top_2",
 "primitive": 3,
 "uv_scale": Vector4(2.31588, 2.08286, 0, 0),
@@ -171,7 +167,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_0w6au"),
+"material": SubResource("StandardMaterial3D_8oowd"),
 "name": "sides",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -183,7 +179,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -191,18 +187,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_8f5k6")
+shadow_mesh = SubResource("ArrayMesh_yi05q")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sh5n3"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5rvxl"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbij0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otcfl"]
 resource_name = "top_3"
 cull_mode = 2
 albedo_texture = ExtResource("5_k1be7")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_n40gx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_skxuo"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -236,7 +231,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6u70x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_njlhb"]
 resource_name = "Level_Tiles_Cube_004"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -244,7 +239,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_tbij0"),
+"material": SubResource("StandardMaterial3D_otcfl"),
 "name": "top_3",
 "primitive": 3,
 "uv_scale": Vector4(2.31588, 2.08286, 0, 0),
@@ -256,7 +251,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_0w6au"),
+"material": SubResource("StandardMaterial3D_8oowd"),
 "name": "sides",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -268,7 +263,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -276,18 +271,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_n40gx")
+shadow_mesh = SubResource("ArrayMesh_skxuo")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ijf04"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_klopc"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy8q0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngwur"]
 resource_name = "top_4"
 cull_mode = 2
 albedo_texture = ExtResource("6_ik7sb")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_w4kwr"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_kyjya"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -321,7 +315,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_adigt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_s5ofu"]
 resource_name = "Level_Tiles_Cube_006"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -329,7 +323,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_uy8q0"),
+"material": SubResource("StandardMaterial3D_ngwur"),
 "name": "top_4",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -341,7 +335,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_0w6au"),
+"material": SubResource("StandardMaterial3D_8oowd"),
 "name": "sides",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -353,7 +347,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -361,24 +355,22 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_w4kwr")
+shadow_mesh = SubResource("ArrayMesh_kyjya")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yoqcg"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_66u3m"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6sdrr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24fjj"]
 resource_name = "top_6"
 cull_mode = 2
 albedo_texture = ExtResource("7_2p277")
-roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjmhu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3ej1"]
 resource_name = "sides_2"
 cull_mode = 2
 albedo_texture = ExtResource("3_odokj")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ejeqe"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_3ppgo"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -412,7 +404,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_0toi1"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p5bn7"]
 resource_name = "Level_Tiles_Cube_007"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -420,7 +412,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_6sdrr"),
+"material": SubResource("StandardMaterial3D_24fjj"),
 "name": "top_6",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -432,7 +424,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_rjmhu"),
+"material": SubResource("StandardMaterial3D_a3ej1"),
 "name": "sides_2",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -444,7 +436,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -452,18 +444,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ejeqe")
+shadow_mesh = SubResource("ArrayMesh_3ppgo")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h5if6"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ss57l"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lrtt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60ni8"]
 resource_name = "top_5"
 cull_mode = 2
 albedo_texture = ExtResource("8_askm3")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_i3l5r"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_44rec"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -497,7 +488,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_agxs8"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_x6f6p"]
 resource_name = "Level_Tiles_Cube_008"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -505,7 +496,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_5lrtt"),
+"material": SubResource("StandardMaterial3D_60ni8"),
 "name": "top_5",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -517,7 +508,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_rjmhu"),
+"material": SubResource("StandardMaterial3D_a3ej1"),
 "name": "sides_2",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -529,7 +520,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -537,18 +528,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_i3l5r")
+shadow_mesh = SubResource("ArrayMesh_44rec")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_itq1h"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_shlbv"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vq7de"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkl1c"]
 resource_name = "top_7"
 cull_mode = 2
 albedo_texture = ExtResource("9_0tii1")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_kq0mq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ggy2i"]
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -582,7 +572,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_a6bo7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ami2q"]
 resource_name = "Level_Tiles_Cube_009"
 _surfaces = [{
 "aabb": AABB(-1, 1, -1, 2, 1e-05, 2),
@@ -590,7 +580,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_vq7de"),
+"material": SubResource("StandardMaterial3D_nkl1c"),
 "name": "top_7",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -602,7 +592,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("BgAMAAQABgAOAAwADwAJAA0ADwALAAkAAwAFAAEAAwAHAAUACgAAAAgACgACAAAA"),
-"material": SubResource("StandardMaterial3D_rjmhu"),
+"material": SubResource("StandardMaterial3D_a3ej1"),
 "name": "sides_2",
 "primitive": 3,
 "uv_scale": Vector4(2.01519, 1.98803, 0, 0),
@@ -614,7 +604,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AgABAAAAAgADAAEA"),
-"material": SubResource("StandardMaterial3D_oac1v"),
+"material": SubResource("StandardMaterial3D_l36ug"),
 "name": "Bottom",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -622,30 +612,27 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/7///wAA////vwAAAAAAAP+/AAAAAP///78AAP9/AAD/fwAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_kq0mq")
+shadow_mesh = SubResource("ArrayMesh_ggy2i")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cgc8y"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f5lhe"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_degfg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvxe1"]
 resource_name = "top_8"
 cull_mode = 2
 albedo_texture = ExtResource("10_yhhi5")
-roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfx71"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdy70"]
 resource_name = "side_2"
 cull_mode = 2
 albedo_texture = ExtResource("11_lj2pt")
-roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsn56"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66inu"]
 resource_name = "Bottom_2"
 cull_mode = 2
 albedo_texture = ExtResource("3_odokj")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2xwv0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ubscp"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -679,7 +666,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_42gia"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_d36nn"]
 resource_name = "Level_Tiles_Cube_010"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -687,7 +674,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_degfg"),
+"material": SubResource("StandardMaterial3D_xvxe1"),
 "name": "top_8",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -699,7 +686,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 3,
 "index_data": PackedByteArray("AgABAAAA"),
-"material": SubResource("StandardMaterial3D_xfx71"),
+"material": SubResource("StandardMaterial3D_fdy70"),
 "name": "side_2",
 "primitive": 3,
 "uv_scale": Vector4(2.65711, 1.97319, 0, 0),
@@ -711,7 +698,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 15,
 "index_data": PackedByteArray("CQAFAAMACQAKAAUABAAGAAEACAAAAAcACAACAAAA"),
-"material": SubResource("StandardMaterial3D_wsn56"),
+"material": SubResource("StandardMaterial3D_66inu"),
 "name": "Bottom_2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -719,18 +706,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/////wAA////////AAD/v///AAAAAP////8AAAAA/7///wAAAAD/v///AAD///+///8AAP///78AAP//AAD//wAAAAAAAP//AAAAAAAA/78AAAAA////v5N/k/88gHkAk3+T/wAA/388gHkAAAD/fzyAeQCTf5P/k3+T/wAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_2xwv0")
+shadow_mesh = SubResource("ArrayMesh_ubscp")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b3wa4"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7mwy8"]
 data = PackedVector3Array(1, 1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1, -1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjmio"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxyei"]
 resource_name = "top_9"
 cull_mode = 2
 albedo_texture = ExtResource("12_xhhkb")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_23umh"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cqu2u"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -754,7 +740,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rsuep"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ge06a"]
 resource_name = "Level_Tiles_Cube_011"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -762,7 +748,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_wjmio"),
+"material": SubResource("StandardMaterial3D_kxyei"),
 "name": "top_9",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -774,7 +760,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("DQALAAgACgAFAAMACgAMAAUABAAGAAEACQAAAAcACQACAAAA"),
-"material": SubResource("StandardMaterial3D_wsn56"),
+"material": SubResource("StandardMaterial3D_66inu"),
 "name": "Bottom_2",
 "primitive": 3,
 "uv_scale": Vector4(2.65711, 1.98803, 0, 0),
@@ -782,18 +768,17 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/////wAA////////AAD/v///AAAAAP////8AAAAA/7///wAAAAD/v///AAD///+///8AAP///78AAP//AAD//wAA//8AAEHGAAAAAAAA//8AAAAAAAD/vwAAAAAAAEHGAAAAAP///78AAAAA//9BxpN/k/88gHkAk3+T/wAA/388gHkAAAD/fzyAeQCTf5P/mGIwxZN/k/8AAP9/mGIwxQAA/3+YYjDF")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_23umh")
+shadow_mesh = SubResource("ArrayMesh_cqu2u")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3ivdi"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jd11t"]
 data = PackedVector3Array(1, 1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1, -1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2eiw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07wpc"]
 resource_name = "top10"
 cull_mode = 2
 albedo_texture = ExtResource("13_55rgd")
-roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8j0da"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6qqvu"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -827,7 +812,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d7irj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_375jx"]
 resource_name = "Level_Tiles_Cube_012"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -835,7 +820,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAADAAIAAAABAAMA"),
-"material": SubResource("StandardMaterial3D_q2eiw"),
+"material": SubResource("StandardMaterial3D_07wpc"),
 "name": "top10",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -847,7 +832,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 3,
 "index_data": PackedByteArray("AQACAAAA"),
-"material": SubResource("StandardMaterial3D_xfx71"),
+"material": SubResource("StandardMaterial3D_fdy70"),
 "name": "side_2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -859,7 +844,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 15,
 "index_data": PackedByteArray("CgAIAAUABwADAAIABwAJAAMABgAAAAQABgABAAAA"),
-"material": SubResource("StandardMaterial3D_wsn56"),
+"material": SubResource("StandardMaterial3D_66inu"),
 "name": "Bottom_2",
 "primitive": 3,
 "uv_scale": Vector4(2.65711, 1.97319, 0, 0),
@@ -867,9 +852,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/////wAA/////wAAAAD/////AAAAAP+///8AAP///78AAP//AAD//wAA//8AAEHGAAAAAAAA//8AAAAAAAD/vwAAAAAAAEHGAAAAAP///78AAAAA//9BxpN/k/+Tf5P/AAD/fwAA/3+Tf5P/mGIwxZN/k/8AAP9/mGIwxQAA/3+YYjDF")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_8j0da")
+shadow_mesh = SubResource("ArrayMesh_6qqvu")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t47vi"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6mb6b"]
 data = PackedVector3Array(1, 1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
 
 [node name="DreadTiles" type="Node3D"]
@@ -878,100 +863,120 @@ data = PackedVector3Array(1, 1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, -1, 1, -1
 
 [node name="Floor_1" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -9)
-mesh = SubResource("ArrayMesh_d7qow")
+mesh = SubResource("ArrayMesh_i7k0j")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Floor_1"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Floor_1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ieyg7")
+shape = SubResource("ConcavePolygonShape3D_j6w4q")
 
 [node name="Floor_2" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -6)
-mesh = SubResource("ArrayMesh_8v4d1")
+mesh = SubResource("ArrayMesh_ihytg")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Floor_2"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Floor_2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_sh5n3")
+shape = SubResource("ConcavePolygonShape3D_5rvxl")
 
 [node name="Floor_3" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3)
-mesh = SubResource("ArrayMesh_6u70x")
+mesh = SubResource("ArrayMesh_njlhb")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Floor_3"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Floor_3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ijf04")
+shape = SubResource("ConcavePolygonShape3D_klopc")
 
 [node name="Floor_4" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-mesh = SubResource("ArrayMesh_adigt")
+mesh = SubResource("ArrayMesh_s5ofu")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Floor_4"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Floor_4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_yoqcg")
+shape = SubResource("ConcavePolygonShape3D_66u3m")
 
 [node name="Path_2" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3)
-mesh = SubResource("ArrayMesh_0toi1")
+mesh = SubResource("ArrayMesh_p5bn7")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Path_2"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Path_2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_h5if6")
+shape = SubResource("ConcavePolygonShape3D_ss57l")
 
 [node name="Path_1" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -6)
-mesh = SubResource("ArrayMesh_agxs8")
+mesh = SubResource("ArrayMesh_x6f6p")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Path_1"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Path_1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_itq1h")
+shape = SubResource("ConcavePolygonShape3D_shlbv")
 
 [node name="Path_3" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
-mesh = SubResource("ArrayMesh_a6bo7")
+mesh = SubResource("ArrayMesh_ami2q")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Path_3"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Path_3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_cgc8y")
+shape = SubResource("ConcavePolygonShape3D_f5lhe")
 
 [node name="Slope SideL" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 3)
-mesh = SubResource("ArrayMesh_42gia")
+mesh = SubResource("ArrayMesh_d36nn")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Slope SideL"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Slope SideL/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_b3wa4")
+shape = SubResource("ConcavePolygonShape3D_7mwy8")
 
 [node name="Slope SideM" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 3)
-mesh = SubResource("ArrayMesh_rsuep")
+mesh = SubResource("ArrayMesh_ge06a")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Slope SideM"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Slope SideM/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_3ivdi")
+shape = SubResource("ConcavePolygonShape3D_jd11t")
 
 [node name="Slope SideR" type="MeshInstance3D" parent="Level_Tiles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 3.01309)
-mesh = SubResource("ArrayMesh_d7irj")
+mesh = SubResource("ArrayMesh_375jx")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level_Tiles/Slope SideR"]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level_Tiles/Slope SideR/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t47vi")
+shape = SubResource("ConcavePolygonShape3D_6mb6b")

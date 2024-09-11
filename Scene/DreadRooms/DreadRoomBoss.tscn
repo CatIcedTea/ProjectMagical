@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw3y42ib8d2t8"]
+
+[ext_resource type="MeshLibrary" uid="uid://lx5sxnss0sbd" path="res://Prefab/Tileset/DreadTileset.tres" id="1_3csrj"]
+[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/Environment/PlayerSpawn.tscn" id="2_vh7ko"]
+[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/Environment/NextRoom.tscn" id="3_87siu"]
+
+[node name="TemplateRoom" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_3csrj")
+data = {
+"cells": PackedInt32Array(-1, 65535, 655360, -65536, 65535, 655360, -65536, 0, 655360, -1, 0, 655360, -2, 65534, 655360, -1, 65534, 655360, -65536, 65534, 655360, -65535, 65534, 655360, -65535, 65535, 655360, -65535, 0, 655360, -65535, 1, 655360, -65536, 1, 655360, -1, 1, 655360, -2, 1, 655360, -2, 0, 655360, -2, 65535, 655360, -3, 65533, 655360, -2, 65533, 655360, -1, 65533, 655360, -65536, 65533, 655360, -65535, 65533, 655360, -65534, 65533, 655360, -65534, 65534, 655360, -65534, 65535, 655360, -65534, 0, 655360, -65534, 1, 655360, -65534, 2, 655360, -65535, 2, 655360, -65536, 2, 655360, -1, 2, 655360, -2, 2, 655360, -3, 2, 655360, -3, 1, 655360, -3, 0, 655360, -3, 65535, 655360, -3, 65534, 655360, -3, 65532, 655360, -2, 65532, 655360, -1, 65532, 655360, -65536, 65532, 655360, -65535, 65532, 655360, -65534, 65532, 655360, -65533, 65533, 655360, -65533, 65534, 655360, -65533, 65535, 655360, -65533, 0, 655360, -65533, 1, 655360, -65533, 2, 655360, -65534, 3, 655360, -65535, 3, 655360, -65536, 3, 655360, -1, 3, 655360, -2, 3, 655360, -3, 3, 655360, -4, 2, 655360, -4, 1, 655360, -4, 0, 655360, -4, 65535, 655360, -4, 65534, 655360, -4, 65533, 655360, -3, 65531, 655360, -2, 65531, 655360, -1, 65531, 655360, -65536, 65531, 655360, -65535, 65531, 655360, -65534, 65531, 655360, -65532, 65533, 655360, -65532, 65534, 655360, -65532, 65535, 655360, -65532, 0, 655360, -65532, 1, 655360, -65532, 2, 655360, -65534, 4, 655360, -65535, 4, 655360, -65536, 4, 655360, -1, 4, 655360, -2, 4, 655360, -3, 4, 655360, -5, 2, 655360, -5, 1, 655360, -5, 0, 655360, -5, 65535, 655360, -5, 65534, 655360, -5, 65533, 655360, -4, 65532, 655360, -65533, 65532, 655360, -65533, 3, 655360, -4, 3, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="InvisibleWall" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("1_3csrj")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("2_vh7ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115173, 0, 0.0706949)
+
+[node name="EnemySpawn" type="Node3D" parent="."]
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Decoration" type="Node3D" parent="."]
+
+[node name="Breakable" type="Node3D" parent="."]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Pickup" type="Node3D" parent="."]
+
+[node name="NextRoom" parent="." instance=ExtResource("3_87siu")]

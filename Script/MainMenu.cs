@@ -16,7 +16,7 @@ public partial class MainMenu : Node2D
 
     public override void _Ready()
     {
-        menu = GetNode<VBoxContainer>("Menu");
+        menu = GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Menu");
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         GetNode<TextureButton>("EmptyButton").GrabFocus();
 
@@ -37,7 +37,16 @@ public partial class MainMenu : Node2D
     void _on_quit_pressed(){
         animPlayer.Play("FadeIn");
         selectedButton = SelectedButton.Quit;
-        
+    }
+
+    void _on_settings_pressed(){
+        menu.Visible = false;
+        GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Settings").Visible = true;
+    }
+
+    void _on_return_pressed(){
+        menu.Visible = true;
+        GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Settings").Visible = false;
     }
 
     void _on_animation_player_animation_finished(string anim){

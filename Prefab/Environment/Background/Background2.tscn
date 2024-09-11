@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://co4n8vmlxv7s"]
+
+[ext_resource type="Texture2D" uid="uid://bchp5ipv24rau" path="res://Asset/2D/Stage1/Environment/background_2.png" id="1_c5187"]
+
+[node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.98733, 0)
+pixel_size = 0.075
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_c5187")

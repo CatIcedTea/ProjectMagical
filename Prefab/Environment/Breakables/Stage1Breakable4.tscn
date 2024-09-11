@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://gsud6tno12gb"]
+
+[ext_resource type="Script" path="res://Script/Breakables.cs" id="1_m7piu"]
+[ext_resource type="Texture2D" uid="uid://d0cmyjlkvwe80" path="res://Asset/2D/Stage1/Environment/envirmoment_9.png" id="2_vljgm"]
+[ext_resource type="Texture2D" uid="uid://btx7ures4v4p6" path="res://Asset/2D/Stage1/Environment/envirmoment_10.png" id="3_qm0l7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m6n43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vljgm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qm0l7")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4g8g"]
+size = Vector3(1.08179, 1.12605, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57hg6"]
+albedo_color = Color(0.0470588, 0.168627, 0.227451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cy8dg"]
+material = SubResource("StandardMaterial3D_57hg6")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Stage1Breakable4" type="StaticBody3D" groups=["Breakables"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46019, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_m7piu")
+health = 2.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395, 0)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_m6n43")
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.457263, 0, 0, 0, 1, 0, 0, 0, 0.457263, 0, 0.520052, 0)
+shape = SubResource("BoxShape3D_v4g8g")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46445, 0)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+randomness = 0.67
+mesh = SubResource("BoxMesh_cy8dg")
+emission_shape = 1
+emission_sphere_radius = 0.75
+gravity = Vector3(0, -9, 0)
