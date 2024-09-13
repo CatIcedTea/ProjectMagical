@@ -92,15 +92,6 @@ public partial class PlayerController : CharacterBody3D
 
 		//If not in dialogue
 		if(!PlayerStatus.inDialogue){
-			//Handle Jump.
-			if (Input.IsActionJustPressed("Jump") && IsOnFloor())
-			{
-				//velocity.Y = JumpVelocity;
-			}
-			if (Input.IsActionJustPressed("ControllerJump") && IsOnFloor() && !PlayerStatus.inInteractionRange)
-			{
-				//velocity.Y = JumpVelocity;
-			}
 
 			//Handle movement
 			Vector2 inputDir = Input.GetVector("Left", "Right", "Up", "Down");
@@ -116,13 +107,6 @@ public partial class PlayerController : CharacterBody3D
 				lastVelocity = velocity;
 
 				if(canMove){
-					if(inputDir.Y > 0.01f && frontBackDir == FacingDir.FacingBack){
-						frontBackDir = FacingDir.FacingFront;
-					}
-					if(inputDir.Y < -0.01f && frontBackDir == FacingDir.FacingFront){
-						frontBackDir = FacingDir.FacingBack;
-					}
-
 					if(inputDir.Y < -0.01f)
 						animPlayer.Play("WalkBack");
 					else

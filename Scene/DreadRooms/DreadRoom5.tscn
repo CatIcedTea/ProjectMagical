@@ -87,14 +87,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6.80954)
 EnemyList = Array[PackedScene]([ExtResource("6_k3c2e"), ExtResource("7_to2lf")])
 
 [node name="EnemySpawner7" parent="EnemySpawn" instance=ExtResource("4_aqrnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -37.3595)
-EnemyList = Array[PackedScene]([ExtResource("6_k3c2e"), ExtResource("7_to2lf")])
-
-[node name="EnemySpawner8" parent="EnemySpawn" instance=ExtResource("4_aqrnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -37.3595)
-EnemyList = Array[PackedScene]([ExtResource("6_k3c2e"), ExtResource("7_to2lf")])
-
-[node name="EnemySpawner9" parent="EnemySpawn" instance=ExtResource("4_aqrnv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248567, 2, -18.1412)
 
 [node name="Lights" type="Node3D" parent="."]

@@ -31,6 +31,10 @@
 			"Audio": "OpeningSequence/OS_4"
 		},
 		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": true,
+			"SpeakRight": false,
+
 			"Text": "I'd better wash my hands for dinner.",
 			"Audio": "OpeningSequence/OS_5"
 		},
@@ -59,6 +63,7 @@
 		},
 		{
 			"SpriteLeft": "Exit",
+			"SpeakLeft": false,
 
 			"Text": "To move, use WASD or Left Joystick."
 		},
