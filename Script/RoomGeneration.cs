@@ -28,7 +28,7 @@ public partial class RoomGeneration : Node3D
 	//Remove old room and generate a new random room
 	private void generateNewRoom(){
 		roomCleared++;
-		if(roomCleared >= 5){
+		if(roomCleared > 9){
 			GetNode<Node3D>("CurrentRoom").Name = "OldRoom";
 
 			GetNode<Node3D>("OldRoom").QueueFree();

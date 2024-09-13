@@ -21,9 +21,9 @@ public partial class EnemyProjectile : Node3D
 
             if(!player.isDodging){
                 player.takeDamage(3);
-                QueueFree();
             }
         }
+        QueueFree();
     }
 
     void _on_life_time_timeout(){

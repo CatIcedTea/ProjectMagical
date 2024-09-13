@@ -64,11 +64,9 @@ public partial class DialogueManager : Node2D
 	{
 		if(inDialogue){
 			//Advances the dialogue
-			if(Input.IsActionJustReleased("Confirm")){
-				if(text.VisibleCharacters == text.Text.Length){
-					if(!PlayerStatus.inMenu)
-						nextLine();
-				}
+			if(Input.IsActionJustReleased("Confirm") && !PlayerStatus.inMenu){
+				if(text.VisibleCharacters == text.Text.Length)
+					nextLine();
 				else
 					text.VisibleCharacters = text.Text.Length;
 			}

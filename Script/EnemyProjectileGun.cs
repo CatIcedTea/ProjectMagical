@@ -15,7 +15,7 @@ public partial class EnemyProjectileGun : Node3D
     public void launchProjectile(){
         if(aimedProjectile){
             Vector3 playerPos = GetTree().CurrentScene.GetNode<Node3D>("Player").Position;
-            LookAt(new Vector3(playerPos.X, Position.Y, playerPos.Z));
+            LookAt(new Vector3(playerPos.X, playerPos.Y + Position.Y, playerPos.Z));
         }
         AddChild(projectile.Instantiate());
     }

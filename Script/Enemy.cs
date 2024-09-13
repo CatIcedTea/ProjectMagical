@@ -10,11 +10,11 @@ public partial class Enemy : CharacterBody3D
     [Export] AttackType attackType = AttackType.Charge;
     
 
+    public bool isAlive = true;
     private AnimationPlayer animPlayer;
     private AnimationPlayer flashWhite;
     private NavigationAgent3D navigation;
     private Vector3 velocity;
-    private bool isAlive = true;
     private Timer hitStun;
     private Timer attackCD;
     private bool detected;
@@ -89,7 +89,7 @@ public partial class Enemy : CharacterBody3D
             if(health <= 0){
                 animPlayer.Play("Death");
                 isAlive = false;
-                GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
+                //GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
             }
 
             //Handle attack
@@ -171,7 +171,7 @@ public partial class Enemy : CharacterBody3D
     }
 
     void _on_attack_range_body_entered(Node3D body){
-        if(body.Name == "Player" && attackCD.IsStopped() && hitStun.IsStopped() && animPlayer.CurrentAnimation != "AttackStartup"){
+        if(body.Name == "Player"){
             attacking = true;
             attackStillInRange = true;
         }

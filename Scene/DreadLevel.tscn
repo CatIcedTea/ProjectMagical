@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6kh21ask3uya"]
+[gd_scene load_steps=21 format=3 uid="uid://6kh21ask3uya"]
 
 [ext_resource type="Script" path="res://Script/DreadLevel.cs" id="1_pqicm"]
 [ext_resource type="PackedScene" uid="uid://bl5kmsqw3aqwl" path="res://Scene/DreadRooms/DreadStarterRoom.tscn" id="1_sljsb"]
@@ -11,8 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="7_1abvn"]
 [ext_resource type="PackedScene" uid="uid://ccu7bu1d8omxi" path="res://Scene/DreadRooms/DreadRoom4.tscn" id="7_6itdb"]
 [ext_resource type="Script" path="res://Script/Floor.cs" id="8_1e2vv"]
+[ext_resource type="PackedScene" uid="uid://ca2mbcn0d8xsn" path="res://Scene/DreadRooms/DreadRoom5.tscn" id="8_gm881"]
 [ext_resource type="Script" path="res://Script/Sound.cs" id="8_nls3d"]
+[ext_resource type="PackedScene" uid="uid://c04sg71vncmeg" path="res://Scene/DreadRooms/DreadRoom6.tscn" id="9_2o0ja"]
 [ext_resource type="AudioStream" uid="uid://eptblxhe3hjt" path="res://Asset/Audio/Music/Level One.mp3" id="10_sxe22"]
+[ext_resource type="PackedScene" uid="uid://baoytcnmr7mse" path="res://Scene/DreadRooms/DreadRoom7.tscn" id="10_vnn0n"]
 
 [sub_resource type="Environment" id="Environment_erq4o"]
 background_mode = 2
@@ -68,7 +71,7 @@ distanceOffset = 15.0
 
 [node name="Rooms" type="Node3D" parent="."]
 script = ExtResource("2_ag7rr")
-RoomList = Array[PackedScene]([ExtResource("4_ya3mq"), ExtResource("5_1gsve"), ExtResource("6_3hmub"), ExtResource("7_6itdb")])
+RoomList = Array[PackedScene]([ExtResource("4_ya3mq"), ExtResource("5_1gsve"), ExtResource("6_3hmub"), ExtResource("7_6itdb"), ExtResource("8_gm881"), ExtResource("9_2o0ja"), ExtResource("10_vnn0n")])
 
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("1_sljsb")]
 

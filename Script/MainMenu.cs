@@ -68,4 +68,15 @@ public partial class MainMenu : Node2D
     void _on_button_down(){
         GetNode<AudioStreamPlayer>("ButtonClick").Play();
     }
+
+    //Hides mouse cursor
+    public override void _Input(InputEvent @event)
+    {
+        if(@event is InputEventKey or InputEventMouse){
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+		else if(@event is InputEventJoypadButton or InputEventJoypadMotion{AxisValue: <-0.25f or> 0.25f}){
+			Input.MouseMode = Input.MouseModeEnum.Hidden;
+		}
+    }
 }

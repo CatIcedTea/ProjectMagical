@@ -3,7 +3,7 @@ using System;
 
 public partial class DreadBoss : CharacterBody3D
 {
-    public float health = 300f;
+    public float health = 400f;
     public float damage = 4f;
     public float movementSpeed = 3.5f;
     public float attackRange = 20f;

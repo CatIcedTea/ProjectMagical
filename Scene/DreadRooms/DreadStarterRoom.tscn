@@ -372,7 +372,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0229, 0.370176, -3.44238)
 texture = ExtResource("14_p2xet")
 
 [node name="Sprite3D37" parent="Decorations" instance=ExtResource("5_7tynd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.852, 0.370176, 1.7397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.852, 0.370176, 1.34286)
 texture = ExtResource("14_p2xet")
 
 [node name="Sprite3D38" parent="Decorations" instance=ExtResource("5_7tynd")]

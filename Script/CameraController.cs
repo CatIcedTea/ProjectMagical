@@ -39,6 +39,7 @@ public partial class CameraController : Camera3D
 
 	private Node2D menu;
 	private bool inMenu = false;
+	private bool gameOver = false;
 
 	public override void _Ready()
 	{
@@ -65,6 +66,11 @@ public partial class CameraController : Camera3D
 				menu.GetNode<VBoxContainer>("Settings").Visible = false;
 				menu.GetNode<VBoxContainer>("GameOver").Visible = true;
 				menu.GetNode<Label>("GameOverText").Visible = true;
+
+				if(gameOver == false){
+					menu.GetNode<VBoxContainer>("GameOver").GetNode<TextureButton>("RestartLevel").GrabFocus();
+					gameOver = true;
+				}
 			}
 			if(GameState.isAtHome)
 				GetNode<CanvasLayer>("UI").GetNode<TextureProgressBar>("HealthBar").Visible = false;
@@ -84,17 +90,19 @@ public partial class CameraController : Camera3D
 			}
 
 			if(Input.IsActionJustPressed("Escape")){
-				if(!inMenu){
-					menu.GetNode<TextureButton>("EmptyButton").GrabFocus();
-					PlayerStatus.inMenu = true;
-					inMenu = true;
-				}
-				else{
-					menu.GetNode<VBoxContainer>("Menu").Visible = true;
-					menu.GetNode<VBoxContainer>("Settings").Visible = false;
-					PlayerStatus.inMenu = false;
-					inMenu = false;
-					Engine.TimeScale = 1;
+				if(!PlayerStatus.isDefeated && !PlayerStatus.inDialogue){
+					if(!inMenu){
+						menu.GetNode<TextureButton>("EmptyButton").GrabFocus();
+						PlayerStatus.inMenu = true;
+						inMenu = true;
+					}
+					else{
+						menu.GetNode<VBoxContainer>("Menu").Visible = true;
+						menu.GetNode<VBoxContainer>("Settings").Visible = false;
+						PlayerStatus.inMenu = false;
+						inMenu = false;
+						Engine.TimeScale = 1;
+					}
 				}
 			}
 
@@ -157,8 +165,9 @@ public partial class CameraController : Camera3D
 		menu.GetNode<VBoxContainer>("Menu").Visible = true;
 		menu.GetNode<VBoxContainer>("Settings").Visible = false;
 		PlayerStatus.inMenu = false;
-		Engine.TimeScale = 1;
 		inMenu = false;
+
+		Engine.TimeScale = 1;
 	}
 
 	void _on_settings_pressed(){

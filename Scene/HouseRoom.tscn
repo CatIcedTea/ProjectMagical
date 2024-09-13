@@ -693,7 +693,7 @@ size = Vector3(1, 6.24133, 10.167)
 
 [sub_resource type="Animation" id="Animation_r3kh0"]
 resource_name = "FirstClear"
-length = 4.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1075,7 +1075,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_7dgvl")
 
 [node name="Player" parent="." instance=ExtResource("16_axnf5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6678, 0.0626259, -4.45496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6678, 0.0626259, -3.45496)
 
 [node name="DoorDialogue" parent="." instance=ExtResource("4_f71dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01105, 0.783336, 6.96436)

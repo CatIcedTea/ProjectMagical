@@ -65,7 +65,7 @@ public partial class PlayerController : CharacterBody3D
 		//Set rotation basis to camera for movement direction
 		Rotation = new Vector3(Rotation.X, camera.Rotation.Y, Rotation.Z);
 
-		currentHealth = health-1;
+		currentHealth = health;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -74,7 +74,7 @@ public partial class PlayerController : CharacterBody3D
 		
 		Vector3 velocity = Velocity;
 
-		canMove = animPlayer.CurrentAnimation != "LightAttack" && animPlayer.CurrentAnimation != "Dodge" && animPlayer.CurrentAnimation != "HeavyAttack" && currentHealth > 0 && !PlayerStatus.inDialogue;
+		canMove = animPlayer.CurrentAnimation != "LightAttack" && animPlayer.CurrentAnimation != "Dodge" && animPlayer.CurrentAnimation != "HeavyAttack" && currentHealth > 0 && !PlayerStatus.inDialogue && !PlayerStatus.isDefeated;
 		isDodging = animPlayer.CurrentAnimation == "Dodge";
 		
 		//Handle gravity
@@ -230,20 +230,22 @@ public partial class PlayerController : CharacterBody3D
 	void _on_attack_box_body_entered(Node3D body){
 		if(body.IsInGroup("Enemies")){
 			Enemy enemy = (Enemy)body;
-
-			hitConfirm.Play();
-			if(animPlayer.CurrentAnimation == "LightAttack"){
-				enemy.takeDamage(damage);
-				GetNode<Timer>("Hitstop").Start();
-			}
-			else{
-				enemy.takeDamage(damage*2);
-				GetNode<Timer>("HitstopHeavy").Start();
-			}
-			camera.shakeScreen();
-
 			
-			Engine.TimeScale = 0.1;
+			if(enemy.isAlive){
+				hitConfirm.Play();
+				if(animPlayer.CurrentAnimation == "LightAttack"){
+					enemy.takeDamage(damage);
+					GetNode<Timer>("Hitstop").Start();
+				}
+				else{
+					enemy.takeDamage(damage*2);
+					GetNode<Timer>("HitstopHeavy").Start();
+				}
+				camera.shakeScreen();
+
+				
+				Engine.TimeScale = 0.1;
+			}
 		}
 
 		if(body.IsInGroup("Breakables")){

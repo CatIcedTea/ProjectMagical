@@ -339,6 +339,7 @@ focus_next = NodePath("../Quit")
 texture_normal = ExtResource("5_fi2oy")
 texture_pressed = ExtResource("6_8ds7q")
 texture_hover = ExtResource("7_8gn2o")
+texture_focused = ExtResource("12_ketqi")
 
 [node name="Label" type="Label" parent="Menu/Settings/Return"]
 layout_mode = 1
