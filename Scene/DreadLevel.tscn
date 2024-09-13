@@ -1,15 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://6kh21ask3uya"]
+[gd_scene load_steps=18 format=3 uid="uid://6kh21ask3uya"]
 
 [ext_resource type="Script" path="res://Script/DreadLevel.cs" id="1_pqicm"]
 [ext_resource type="PackedScene" uid="uid://bl5kmsqw3aqwl" path="res://Scene/DreadRooms/DreadStarterRoom.tscn" id="1_sljsb"]
 [ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="2_4p27c"]
 [ext_resource type="Script" path="res://Script/RoomGeneration.cs" id="2_ag7rr"]
 [ext_resource type="PackedScene" uid="uid://h2mrdgajw6k3" path="res://Prefab/Player.tscn" id="3_8fvr3"]
-[ext_resource type="PackedScene" uid="uid://do0hjkfjbfeb" path="res://Scene/DreadRooms/DreadRoom1.tscn" id="3_n6tdv"]
-[ext_resource type="PackedScene" uid="uid://k4bnviraupff" path="res://Scene/DreadRooms/DreadRoom2.tscn" id="5_fe0w3"]
+[ext_resource type="PackedScene" uid="uid://do0hjkfjbfeb" path="res://Scene/DreadRooms/DreadRoom1.tscn" id="4_ya3mq"]
+[ext_resource type="PackedScene" uid="uid://k4bnviraupff" path="res://Scene/DreadRooms/DreadRoom2.tscn" id="5_1gsve"]
+[ext_resource type="PackedScene" uid="uid://dasgc3xp3dlqs" path="res://Scene/DreadRooms/DreadRoom3.tscn" id="6_3hmub"]
 [ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="7_1abvn"]
+[ext_resource type="PackedScene" uid="uid://ccu7bu1d8omxi" path="res://Scene/DreadRooms/DreadRoom4.tscn" id="7_6itdb"]
 [ext_resource type="Script" path="res://Script/Floor.cs" id="8_1e2vv"]
-[ext_resource type="Script" path="res://Script/LoopSound.cs" id="8_nls3d"]
+[ext_resource type="Script" path="res://Script/Sound.cs" id="8_nls3d"]
+[ext_resource type="AudioStream" uid="uid://eptblxhe3hjt" path="res://Asset/Audio/Music/Level One.mp3" id="10_sxe22"]
 
 [sub_resource type="Environment" id="Environment_erq4o"]
 background_mode = 2
@@ -53,16 +56,19 @@ transform = Transform3D(0.866025, 0.211309, -0.453154, 0, 0.906308, 0.422618, 0.
 light_color = Color(1, 0.867862, 0.81436, 1)
 light_energy = 0.5
 shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 6.0
 directional_shadow_split_3 = 0.4
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 125.0
 
 [node name="MainCamera" parent="." instance=ExtResource("2_4p27c")]
 transform = Transform3D(0.866026, 0.25, -0.433012, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -1.08694, 1.98927, 2.77038)
+distanceOffset = 15.0
 
 [node name="Rooms" type="Node3D" parent="."]
 script = ExtResource("2_ag7rr")
-RoomList = Array[PackedScene]([ExtResource("3_n6tdv"), ExtResource("5_fe0w3")])
+RoomList = Array[PackedScene]([ExtResource("4_ya3mq"), ExtResource("5_1gsve"), ExtResource("6_3hmub"), ExtResource("7_6itdb")])
 
 [node name="CurrentRoom" parent="Rooms" instance=ExtResource("1_sljsb")]
 
@@ -85,7 +91,19 @@ shape = SubResource("BoxShape3D_x3kjt")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_1abvn")
 volume_db = -10.0
-autoplay = true
+bus = &"Music"
 script = ExtResource("8_nls3d")
+autoPlay = true
+setLooping = true
+startFadeIn = true
+fadeSpeed = 35.0
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_sxe22")
+volume_db = -10.0
+bus = &"Music"
+script = ExtResource("8_nls3d")
+setLooping = true
+fadeSpeed = 50.0
 
 [connection signal="body_entered" from="Floor/Area3D" to="Floor" method="_on_area_3d_body_entered"]

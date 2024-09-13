@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtugr5p5o10x7"]
+[gd_scene load_steps=2 format=3 uid="uid://c4gp6t6dtcaex"]
 
-[ext_resource type="Texture2D" uid="uid://cp4x6280sl0gx" path="res://Asset/2D/Stage1/Environment/background_1.png" id="1_frquw"]
+[ext_resource type="Texture2D" uid="uid://cp4x6280sl0gx" path="res://Asset/2D/Stage1/Environment/background_1.png" id="1_lm2tt"]
 
 [node name="Sprite3D" type="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.05364, 0)
 pixel_size = 0.075
 shaded = true
 texture_filter = 2
-texture = ExtResource("1_frquw")
+texture = ExtResource("1_lm2tt")

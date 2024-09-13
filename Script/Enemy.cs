@@ -145,19 +145,6 @@ public partial class Enemy : CharacterBody3D
         }
     }
 
-    public void takeDamage(float damage, Node3D node){
-        if(isAlive){
-            health -= damage;
-            if(isArmored && health > 0){
-                flashWhite.Play("flash");
-            }
-            else{
-                animPlayer.Play("TakeDamage");
-                hitStun.Start();
-            }
-        }
-    }
-
     void _on_animation_player_animation_finished(string anim){
         if(anim == "Death"){
             QueueFree();
@@ -174,8 +161,10 @@ public partial class Enemy : CharacterBody3D
             animPlayer.Play("Idle");
         }
         if(anim == "TakeDamage"){
-            if(isAlive)
+            if(isAlive){
+                hitStun.Start();
                 animPlayer.Play("Idle");
+            }
             else
                 animPlayer.Play("Death");
         }
@@ -198,7 +187,7 @@ public partial class Enemy : CharacterBody3D
         if(body.Name == "Player"){
             PlayerController player = (PlayerController)body;
 
-            player.takeDamage(damage, Position);
+            player.takeDamage(damage);
         }
     }
 

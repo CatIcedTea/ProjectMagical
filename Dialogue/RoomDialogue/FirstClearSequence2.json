@@ -1,0 +1,19 @@
+{
+	"Dialogue": [
+		{
+			"NameLeft": "Elsie",
+			"SpriteLeft": "Elsie",
+			"SpeakLeft": "True",
+			"EmotionLeft": "surprised",
+			"Text": "No! Wait! What's happening? [shake]NO! STOP! PLEASE![/shake]",
+			"Audio": "FirstClear/FC_2"
+		},
+		{
+			"Text": "Argh! No… got… to… stop… this…",
+			"Audio": "FirstClear/FC_3"
+		},
+		{
+			"ChangeScene": "res://Scene/DreadLevel"
+		}
+	]
+}

@@ -2,8 +2,6 @@ using Godot;
 
 public partial class NextRoom : Area3D
 {
-  
-  
   public override void _Process(double delta)
   {
     //Lock next room until no more enemies left

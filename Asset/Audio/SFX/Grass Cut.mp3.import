@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3yard4e53wdw"
+path="res://.godot/imported/Grass Cut.mp3-5269733e13e4db45aee99fab5f5ae7b7.mp3str"
+
+[deps]
+
+source_file="res://Asset/Audio/SFX/Grass Cut.mp3"
+dest_files=["res://.godot/imported/Grass Cut.mp3-5269733e13e4db45aee99fab5f5ae7b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

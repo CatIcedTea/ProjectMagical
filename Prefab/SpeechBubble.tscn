@@ -44,7 +44,6 @@ script = ExtResource("1_xonnv")
 one_shot = true
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [node name="Bubble" type="Sprite3D" parent="."]

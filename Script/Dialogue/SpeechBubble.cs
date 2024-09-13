@@ -5,7 +5,7 @@ public partial class SpeechBubble : Node3D
 	[Export] string dialogue = "";
 	[Export] bool repeat = false;
 	[Export] float repeatTime = 5;
-	[Export] float lifetime = 3;
+	[Export] float lifetime = 5;
 
 	ScrollingText text;
 	Timer repeatTimer;

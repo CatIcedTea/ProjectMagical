@@ -1,0 +1,11 @@
+{
+	"Dialogue": [
+		{
+			"NameRight": "Zuei",
+			"SpeakRight": "True",
+			"SpriteRight": "Zuei",
+			"Text": "That's her, that's The Weaver! Quick! Hurry! Take her out!!!",
+			"Audio": "DreadLevel/BS_1"
+		}
+	]
+}

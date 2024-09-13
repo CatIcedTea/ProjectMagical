@@ -270,6 +270,22 @@
 
 			"Text": "Your power, light bearer. It will all come back to you in time.",
 			"Audio": "DreadLevel/DL_24"
+		},
+		{
+			"SpriteLeft": "Exit",
+			"SpriteRight": "Exit",
+			"SpeakRight": false,
+
+			"Text": "Zuei has granted you a [wave]Magical Weapon![wave]"
+		},
+		{
+			"Text": "To use, press Left Click or Square/X to do a Light Attack."
+		},
+		{
+			"Text": "You can also do Heavy Attack that does twice the normal damage by pressing Right Click or Triangle/Y."
+		},
+		{
+			"Text": "You also need to be careful of incoming attacks! Press Shift or Circle/B to Dodge out of the way! You are also invulnerable from damage during your dodge."
 		}
 	]
 }

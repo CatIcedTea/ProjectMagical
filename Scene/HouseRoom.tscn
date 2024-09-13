@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://c7a5gy8vd8vho"]
+[gd_scene load_steps=84 format=4 uid="uid://c7a5gy8vd8vho"]
 
 [ext_resource type="Script" path="res://Script/House/HouseRoom.cs" id="1_sw7lc"]
 [ext_resource type="PackedScene" uid="uid://d02b4ai4ikjaq" path="res://Prefab/MainCamera.tscn" id="2_hraax"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh0kl0ppqvchu" path="res://Prefab/DialogueArea.tscn" id="4_f71dw"]
 [ext_resource type="JSON" path="res://Dialogue/RoomDialogue/MiscInterable/InteractShelf.json" id="5_f2ft6"]
 [ext_resource type="PackedScene" uid="uid://bq2qr0pvfwwty" path="res://Prefab/Environment/ShadedSprite3D.tscn" id="6_3q4tt"]
+[ext_resource type="JSON" path="res://Dialogue/RoomDialogue/MiscInterable/InteractBed.json" id="6_ja4yt"]
 [ext_resource type="Texture2D" uid="uid://u35kmukav55u" path="res://Asset/2D/Room/Plant.png" id="7_bonb8"]
 [ext_resource type="Texture2D" uid="uid://cknsxa0wjyame" path="res://Asset/2D/Room/photos.png" id="8_18ck0"]
 [ext_resource type="Texture2D" uid="uid://dmgpep7ecgwcw" path="res://Asset/2D/Room/Main door.png" id="9_5jevy"]
@@ -22,6 +23,7 @@
 [ext_resource type="JSON" path="res://Dialogue/RoomDialogue/OpeningSequence3.json" id="20_dxbug"]
 [ext_resource type="Script" path="res://Script/Dialogue/DialogueArea.cs" id="20_sjetu"]
 [ext_resource type="Texture2D" uid="uid://c4yr7hlehy2ux" path="res://Asset/2D/Portal.png" id="21_7wm4i"]
+[ext_resource type="Texture2D" uid="uid://uwl2unxj3772" path="res://Asset/2D/Player/Animation/Idle.png" id="23_f5wqc"]
 
 [sub_resource type="Environment" id="Environment_baodl"]
 background_mode = 2
@@ -686,20 +688,215 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yo7u"]
+size = Vector3(1, 6.24133, 10.167)
+
+[sub_resource type="Animation" id="Animation_r3kh0"]
+resource_name = "FirstClear"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MainCamera:cameraMode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MirrorPortal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneSprites/ElsieSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CutsceneSprites/ElsieSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CutsceneSprites/ElsieSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.9687, 1.53129, -0.869187)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CutsceneSprites/ElsieSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CutsceneSprites:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CutsceneSprites/ElsieSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_76bxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneSprites/ElsieSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_eaxq3"]
+resource_name = "FirstClearSetup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneSprites:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneSprites/ElsieSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneSprites/ElsieSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.9687, 1.53129, -0.869187)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmk86"]
+_data = {
+"FirstClear": SubResource("Animation_r3kh0"),
+"FirstClearSetup": SubResource("Animation_eaxq3"),
+"RESET": SubResource("Animation_76bxt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tvom"]
+atlas = ExtResource("23_f5wqc")
+region = Rect2(0, 0, 760, 806)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xx410"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tvom")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="StartingRoom" type="Node3D"]
 script = ExtResource("1_sw7lc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_baodl")
 
-[node name="MainCamera" parent="." instance=ExtResource("2_hraax")]
-transform = Transform3D(0.866026, 0.25, -0.433012, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -1.08694, 1.98927, 2.77038)
+[node name="MainCamera" parent="." node_paths=PackedStringArray("followObject") instance=ExtResource("2_hraax")]
+transform = Transform3D(0.866026, 0.25, -0.433012, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, -15.65, 6.716, 7.482)
+followObject = NodePath("../MirrorPortal")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.3396, 14.1418, 0.0324235)
 light_color = Color(0.800709, 0.518353, 0.297283, 1)
 light_energy = 0.5
 shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 6.0
 spot_range = 19.669
 spot_attenuation = -2.0
 
@@ -708,7 +905,7 @@ mesh_library = ExtResource("3_4w3j0")
 collision_layer = 3
 collision_mask = 3
 data = {
-"cells": PackedInt32Array(-1, 65535, 655360, -65536, 65535, 655360, -65536, 0, 655360, -1, 0, 655360, -1, 65534, 655360, -65536, 65534, 655360, -65535, 65534, 655360, -65535, 65535, 655360, -65535, 0, 655360, -65535, 1, 655360, -65536, 1, 655360, -1, 1, 655360, -2, 1, 655360, -2, 0, 655360, -2, 65535, 655360, -2, 65534, 1441795, -65534, 65534, 655360, -65534, 65535, 655360, -65534, 0, 655360, -65534, 1, 655360, -65534, 65533, 655360, -65535, 65533, 655360, -65536, 65533, 655360, -1, 65533, 655360, -2, 65533, 1048578, -1, 2, 1048579, -65536, 2, 1048577, -65535, 2, 1048578, -65534, 2, 655360, -3, 65533, 1048577, -3, 65534, 1441793, -3, 65535, 655360, -3, 0, 655360, -3, 1, 655360, -3, 2, 655360, -5, 65535, 0, -6, 65535, 1048578, -4, 65535, 0, -4, 0, 0, -7, 65535, 1048577, -5, 0, 0, -6, 0, 1441795, -7, 0, 1441793, -4, 65534, 1441793, -5, 65534, 1441794, -6, 65534, 655360, -7, 65534, 655360, -4, 65533, 1048577, -5, 65533, 1048579, -6, 65533, 655360, -7, 65533, 655360, -4, 1, 655360, -5, 1, 655360, -6, 1, 655360, -7, 1, 655360, -7, 2, 655360, -6, 2, 655360, -5, 2, 655360, -4, 2, 655360, -65535, 3, 1441795, -65536, 3, 1441793, -1, 3, 1441794, -8, 65533, 655360, -8, 65534, 655360, -8, 65535, 1048579, -8, 0, 1441794, -8, 1, 655360, -8, 2, 655360, -2, 2, 655360)
+"cells": PackedInt32Array(-1, 65535, 655360, -65536, 65535, 655360, -65536, 0, 655360, -1, 0, 655360, -1, 65534, 655360, -65536, 65534, 655360, -65535, 65534, 655360, -65535, 65535, 655360, -65535, 0, 655360, -65535, 1, 655360, -65536, 1, 655360, -1, 1, 655360, -2, 1, 655360, -2, 0, 655360, -2, 65535, 655360, -2, 65534, 1441795, -65534, 65534, 655360, -65534, 65535, 655360, -65534, 0, 655360, -65534, 1, 655360, -65534, 65533, 655360, -65535, 65533, 655360, -65536, 65533, 655360, -1, 65533, 655360, -2, 65533, 1048578, -1, 2, 1048579, -65536, 2, 1048577, -65535, 2, 1048578, -65534, 2, 655360, -3, 65533, 1048577, -3, 65534, 1441793, -3, 65535, 655360, -3, 0, 655360, -3, 1, 655360, -3, 2, 655360, -5, 65535, 655360, -6, 65535, 1048578, -4, 65535, 655360, -4, 0, 655360, -7, 65535, 1048577, -5, 0, 655360, -6, 0, 1441795, -7, 0, 1441793, -4, 65534, 1441793, -5, 65534, 1441794, -6, 65534, 655360, -7, 65534, 655360, -4, 65533, 1048577, -5, 65533, 1048579, -6, 65533, 655360, -7, 65533, 655360, -4, 1, 655360, -5, 1, 655360, -6, 1, 655360, -7, 1, 655360, -7, 2, 655360, -6, 2, 655360, -5, 2, 655360, -4, 2, 655360, -65535, 3, 1441795, -65536, 3, 1441793, -1, 3, 1441794, -8, 65533, 655360, -8, 65534, 655360, -8, 65535, 1048579, -8, 0, 1441794, -8, 1, 655360, -8, 2, 655360, -2, 2, 655360)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
@@ -740,6 +937,12 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 [node name="Shelf" parent="Interactable" instance=ExtResource("4_f71dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98231, 2.75571, -3.81944)
 DialogueFile = ExtResource("5_f2ft6")
+InteractableSprite = false
+dialogueType = 1
+
+[node name="Bed" parent="Interactable" instance=ExtResource("4_f71dw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.899, 1.00832, -0.115543)
+DialogueFile = ExtResource("6_ja4yt")
 InteractableSprite = false
 dialogueType = 1
 
@@ -872,19 +1075,18 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_7dgvl")
 
 [node name="Player" parent="." instance=ExtResource("16_axnf5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7048, 0.0626259, -3.31776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6678, 0.0626259, -4.45496)
 
 [node name="DoorDialogue" parent="." instance=ExtResource("4_f71dw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01105, 0.783336, 6.96436)
+monitoring = false
+monitorable = false
 DialogueFile = ExtResource("17_qdj7g")
 InteractableSprite = false
 dialogueType = 2
 
 [node name="MirrorPortal" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80237, 9.53674e-07, -1.23506)
-visible = false
-monitoring = false
-monitorable = false
 script = ExtResource("20_sjetu")
 DialogueFile = ExtResource("20_dxbug")
 
@@ -901,10 +1103,46 @@ billboard = 2
 sprite_frames = SubResource("SpriteFrames_1to44")
 autoplay = "default"
 
+[node name="FirstClearCutscene" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.84525, 0, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstClearCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25452, 2.62067, -0.436612)
+shape = SubResource("BoxShape3D_6yo7u")
+
 [node name="Audio" type="Node3D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("18_5mpsi")
 volume_db = -10.0
 
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_pmk86")
+}
+
+[node name="CutsceneSprites" type="Node3D" parent="Cutscene"]
+visible = false
+
+[node name="ElsieSprite" type="AnimatedSprite3D" parent="Cutscene/CutsceneSprites"]
+transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, -6.9687, 1.53129, -0.869187)
+billboard = 2
+shaded = true
+alpha_cut = 2
+sprite_frames = SubResource("SpriteFrames_xx410")
+autoplay = "default"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Cutscene/CutsceneSprites/ElsieSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7049, 0)
+light_color = Color(0.973799, 0.778572, 0.412195, 1)
+light_energy = 0.25
+light_size = 0.5
+omni_range = 3.5
+omni_attenuation = -0.25
+
 [connection signal="area_entered" from="DoorDialogue" to="." method="_on_door_dialogue_area_entered"]
+[connection signal="body_entered" from="FirstClearCutscene" to="." method="_on_first_clear_cutscene_body_entered"]
+[connection signal="animation_finished" from="Cutscene" to="." method="_on_cutscene_animation_finished"]

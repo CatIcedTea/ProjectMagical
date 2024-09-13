@@ -20,7 +20,7 @@ public partial class EnemyProjectile : Node3D
             PlayerController player = (PlayerController)body;
 
             if(!player.isDodging){
-                player.takeDamage(2, Position);
+                player.takeDamage(3);
                 QueueFree();
             }
         }

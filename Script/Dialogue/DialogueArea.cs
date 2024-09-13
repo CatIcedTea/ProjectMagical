@@ -3,7 +3,7 @@ using Godot;
 
 public partial class DialogueArea : Area3D
 {
-	[Export] Json DialogueFile;
+	[Export] public Json DialogueFile;
 	[Export] bool InteractableSprite = true;
 	[Export] bool chronologicalDialogue = false;
 	[Export] public DialogueType dialogueType;

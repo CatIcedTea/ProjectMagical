@@ -40,6 +40,7 @@ public partial class Breakables : StaticBody3D
 
     public void takeDamage(float damage){
         if(!isDestroyed){
+            GetNode<AudioStreamPlayer3D>("DestroySound").Play();
             health -= damage;
             shakeVal = 10f;
         }

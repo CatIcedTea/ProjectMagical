@@ -1,0 +1,10 @@
+{
+	"Dialogue": [
+		{
+			"Text": "Into the loop once again..."
+		},
+        {
+            "ChangeScene": "res://Scene/DreadLevel"
+        }
+    ]
+}

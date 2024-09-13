@@ -1,0 +1,12 @@
+{
+	"Dialogue": [
+		{
+			"NameLeft": "Elsie",
+			"SpeakLeft": "True",
+			"SpriteLeft": "Elsie",
+			"EmotionLeft": "nervous",
+			"Text": "Wait that's me… that's me before I went through the portal. I can stop myself from going through the portal if I destroy it!",
+			"Audio": "FirstClear/FC_1"
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+	"Dialogue": [
+		{
+            "Text": "And you are back!"
+        },
+        {
+            "SpriteLeft": "Elsie",
+            "EmotionLeft": "happy",
+            "SpriteRight": "Zuei",
+            "EmotionRight": "happy",
+            "Text": "This is where our journey with Elsie and Zuei will end for now"
+        },
+        {
+            "Text": "Will they ever stop this time looping madness they have found themselves in and find out the real truth of the shadow world?"
+        },
+        {
+            "Text": "You may keep going and playing if you so wish. Sincerely, [wave]thank you for playing our game![/wave]"
+        }
+    ]
+}

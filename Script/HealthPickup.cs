@@ -7,8 +7,10 @@ public partial class HealthPickup : Node3D
         if(body.Name == "Player"){
             PlayerController player = (PlayerController)body;
 
-            player.heal(4);
-            GetNode<AnimationPlayer>("AnimationPlayer").Play("pickup");
+            if(player.currentHealth < player.health){
+                player.heal(4);
+                GetNode<AnimationPlayer>("AnimationPlayer").Play("pickup");
+            }
         }
     }
 

@@ -18,6 +18,7 @@ public partial class Mascot : AnimatedSprite3D
 		GlobalPosition = followPosition.GlobalPosition;
 
 		GlobalBasis = player.GlobalBasis;
+		GlobalScale(new Vector3(0.6f,0.6f,0.6f));
 	}
 
 	public override void _Process(double delta)

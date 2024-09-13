@@ -23,12 +23,12 @@ public partial class PlayerController : CharacterBody3D
 	private Timer dodgeCooldown;
 	private Timer hitSlowdown;
 	private CpuParticles3D walkParticle;
-	private PlayerProjectileGun projectileLauncher;
 
 	private CollisionShape3D attackBox;
 
 	private AudioStreamPlayer3D hitConfirm;
 	private AudioStreamPlayer3D damaged;
+	private AudioStreamPlayer3D healSound;
 
 	private enum FacingDir{
 		FacingRight,
@@ -55,17 +55,17 @@ public partial class PlayerController : CharacterBody3D
 		dodgeCooldown = GetNode<Timer>("DodgeCooldown");
 		hitSlowdown = GetNode<Timer>("HitSlowdown");
 		walkParticle = GetNode<CpuParticles3D>("WalkParticle");
-		projectileLauncher = GetNode<PlayerProjectileGun>("PlayerProjectileGun");
 
 		attackBox = GetNode<Node3D>("Flip").GetNode<Area3D>("AttackBox").GetNode<CollisionShape3D>("CollisionShape3D");
 
 		hitConfirm = GetNode<Node3D>("Audio").GetNode<AudioStreamPlayer3D>("HitConfirm");
 		damaged = GetNode<Node3D>("Audio").GetNode<AudioStreamPlayer3D>("Damage");
+		healSound = GetNode<Node3D>("Audio").GetNode<AudioStreamPlayer3D>("Heal");
 
 		//Set rotation basis to camera for movement direction
 		Rotation = new Vector3(Rotation.X, camera.Rotation.Y, Rotation.Z);
 
-		currentHealth = health;
+		currentHealth = health-1;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -74,7 +74,7 @@ public partial class PlayerController : CharacterBody3D
 		
 		Vector3 velocity = Velocity;
 
-		canMove = animPlayer.CurrentAnimation != "LightAttack" && animPlayer.CurrentAnimation != "Dodge" && animPlayer.CurrentAnimation != "HeavyAttack" && !PlayerStatus.inDialogue;
+		canMove = animPlayer.CurrentAnimation != "LightAttack" && animPlayer.CurrentAnimation != "Dodge" && animPlayer.CurrentAnimation != "HeavyAttack" && currentHealth > 0 && !PlayerStatus.inDialogue;
 		isDodging = animPlayer.CurrentAnimation == "Dodge";
 		
 		//Handle gravity
@@ -95,11 +95,11 @@ public partial class PlayerController : CharacterBody3D
 			//Handle Jump.
 			if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 			{
-				velocity.Y = JumpVelocity;
+				//velocity.Y = JumpVelocity;
 			}
 			if (Input.IsActionJustPressed("ControllerJump") && IsOnFloor() && !PlayerStatus.inInteractionRange)
 			{
-				velocity.Y = JumpVelocity;
+				//velocity.Y = JumpVelocity;
 			}
 
 			//Handle movement
@@ -204,7 +204,7 @@ public partial class PlayerController : CharacterBody3D
 		MoveAndSlide();
 	}
 
-	public void takeDamage(float damage, Vector3 enemPosition){
+	public void takeDamage(float damage){
 		if(!isDodging && damageAnimation.CurrentAnimation != "Invulnerable" && damageAnimation.CurrentAnimation != "TakeDamage"){
 			camera.shakeScreen();
 			damageAnimation.Play("TakeDamage");
@@ -220,6 +220,7 @@ public partial class PlayerController : CharacterBody3D
 
 	public void heal(float amount){
 		currentHealth += amount;
+		healSound.Play();
 		if(currentHealth > health){
 			currentHealth = health;
 		}
@@ -253,6 +254,26 @@ public partial class PlayerController : CharacterBody3D
 			else
 				breakables.takeDamage(damage*2);
 		}
+
+		if(body.IsInGroup("Boss")){
+			DreadBoss boss = (DreadBoss)body;
+
+			boss.takeDamage(damage);
+
+			hitConfirm.Play();
+			if(animPlayer.CurrentAnimation == "LightAttack"){
+				boss.takeDamage(damage);
+				GetNode<Timer>("Hitstop").Start();
+			}
+			else{
+				boss.takeDamage(damage*2);
+				GetNode<Timer>("HitstopHeavy").Start();
+			}
+			camera.shakeScreen();
+
+			
+			Engine.TimeScale = 0.1;
+		}
 	}
 
 	void _on_hitstop_timeout(){
@@ -260,12 +281,17 @@ public partial class PlayerController : CharacterBody3D
 	}
 
 	void _on_hit_slowdown_timeout(){
-		Engine.TimeScale = 1;
+		if(currentHealth > 0)
+			Engine.TimeScale = 1;
 	}
 
 	void _on_damage_animation_animation_finished(string anim){
 		if(anim == "TakeDamage"){
-			damageAnimation.Play("Invulnerable");
+			if(currentHealth <= 0){
+				PlayerStatus.isDefeated = true;
+			}
+			else
+				damageAnimation.Play("Invulnerable");
 		}
 	}
 }

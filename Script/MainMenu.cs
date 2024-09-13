@@ -35,6 +35,7 @@ public partial class MainMenu : Node2D
     }
 
     void _on_quit_pressed(){
+        GetNode<Sound>("Music").FadeOut();
         animPlayer.Play("FadeIn");
         selectedButton = SelectedButton.Quit;
     }
@@ -42,11 +43,13 @@ public partial class MainMenu : Node2D
     void _on_settings_pressed(){
         menu.Visible = false;
         GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Settings").Visible = true;
+        GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Settings").GetNode<HSlider>("Master").GrabFocus();
     }
 
     void _on_return_pressed(){
         menu.Visible = true;
         GetNode<Node2D>("Menu").GetNode<VBoxContainer>("Settings").Visible = false;
+        GetNode<TextureButton>("EmptyButton").GrabFocus();
     }
 
     void _on_animation_player_animation_finished(string anim){
@@ -56,5 +59,13 @@ public partial class MainMenu : Node2D
             if(selectedButton == SelectedButton.Quit)
                 GetTree().Quit();
         }
+    }
+
+    void _on_button_mouse_entered(){
+        GetNode<AudioStreamPlayer>("ButtonHover").Play();
+    }
+
+    void _on_button_down(){
+        GetNode<AudioStreamPlayer>("ButtonClick").Play();
     }
 }

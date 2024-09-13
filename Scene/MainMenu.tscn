@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://danj6eoid3u8h"]
+[gd_scene load_steps=25 format=3 uid="uid://danj6eoid3u8h"]
 
 [ext_resource type="Script" path="res://Script/MainMenu.cs" id="1_kmvdj"]
 [ext_resource type="Texture2D" uid="uid://cc5yn4dt4j1io" path="res://Asset/2D/UI/button_unpressed.png" id="1_ofrhr"]
@@ -11,7 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bhcdc8slvlhj5" path="res://Asset/2D/UI/button_unpressed_2.png" id="5_fi2oy"]
 [ext_resource type="Texture2D" uid="uid://dxn04fr801r8f" path="res://Asset/2D/UI/button_pressed_2.png" id="6_8ds7q"]
 [ext_resource type="Texture2D" uid="uid://d0avtxn43gn2i" path="res://Asset/2D/UI/button_hover_2.png" id="7_8gn2o"]
+[ext_resource type="Texture2D" uid="uid://bnfpkn3thd0oe" path="res://Asset/2D/UI/button_focused.png" id="7_33384"]
 [ext_resource type="AudioStream" uid="uid://y7vbi7exgln0" path="res://Asset/Audio/Music/Main Theme.mp3" id="12_iygrx"]
+[ext_resource type="Texture2D" uid="uid://bb7lumu78f0b7" path="res://Asset/2D/UI/button_focused_2.png" id="12_ketqi"]
+[ext_resource type="Script" path="res://Script/Sound.cs" id="13_kpyhx"]
+[ext_resource type="AudioStream" uid="uid://c3rcrsq7dot7x" path="res://Asset/Audio/SFX/Menu Click.mp3" id="14_xy2qp"]
+[ext_resource type="AudioStream" uid="uid://cdhplqeck5u0l" path="res://Asset/Audio/SFX/Menu Hover.mp3" id="15_bpccs"]
 
 [sub_resource type="Animation" id="Animation_eafje"]
 resource_name = "FadeIn"
@@ -132,7 +137,7 @@ texture = ExtResource("3_gu6dh")
 [node name="EmptyButton" type="TextureButton" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-focus_neighbor_top = NodePath("../Menu/Menu/Quit")
+focus_neighbor_top = NodePath("../Menu/Menu/Start")
 focus_neighbor_bottom = NodePath("../Menu/Menu/Start")
 focus_next = NodePath("../Menu/Menu/Start")
 
@@ -170,12 +175,12 @@ offset_bottom = 1004.0
 
 [node name="Start" type="TextureButton" parent="Menu/Menu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Settings")
 focus_next = NodePath("../Settings")
 texture_normal = ExtResource("1_ofrhr")
 texture_pressed = ExtResource("2_xfgfo")
 texture_hover = ExtResource("3_wbecw")
+texture_focused = ExtResource("7_33384")
 
 [node name="Label" type="Label" parent="Menu/Menu/Start"]
 layout_mode = 1
@@ -200,10 +205,10 @@ vertical_alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
-focus_next = NodePath("../Quit")
 texture_normal = ExtResource("5_fi2oy")
 texture_pressed = ExtResource("6_8ds7q")
 texture_hover = ExtResource("7_8gn2o")
+texture_focused = ExtResource("12_ketqi")
 
 [node name="Label" type="Label" parent="Menu/Menu/Settings"]
 layout_mode = 1
@@ -227,11 +232,10 @@ vertical_alignment = 1
 [node name="Quit" type="TextureButton" parent="Menu/Menu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../Start")
-focus_next = NodePath("../Start")
 texture_normal = ExtResource("5_fi2oy")
 texture_pressed = ExtResource("6_8ds7q")
 texture_hover = ExtResource("7_8gn2o")
+texture_focused = ExtResource("12_ketqi")
 
 [node name="Label" type="Label" parent="Menu/Menu/Quit"]
 layout_mode = 1
@@ -270,6 +274,7 @@ horizontal_alignment = 1
 
 [node name="Master" type="HSlider" parent="Menu/Settings"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../MusicText")
 max_value = 1.0
 step = 0.001
 script = ExtResource("4_0gl7v")
@@ -285,6 +290,8 @@ horizontal_alignment = 1
 
 [node name="Music" type="HSlider" parent="Menu/Settings"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Master")
+focus_neighbor_bottom = NodePath("../SFX")
 max_value = 1.0
 step = 0.001
 script = ExtResource("4_0gl7v")
@@ -300,6 +307,8 @@ horizontal_alignment = 1
 
 [node name="SFX" type="HSlider" parent="Menu/Settings"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Music")
+focus_neighbor_bottom = NodePath("../Voice")
 max_value = 1.0
 step = 0.001
 script = ExtResource("4_0gl7v")
@@ -315,6 +324,8 @@ horizontal_alignment = 1
 
 [node name="Voice" type="HSlider" parent="Menu/Settings"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../SFX")
+focus_neighbor_bottom = NodePath("../Return")
 max_value = 1.0
 step = 0.001
 script = ExtResource("4_0gl7v")
@@ -354,17 +365,39 @@ offset_bottom = 1080.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_iygrx")
-autoplay = true
 bus = &"Music"
+script = ExtResource("13_kpyhx")
+autoPlay = true
+setLooping = true
+startFadeIn = true
+fadeSpeed = 125.0
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_xy2qp")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_bpccs")
+volume_db = -7.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="button_down" from="Menu/Menu/Start" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menu/Menu/Start" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Menu/Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="Menu/Menu/Settings" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menu/Menu/Settings" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Menu/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="Menu/Menu/Quit" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menu/Menu/Quit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Menu/Menu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="Menu/Settings/Master" to="Menu/Settings/Master" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/Settings/Music" to="Menu/Settings/Music" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/Settings/SFX" to="Menu/Settings/SFX" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/Settings/Voice" to="Menu/Settings/Voice" method="_on_value_changed"]
+[connection signal="button_down" from="Menu/Settings/Return" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Menu/Settings/Return" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Menu/Settings/Return" to="." method="_on_return_pressed"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca2mbcn0d8xsn"]
+
+[ext_resource type="MeshLibrary" uid="uid://lx5sxnss0sbd" path="res://Prefab/Tileset/DreadTileset.tres" id="1_xo5gh"]
+[ext_resource type="PackedScene" uid="uid://bsioje82uivtq" path="res://Prefab/Environment/PlayerSpawn.tscn" id="2_txr3h"]
+[ext_resource type="PackedScene" uid="uid://bgnhao05rppes" path="res://Prefab/Environment/NextRoom.tscn" id="3_exx0x"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vjfub"]
+
+[node name="DreadRoom5" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_vjfub")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+mesh_library = ExtResource("1_xo5gh")
+collision_layer = 7
+collision_mask = 7
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="InvisibleWall" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("1_xo5gh")
+collision_layer = 7
+collision_mask = 7
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("2_txr3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115173, 0, 0.0706949)
+
+[node name="EnemySpawn" type="Node3D" parent="."]
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Decoration" type="Node3D" parent="."]
+
+[node name="Breakable" type="Node3D" parent="."]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Pickup" type="Node3D" parent="."]
+
+[node name="NextRoom" parent="." instance=ExtResource("3_exx0x")]

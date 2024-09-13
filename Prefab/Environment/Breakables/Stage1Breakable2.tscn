@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cejrxtxh46xkt"]
+[gd_scene load_steps=9 format=3 uid="uid://cejrxtxh46xkt"]
 
 [ext_resource type="Script" path="res://Script/Breakables.cs" id="1_01duq"]
 [ext_resource type="Texture2D" uid="uid://b2i48ramgwidf" path="res://Asset/2D/Stage1/Environment/envirmoment_2.png" id="2_o7e7b"]
 [ext_resource type="Texture2D" uid="uid://d2cogc4ryhu4o" path="res://Asset/2D/Stage1/Environment/envirmoment_2_1.png" id="3_38ls5"]
+[ext_resource type="AudioStream" uid="uid://beivhjdy14crx" path="res://Asset/Audio/SFX/Rock Break.mp3" id="4_eyapj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_loc0t"]
 animations = [{
@@ -61,3 +62,7 @@ mesh = SubResource("BoxMesh_hoscr")
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3(0, -9, 0)
+
+[node name="DestroySound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_eyapj")
+attenuation_model = 3

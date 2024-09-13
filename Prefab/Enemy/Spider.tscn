@@ -1006,7 +1006,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="HitStun" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.25
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="."]

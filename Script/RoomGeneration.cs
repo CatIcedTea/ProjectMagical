@@ -6,8 +6,9 @@ public partial class RoomGeneration : Node3D
 	[Export] PackedScene [] RoomList;
 	AnimationPlayer transitionAnimation;
 
-	int roomListSize;
-	int currentIndex = -1;
+	private int roomCleared = 0;
+	private int roomListSize;
+	private int currentIndex = -1;
 
 	public override void _Ready()
 	{
@@ -26,23 +27,38 @@ public partial class RoomGeneration : Node3D
 
 	//Remove old room and generate a new random room
 	private void generateNewRoom(){
-		Random rand = new Random();
+		roomCleared++;
+		if(roomCleared >= 5){
+			GetNode<Node3D>("CurrentRoom").Name = "OldRoom";
 
-		int roomNum = rand.Next(roomListSize);
-		while(roomNum == currentIndex){
-			roomNum = rand.Next(roomListSize);
+			GetNode<Node3D>("OldRoom").QueueFree();
+
+			var currentRoom = ResourceLoader.Load<PackedScene>("res://Scene/DreadRooms/DreadRoomBoss.tscn").Instantiate();
+
+			AddChild(currentRoom);
+			currentRoom.Name = "CurrentRoom";
+
+			currentRoom.GetNode<PlayerSpawn>("PlayerSpawn").spawnPlayer();
 		}
+		else{
+			Random rand = new Random();
 
-		currentIndex = roomNum;
+			int roomNum = rand.Next(roomListSize);
+			while(roomNum == currentIndex){
+				roomNum = rand.Next(roomListSize);
+			}
 
-		GetNode<Node3D>("CurrentRoom").Name = "OldRoom";
+			currentIndex = roomNum;
 
-		GetNode<Node3D>("OldRoom").QueueFree();
+			GetNode<Node3D>("CurrentRoom").Name = "OldRoom";
 
-		var currentRoom = RoomList[roomNum].Instantiate();
-		AddChild(currentRoom);
-		currentRoom.Name = "CurrentRoom";
+			GetNode<Node3D>("OldRoom").QueueFree();
 
-		currentRoom.GetNode<PlayerSpawn>("PlayerSpawn").spawnPlayer();
+			var currentRoom = RoomList[roomNum].Instantiate();
+			AddChild(currentRoom);
+			currentRoom.Name = "CurrentRoom";
+
+			currentRoom.GetNode<PlayerSpawn>("PlayerSpawn").spawnPlayer();
+		}
 	}
 }

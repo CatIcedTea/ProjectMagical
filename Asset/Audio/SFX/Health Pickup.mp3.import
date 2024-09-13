@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmendnwa5bt8l"
+path="res://.godot/imported/Health Pickup.mp3-18b1aa430e8668d055ed3c73721e2684.mp3str"
+
+[deps]
+
+source_file="res://Asset/Audio/SFX/Health Pickup.mp3"
+dest_files=["res://.godot/imported/Health Pickup.mp3-18b1aa430e8668d055ed3c73721e2684.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

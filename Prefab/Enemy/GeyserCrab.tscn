@@ -959,7 +959,7 @@ sprite_frames = SubResource("SpriteFrames_t7kkb")
 animation = &"idle"
 
 [node name="HitStun" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.35
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="."]

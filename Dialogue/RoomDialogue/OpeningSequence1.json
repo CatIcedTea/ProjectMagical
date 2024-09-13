@@ -56,6 +56,17 @@
 
 			"Text": "Ok lets get to dinner.",
 			"Audio": "OpeningSequence/OS_8"
+		},
+		{
+			"SpriteLeft": "Exit",
+
+			"Text": "To move, use WASD or Left Joystick."
+		},
+		{
+			"Text": "You can also zoom the camera in and out using your Mousewheel or Right Joystick."
+		},
+		{
+			"Text": "Finally, to interact, press E or Cross/A when there is an object nearby."
 		}
 	]
 }

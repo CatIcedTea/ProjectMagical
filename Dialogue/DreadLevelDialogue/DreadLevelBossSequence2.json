@@ -1,0 +1,19 @@
+{
+	"Dialogue": [
+		{
+			"Text": "\n[center][tornado]Elsie! Are you coming for dinner?[/tornado][/center]",
+			"Audio": "DreadLevel/BS_2"
+		},
+		{
+			"Text": "\n[center][tornado]Coming mother.[/tornado][/center]",
+			"Audio": "DreadLevel/BS_3"
+		},
+		{
+			"Text": "\n[center][tornado]Don't forget to wash up![/tornado][/center]",
+			"Audio": "DreadLevel/BS_4"
+		},
+		{
+			"ChangeScene": "res://Scene/HouseRoom"
+		}
+	]
+}

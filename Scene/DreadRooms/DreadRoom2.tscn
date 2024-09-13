@@ -30,8 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://bqu3agcg2y3w3" path="res://Prefab/Enemy/Viper.tscn" id="28_04lj4"]
 [ext_resource type="PackedScene" uid="uid://ccy5g878g87cp" path="res://Prefab/Enemy/Spider.tscn" id="28_hjq1o"]
 [ext_resource type="PackedScene" uid="uid://dw6b8hlu7i222" path="res://Prefab/Enemy/GeyserCrab.tscn" id="29_ibdqm"]
-[ext_resource type="PackedScene" uid="uid://dtugr5p5o10x7" path="res://Prefab/Environment/Background/Background1.tscn" id="31_gsyey"]
-[ext_resource type="PackedScene" uid="uid://coimuhi0m8o3v" path="res://Prefab/Environment/Background/Background3.tscn" id="32_xlpm7"]
+[ext_resource type="PackedScene" uid="uid://c4gp6t6dtcaex" path="res://Prefab/Environment/Background/Background1.tscn" id="31_gsyey"]
+[ext_resource type="PackedScene" uid="uid://cne7th3v47ab1" path="res://Prefab/Environment/Background/Background3.tscn" id="32_xlpm7"]
 [ext_resource type="PackedScene" uid="uid://bx8nlmo1v5557" path="res://Prefab/Environment/Background/Background4.tscn" id="33_1shdg"]
 [ext_resource type="PackedScene" uid="uid://co4n8vmlxv7s" path="res://Prefab/Environment/Background/Background2.tscn" id="34_n3j5t"]
 
@@ -203,9 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54456, 0.410229, 8.71365)
 
 [node name="Sprite3D17" parent="Decoration" instance=ExtResource("9_sux5f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3263, 2.31891, 10.6364)
-
-[node name="Sprite3D18" parent="Decoration" instance=ExtResource("8_5ek3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.61458, 4.36646, 13.0317)
 
 [node name="Sprite3D14" parent="Decoration" instance=ExtResource("8_5ek3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.322, 4.36646, 12.9262)
@@ -615,32 +612,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.4502, 0.46019, -22.321)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5457, 0.46019, -22.6406)
 
 [node name="Stage1Breakable102" parent="Breakable" instance=ExtResource("14_roaou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34303, 4.46019, 5.17659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65136, 2.44983, 2.93492)
 
 [node name="Stage1Breakable103" parent="Breakable" instance=ExtResource("14_roaou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09637, 4.46019, 5.1015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4047, 2.44983, 2.85983)
 
 [node name="Background" type="Node3D" parent="."]
+
+[node name="Sprite3D" parent="Background" instance=ExtResource("31_gsyey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6223, 5.68203, -18.0517)
+
+[node name="Sprite3D2" parent="Background" instance=ExtResource("34_n3j5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33316, 2.56091, -6.45323)
+
+[node name="Sprite3D3" parent="Background" instance=ExtResource("32_xlpm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6668, 5.4044, -26.5004)
+
+[node name="Sprite3D4" parent="Background" instance=ExtResource("33_1shdg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.1406, 4.07582, -4.91363)
 
 [node name="Pickup" type="Node3D" parent="."]
 
 [node name="HealthPickup" parent="Pickup" instance=ExtResource("26_fkt6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0907, -9.53674e-07, -11.5841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9099, 0, 0.65824)
 
 [node name="NextRoom" parent="." instance=ExtResource("3_e2413")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0226, 0.467881, -18.0324)
-
-[node name="HealthPickup" parent="." instance=ExtResource("26_fkt6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9099, 0, 0.65824)
-
-[node name="Sprite3D" parent="." instance=ExtResource("31_gsyey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6223, 5.68203, -18.0517)
-
-[node name="Sprite3D2" parent="." instance=ExtResource("34_n3j5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33316, 2.56091, -6.45323)
-
-[node name="Sprite3D3" parent="." instance=ExtResource("32_xlpm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6668, 5.4044, -26.5004)
-
-[node name="Sprite3D4" parent="." instance=ExtResource("33_1shdg")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48.1406, 4.07582, -4.91363)

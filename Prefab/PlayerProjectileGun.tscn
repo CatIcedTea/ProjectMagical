@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddystp51v24qg"]
-
-[ext_resource type="Script" path="res://Prefab/PlayerProjectileGun.cs" id="1_2gvgc"]
-
-[node name="PlayerProjectileGun" type="Node3D"]
-script = ExtResource("1_2gvgc")

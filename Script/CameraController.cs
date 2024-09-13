@@ -11,13 +11,15 @@ public partial class CameraController : Camera3D
 	//Speed to zoom in and out
 	[Export] float scrollSpeed = 0.25f;
 	[Export] float shakeAmount = 0.1f;
+	[Export] CameraMode cameraMode = CameraMode.FollowPlayer;
+	[Export] Node3D followObject;
 
 	//Different modes of the camera
 	public enum CameraMode{
-		FollowPlayer
+		FollowPlayer,
+		FollowObject,
+		Cutscene
 	}
-
-	CameraMode cameraMode = CameraMode.FollowPlayer;
 
 	private PlayerController player;
 	
@@ -49,46 +51,66 @@ public partial class CameraController : Camera3D
 		lengthRatio = Mathf.Tan(Mathf.Abs(Rotation.Y));
 		distanceOffsetShort = lengthRatio * distanceOffset;
 		distance = new Vector3(-distanceOffsetShort, distanceOffsetShort + heightOffset, distanceOffset);
+
+		followObject = player;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{	
-		if(GameState.isAtHome)
-			GetNode<CanvasLayer>("UI").GetNode<TextureProgressBar>("HealthBar").Visible = false;
-
-		//Determine camera mode
 		if(cameraMode == CameraMode.FollowPlayer){
-			Position = Position.Lerp(player.Position + distance, interpolationRate * (float)delta);
-		}
-
-		//Shake the camera if value is more than 0
-		if(shakeVal != 0){
-			SetHOffset(shakeVal);
-			shakeVal = Mathf.Lerp(shakeVal, shakeVal*-1, 1f * (float)delta);
-			shakeVal = Mathf.MoveToward(shakeVal, 0, 0.5f * (float)delta);
-
-			shakeVal *= -1;
-		}
-
-		if(Input.IsActionJustPressed("Escape")){
-			if(!inMenu){
+			if(PlayerStatus.isDefeated){
+				PlayerStatus.inMenu = true;
 				inMenu = true;
+				menu.GetNode<VBoxContainer>("Menu").Visible = false;
+				menu.GetNode<VBoxContainer>("Settings").Visible = false;
+				menu.GetNode<VBoxContainer>("GameOver").Visible = true;
+				menu.GetNode<Label>("GameOverText").Visible = true;
+			}
+			if(GameState.isAtHome)
+				GetNode<CanvasLayer>("UI").GetNode<TextureProgressBar>("HealthBar").Visible = false;
+
+			//Determine camera mode
+			if(cameraMode == CameraMode.FollowPlayer){
+				Position = Position.Lerp(player.Position + distance, interpolationRate * (float)delta);
+			}
+
+			//Shake the camera if value is more than 0
+			if(shakeVal != 0){
+				SetHOffset(shakeVal);
+				shakeVal = Mathf.Lerp(shakeVal, shakeVal*-1, 1f * (float)delta);
+				shakeVal = Mathf.MoveToward(shakeVal, 0, 0.5f * (float)delta);
+
+				shakeVal *= -1;
+			}
+
+			if(Input.IsActionJustPressed("Escape")){
+				if(!inMenu){
+					menu.GetNode<TextureButton>("EmptyButton").GrabFocus();
+					PlayerStatus.inMenu = true;
+					inMenu = true;
+				}
+				else{
+					menu.GetNode<VBoxContainer>("Menu").Visible = true;
+					menu.GetNode<VBoxContainer>("Settings").Visible = false;
+					PlayerStatus.inMenu = false;
+					inMenu = false;
+					Engine.TimeScale = 1;
+				}
+			}
+
+			if(inMenu){
+				menu.Visible = true;
+				Engine.TimeScale = 0;
 			}
 			else{
-				inMenu = false;
-				Engine.TimeScale = 1;
+				menu.Visible = false;
 			}
+			
+			handleZoom();
 		}
-
-		if(inMenu){
-			menu.Visible = true;
-			Engine.TimeScale = 0;
+		else if(cameraMode == CameraMode.FollowObject){
+			Position = Position.Lerp(followObject.Position + distance, interpolationRate * (float)delta);
 		}
-		else{
-			menu.Visible = false;
-		}
-		
-		handleZoom();
 	}
 
 	//Scroll Zoom function
@@ -132,21 +154,55 @@ public partial class CameraController : Camera3D
 	}
 
 	void _on_resume_pressed(){
+		menu.GetNode<VBoxContainer>("Menu").Visible = true;
+		menu.GetNode<VBoxContainer>("Settings").Visible = false;
+		PlayerStatus.inMenu = false;
+		Engine.TimeScale = 1;
 		inMenu = false;
 	}
 
 	void _on_settings_pressed(){
 		menu.GetNode<VBoxContainer>("Menu").Visible = false;
 		menu.GetNode<VBoxContainer>("Settings").Visible = true;
+		menu.GetNode<VBoxContainer>("Settings").GetNode<HSlider>("Master").GrabFocus();
 	}
 
 	void _on_quit_pressed(){
+		PlayerStatus.inMenu = false;
+		PlayerStatus.isDefeated = false;
 		Engine.TimeScale = 1;
 		GetTree().ChangeSceneToFile("res://Scene/MainMenu.tscn");
 	}
 
 	void _on_return_pressed(){
+		menu.GetNode<TextureButton>("EmptyButton").GrabFocus();
 		menu.GetNode<VBoxContainer>("Menu").Visible = true;
 		menu.GetNode<VBoxContainer>("Settings").Visible = false;
 	}
+
+	void _on_restart_level_pressed(){
+		PlayerStatus.inMenu = false;
+		PlayerStatus.isDefeated = false;
+		Engine.TimeScale = 1;
+		GetTree().ChangeSceneToFile("res://Scene/DreadLevel.tscn");
+	}
+
+	void _on_button_mouse_entered(){
+		GetNode<AudioStreamPlayer>("ButtonHover").Play();
+	}
+
+	void _on_button_down(){
+		GetNode<AudioStreamPlayer>("ButtonClick").Play();
+	}
+
+	//Hides mouse cursor
+    public override void _Input(InputEvent @event)
+    {
+        if((@event is InputEventKey or InputEventMouse) && inMenu){
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+		else if(@event is InputEventJoypadButton or InputEventJoypadMotion{AxisValue: <-0.25f or> 0.25f}){
+			Input.MouseMode = Input.MouseModeEnum.Hidden;
+		}
+    }
 }
